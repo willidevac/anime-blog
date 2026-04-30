@@ -3,12 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anime Pulse</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Anime Pulse | Home</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/molecules/menu.css">
+  <link rel="stylesheet" href="css/molecules/footer.css">
+  <link rel="stylesheet" href="css/molecules/buttons.css">
+  <link rel="stylesheet" href="css/molecules/slider.css">
+  <link rel="stylesheet" href="css/molecules/faq.css">
+  <link rel="stylesheet" href="css/molecules/form.css">
+  <link rel="stylesheet" href="css/pages/home.css">
 </head>
 <body>
-  <header>
-    <nav>
+  <header class="site-header">
+    <a class="site-logo" href="index.html">Anime Pulse</a>
+
+    <nav class="site-nav" aria-label="Hauptnavigation">
       <a href="index.html">Home</a>
       <a href="trends.html">Trends</a>
       <a href="artikel.html">Artikel</a>
@@ -17,8 +26,87 @@
   </header>
 
   <main>
-    <h1>Anime Pulse</h1>
-    <p>Unser Anime-Blog zu Trends, Empfehlungen und News.</p>
+    <section class="hero-section">
+      <div class="hero-content">
+        <p class="hero-label">Anime Blog</p>
+        <h1>Anime-Trends, News und Empfehlungen</h1>
+        <p>
+          Willkommen bei Anime Pulse. Hier sammeln wir aktuelle Trends,
+          spannende Empfehlungen und Artikel rund um Anime und Manga.
+        </p>
+        <a class="button" href="trends.html">Trends ansehen</a>
+      </div>
+
+      <div class="hero-image" aria-label="Platzhalter fuer Anime Titelbild">
+        <!-- Bild oder Design-Element kommt spaeter hier rein -->
+      </div>
+    </section>
+
+    <section class="intro-section">
+      <h2>Unser Blog</h2>
+      <p>
+        Auf dieser Seite stellen wir kurz vor, worum es in unserem Blog geht.
+        Das Design orientiert sich am Neo-Tokyo-Trends-Stil aus Figma.
+      </p>
+    </section>
+
+    <section class="featured-section">
+      <h2>Aktuelle Highlights</h2>
+
+      <div class="slider">
+        <article class="slider-card">
+          <h3>Season Trends</h3>
+          <p>Kurzer Platzhaltertext fuer einen aktuellen Anime-Trend.</p>
+        </article>
+
+        <article class="slider-card">
+          <h3>Top Empfehlungen</h3>
+          <p>Kurzer Platzhaltertext fuer eine Anime-Empfehlung.</p>
+        </article>
+
+        <article class="slider-card">
+          <h3>Manga News</h3>
+          <p>Kurzer Platzhaltertext fuer Manga- oder Community-News.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="faq-section">
+      <h2>FAQ</h2>
+
+      <details>
+        <summary>Worum geht es in diesem Blog?</summary>
+        <p>Um Anime-Trends, Empfehlungen, Artikel und Watchlist-Ideen.</p>
+      </details>
+
+      <details>
+        <summary>Welche Seiten wird der Blog haben?</summary>
+        <p>Home, Trends, Artikel und Watchlist.</p>
+      </details>
+    </section>
+
+    <section class="contact-section">
+      <h2>Kontakt</h2>
+
+      <form class="contact-form">
+        <label for="name">Name</label>
+        <input id="name" type="text" name="name">
+
+        <label for="email">E-Mail</label>
+        <input id="email" type="email" name="email">
+
+        <label for="message">Nachricht</label>
+        <textarea id="message" name="message" rows="4"></textarea>
+
+        <button class="button" type="submit">Senden</button>
+      </form>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Anime Pulse</p>
+    <a href="#">Impressum</a>
+    <a href="#">Cookie Preferences</a>
+  </footer>
 </body>
 </html>
