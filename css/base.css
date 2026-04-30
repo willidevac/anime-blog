@@ -1,1 +1,146 @@
-﻿
+﻿:root {
+  --color-bg: #0f101a;
+  --color-bg-soft: #171a2a;
+  --color-surface: #20243a;
+  --color-surface-light: #2a304d;
+  --color-line: #343b5c;
+  --color-text: #f7f5ff;
+  --color-text-muted: #a8a3bb;
+  --color-pink: #ff2bbd;
+  --color-cyan: #27eaf5;
+  --color-purple: #7652ff;
+  --color-white: #ffffff;
+
+  --font-main: "Rajdhani", "Segoe UI", Arial, Helvetica, sans-serif;
+  --font-display: "Rajdhani", "Arial Narrow", "Segoe UI", sans-serif;
+  --font-label: "Rajdhani", "Segoe UI", Arial, sans-serif;
+
+  --radius-small: 8px;
+  --radius-medium: 16px;
+  --radius-round: 999px;
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 3rem;
+  --space-xl: 5rem;
+
+  --content-width: 1120px;
+  --page-padding: clamp(1rem, 4vw, 3rem);
+  --section-space: clamp(3.5rem, 8vw, 6rem);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-main);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+img,
+picture,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-text-muted);
+  opacity: 0.75;
+}
+
+button {
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--color-white);
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+h1 {
+  font-size: clamp(2.25rem, 5vw, 4.5rem);
+}
+
+h2 {
+  font-size: clamp(1.75rem, 3vw, 3rem);
+}
+
+h3 {
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+}
+
+p {
+  color: var(--color-text-muted);
+}
+
+main {
+  min-height: 100vh;
+}
+
+section {
+  padding-left: var(--page-padding);
+  padding-right: var(--page-padding);
+}
+
+.hero-label {
+  color: var(--color-cyan);
+  font-family: var(--font-label);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.intro-section,
+.featured-section,
+.faq-section,
+.contact-section {
+  margin: 0 auto;
+  max-width: var(--content-width);
+  padding-bottom: var(--section-space);
+  padding-top: var(--section-space);
+}
+
+@media (max-width: 360px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.55rem;
+  }
+}
