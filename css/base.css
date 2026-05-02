@@ -75,12 +75,12 @@ button {
   cursor: pointer;
 }
 
-h1,
+/* h1,
 h2,
 h3,
 p {
   margin-top: 0;
-}
+} */
 
 h1,
 h2,
@@ -88,19 +88,26 @@ h3 {
   color: var(--color-white);
   font-family: var(--font-display);
   font-weight: 700;
-  line-height: 1.1;
+  /* line-height: 1.1; */
 }
 
 h1 {
-  font-size: clamp(2.25rem, 5vw, 4.5rem);
+  /* font-size: clamp(2.25rem, 5vw, 4.5rem); */
+  font-size: 52px;
+  color: #0f101a;
 }
 
 h2 {
-  font-size: clamp(1.75rem, 3vw, 3rem);
+  /* font-size: clamp(1.75rem, 3vw, 3rem); */
+  font-size: 64px
 }
 
 h3 {
   font-size: clamp(1.15rem, 2vw, 1.45rem);
+}
+
+.hero-content >p{
+  font-size: 24px;
 }
 
 p {
@@ -108,12 +115,22 @@ p {
 }
 
 main {
-  min-height: 100vh;
+  min-height: 100dvh;
 }
 
-section {
+/* section {
   padding-left: var(--page-padding);
   padding-right: var(--page-padding);
+} */
+
+.hero-content{
+    margin: auto;
+    width: 1200px;
+
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
 }
 
 .hero-label {
@@ -123,6 +140,7 @@ section {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+
 }
 
 .intro-section,
