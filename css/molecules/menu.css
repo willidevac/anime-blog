@@ -20,13 +20,26 @@
 .text-design{
   display: flex;
   flex-direction: column;
+  
+  width: 600px;
+  height: 237px;
 
-  width: 485px;
-  padding-left: 165px;
+  padding-left: 164px;
+}
+
+.text-design >h1{
+  font-size: 64px;
+  font-weight: 700;
+
+  margin-bottom: 30px;
 }
 
 .text-design >p{
   color: rgb(11, 0, 0);
+
+  margin-top: 0;
+  font-size: 24px;
+  font-weight: 400;
   
 }
 

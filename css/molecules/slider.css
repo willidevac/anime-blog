@@ -3,7 +3,11 @@
     justify-content: center;
 }
 
-
+.slider-btn-size{
+  height: 32px;
+  width: 32px;
+  
+}
 
 
 .slider_a {
@@ -18,6 +22,8 @@
   justify-content: center;
   align-items: flex-end;
 
+  gap: 24px;
+  padding: 32px;
   overflow: hidden;
 }
 
@@ -40,18 +46,6 @@
 .slider_a_element {
   width: calc(100% / 3);
   height: 100%;
-}
-
-.element_one {
-  background-color: blueviolet;
-}
-
-.element_tow {
-  background-color: rgb(43, 192, 14);
-}
-
-.element_three {
-  background-color: rgb(252, 5, 219);
 }
 
 

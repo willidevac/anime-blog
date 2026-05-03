@@ -93,25 +93,22 @@ h3 {
 
 h1 {
   /* font-size: clamp(2.25rem, 5vw, 4.5rem); */
-  font-size: 52px;
+  font-size: 64px;
   color: #0f101a;
 }
 
 h2 {
   /* font-size: clamp(1.75rem, 3vw, 3rem); */
-  font-size: 64px
+  font-size: 48px
 }
 
 h3 {
   font-size: clamp(1.15rem, 2vw, 1.45rem);
 }
 
-.hero-content >p{
-  font-size: 24px;
-}
-
 p {
   color: var(--color-text-muted);
+  font-size: 24px;
 }
 
 main {
@@ -133,6 +130,28 @@ main {
 
 }
 
+.info-content {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+
+  padding: 32px;
+  gap: 32px;
+}
+
+.info-content >h2{
+     font-size: 64px;
+  font-weight: 700;
+  margin: 0;
+ 
+}
+
+.info-content >p{
+     font-size: 24px;
+  font-weight: 400;
+  margin: 0;
+}
+
 .hero-label {
   color: var(--color-cyan);
   font-family: var(--font-label);
@@ -143,15 +162,64 @@ main {
 
 }
 
-.intro-section,
+.intro-section{
+    margin: auto;
+    width: 1200px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  
+}
+
+.blog-size >h2{
+    font-size: 48px;
+}
+
+.blog-size >p{
+    font-size: 24px;
+}
+
+.faq-section{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+
+  height: 498px;
+  margin: 56px;
+}
+
+.faq-section >h2{
+    font-size: 48px;
+    font-weight: 700;
+}
+
+
 .featured-section,
-.faq-section,
+
 .contact-section {
   margin: 0 auto;
-  max-width: var(--content-width);
-  padding-bottom: var(--section-space);
-  padding-top: var(--section-space);
+  max-width: 1200px;
+  
+  height: 600px;
+  width: 1100px;
 }
+
+.alignment >h2, p{
+  display: flex;
+  text-align: left;
+}
+
+.alignment >h2{
+  font-size: 48px;
+
+}
+
+.alignment >p{
+  font-size: 24px;
+  
+}
+
 
 @media (max-width: 360px) {
   h1 {

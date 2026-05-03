@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Anime Pulse | Home</title>
+    <link rel="stylesheet" href="css/sliders/accordion.css" />
     <link rel="stylesheet" href="css/molecules/images.css" />
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/molecules/menu.css" />
@@ -45,13 +46,15 @@
         </div>
       </section>
       <section class="hero-content">
-        <h2>News und Empfehlungen</h2>
-        <p>
-          2026 bringt zahlreiche vielversprechende neue Anime-Serie mit sich,
-          die ihr euch auf keinen Fall entgehen lassen solltet.
-          In unserer großen Jahresübersicht stellen wir euch neun Neustarts
-          haben, die das Potential besitzen, richtige Highlights zu werden.
-        </p>
+        <div class="info-content">
+          <h2>News und Empfehlungen</h2>
+          <p>
+            2026 bringt zahlreiche vielversprechende neue Anime-Serie mit sich,
+            die ihr euch auf keinen Fall entgehen lassen solltet. In unserer
+            großen Jahresübersicht stellen wir euch neun Neustarts haben, die
+            das Potential besitzen, richtige Highlights zu werden.
+          </p>
+        </div>
         <section class="btn-size">
           <div class="button-trends" href="trends.html">
             <a>Trends ansehen</a>
@@ -61,24 +64,40 @@
           <!-- Bild oder Design-Element kommt spaeter hier rein -->
 
           <section class="slider_a">
-            <input type="radio" name="slider" value="one" checked />
-            <input type="radio" name="slider" value="tow" />
-            <input type="radio" name="slider" value="three" />
+            <input
+              class="slider-btn-size"
+              type="radio"
+              name="slider"
+              value="one"
+              checked
+            />
+            <input
+              class="slider-btn-size"
+              type="radio"
+              name="slider"
+              value="tow"
+            />
+            <input
+              class="slider-btn-size"
+              type="radio"
+              name="slider"
+              value="three"
+            />
 
             <div class="slider_a_wrapper">
-              <div class="slider_a_element element_one">
+              <div class="slider_a_element">
                 <img
                   src="./assets/images/img-anime/Anime über die alle reden/beyond-jouneys-end-season-2.jpg"
                   alt=""
                 />
               </div>
-              <div class="slider_a_element element_tow">
+              <div class="slider_a_element">
                 <img
                   src="./assets/images/img-anime/Anime über die alle reden/jujutsu-kaisen.jpg"
                   alt=""
                 />
               </div>
-              <div class="slider_a_element element_three">
+              <div class="slider_a_element">
                 <img
                   src="./assets/images/img-anime/Anime über die alle reden/sidehammer-onepuchman.png"
                   alt=""
@@ -90,14 +109,81 @@
       </section>
 
       <section class="intro-section">
-        <h2>Unser Blog</h2>
-        <p>
-          Auf dieser Seite stellen wir kurz vor, worum es in unserem Blog geht.
-          Das Design orientiert sich am Neo-Tokyo-Trends-Stil aus Figma.
-        </p>
+        <div class="blog-size">
+          <h2>Unser Blog</h2>
+          <p>
+            Auf dieser Seite stellen wir kurz vor, worum es in unserem Blog
+            geht. Das Design orientiert sich am Neo-Tokyo-Trends-Stil aus Figma.
+          </p>
+        </div>
       </section>
 
-      <section class="featured-section">
+      <section class="faq-section">
+        <h2>FAQ</h2>
+        <div class="accordion-size">
+          <div class="border-btn">
+            <button class="accordion">Worum geht es in diesem Blog?</button>
+            <div class="panel">
+              <p>
+                Hier tauchen wir in die faszinierende Welt der Anime ein und
+                teilen mit dir alles, was du über deine Lieblingsserie wissen
+                möchtest. Von klassischen Serien bis hin zu aktuellen
+                Veröffentlichungen, wir decken ein breites Spektrum an Themen
+                ab, um deinen Horizont zu erweitern.
+              </p>
+            </div>
+          </div>
+
+          <div class="border-btn">
+            <button class="accordion">Das bietet dir unser Blog</button>
+            <div class="panel">
+              <p>
+                Unser Blog enthält auch Artikel über Trends, Empfehlungen und
+                spannende Diskussionen über kontroverse Themen. Wir gehen auf
+                die Bedeutung von Charakterentwicklung ein, analysieren die
+                Symbolik in den Geschichten und beleuchten die kulturellen
+                Einflüsse, die Anime prägen. Außerdem halten wir dich über die
+                neuesten Veröffentlichungen, Ankündigungen von Fortsetzungen und
+                kommenden Events auf dem Laufenden
+              </p>
+            </div>
+          </div>
+
+          <div class="border-btn">
+            <button class="accordion">Was ist Anime?</button>
+            <div class="panel">
+              <p>
+                Als Anime kann jede japanische Animation bezeichnet werden. Es
+                handelt sich daher um einen sehr breitgefächerten Begriff, da es
+                keine konkreten Vorgaben zu Themen, Zielgruppen oder der
+                Entstehungszeit gibt. Da Animes jedoch im Vergleich zu
+                westlichen Trickserien in ihrem Stil sehr distinkt sind, können
+                die meisten Animes schnell als solche erkannt werden. Dabei
+                spielt es kaum eine Rolle, um welches genaue Genre es sich
+                handelt. Die Anime Charaktere haben z. B. generell größere Augen
+                und bunte Haarfarben sind nicht unüblich.
+              </p>
+            </div>
+          </div>
+        </div>
+        <script>
+          var acc = document.getElementsByClassName("accordion");
+          var i;
+
+          for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+              this.classList.toggle("active");
+              var panel = this.nextElementSibling;
+              if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+              } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+              }
+            });
+          }
+        </script>
+      </section>
+      <!-- <section class="featured-section">
         <h2>Aktuelle Highlights</h2>
 
         <div class="slider">
@@ -116,9 +202,9 @@
             <p>Kurzer Platzhaltertext fuer Manga- oder Community-News.</p>
           </article>
         </div>
-      </section>
+      </section> -->
 
-      <section class="faq-section">
+      <!-- <section class="faq-section">
         <h2>FAQ</h2>
 
         <details>
@@ -130,23 +216,31 @@
           <summary>Welche Seiten wird der Blog haben?</summary>
           <p>Home, Trends, Artikel und Watchlist.</p>
         </details>
-      </section>
+      </section> -->
 
       <section class="contact-section">
-        <h2>Kontakt</h2>
+        <div class="alignment">
+          <h2>Kontakt</h2>
+          <p>
+            Haben Sie Beschwerden, Fragen, Anregungen oder gibt es etwas
+            Positives oder Erfreuliches, über das Sie uns berichten möchten? Wir
+            werden innerhalb der nächsten 24 Stunden Kontakt mit Ihnen
+            aufnehmen.
+          </p>
 
-        <form class="contact-form">
-          <label for="name">Name</label>
-          <input id="name" type="text" name="name" />
+          <form class="contact-form">
+            <label for="name">Name</label>
+            <input id="name" type="text" name="name" />
 
-          <label for="email">E-Mail</label>
-          <input id="email" type="email" name="email" />
+            <label for="email">E-Mail</label>
+            <input id="email" type="email" name="email" />
 
-          <label for="message">Nachricht</label>
-          <textarea id="message" name="message" rows="4"></textarea>
+            <label for="message">Nachricht</label>
+            <textarea id="message" name="message" rows="4"></textarea>
 
-          <button class="button" type="submit">Senden</button>
-        </form>
+            <button class="button" type="submit">Senden</button>
+          </form>
+        </div>
       </section>
     </main>
 
