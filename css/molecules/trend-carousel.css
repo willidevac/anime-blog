@@ -1,0 +1,237 @@
+.trend-carousel {
+  margin: 0 auto;
+  max-width: 680px;
+}
+
+.trend-carousel__input {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.trend-carousel__viewport {
+  margin: 0 auto;
+  max-width: 620px;
+  overflow: hidden;
+}
+
+.trend-carousel__track {
+  display: flex;
+  transition: transform 350ms ease;
+  width: 500%;
+}
+
+.trend-carousel__card {
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-small);
+  box-shadow: 0 18px 32px rgba(0, 0, 0, 0.35);
+  flex: 0 0 20%;
+  height: 260px;
+  overflow: hidden;
+  position: relative;
+}
+
+.trend-carousel__card img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.trend-carousel__card::after {
+  background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.75));
+  content: "";
+  inset: 0;
+  position: absolute;
+}
+
+.trend-carousel__card h3 {
+  bottom: 1rem;
+  color: var(--color-white);
+  font-size: 1.25rem;
+  left: 1rem;
+  margin: 0;
+  position: absolute;
+  z-index: 1;
+}
+
+#trend-season:checked ~ .trend-carousel__viewport .trend-carousel__track {
+  transform: translateX(0);
+}
+
+#trend-manga:checked ~ .trend-carousel__viewport .trend-carousel__track {
+  transform: translateX(-20%);
+}
+
+#trend-cosplay:checked ~ .trend-carousel__viewport .trend-carousel__track {
+  transform: translateX(-40%);
+}
+
+#trend-games:checked ~ .trend-carousel__viewport .trend-carousel__track {
+  transform: translateX(-60%);
+}
+
+#trend-musik:checked ~ .trend-carousel__viewport .trend-carousel__track {
+  transform: translateX(-80%);
+}
+
+.trend-carousel__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  justify-content: center;
+  margin-top: 1.4rem;
+}
+
+.trend-carousel__controls label {
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-round);
+  color: var(--color-text);
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.45rem 0.9rem;
+  transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+.trend-carousel__controls label:hover {
+  border-color: var(--color-cyan);
+  color: var(--color-cyan);
+}
+
+#trend-season:checked ~ .trend-carousel__controls label[for="trend-season"],
+#trend-manga:checked ~ .trend-carousel__controls label[for="trend-manga"],
+#trend-cosplay:checked ~ .trend-carousel__controls label[for="trend-cosplay"],
+#trend-games:checked ~ .trend-carousel__controls label[for="trend-games"],
+#trend-musik:checked ~ .trend-carousel__controls label[for="trend-musik"] {
+  background: var(--color-pink);
+  border-color: var(--color-pink);
+  color: var(--color-white);
+}
+
+.trend-carousel__articles {
+  margin-top: 3rem;
+  text-align: left;
+}
+
+.trend-carousel__article-set {
+  display: none;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+#trend-season:checked ~ .trend-carousel__articles .trend-carousel__article-set--season,
+#trend-manga:checked ~ .trend-carousel__articles .trend-carousel__article-set--manga,
+#trend-cosplay:checked ~ .trend-carousel__articles .trend-carousel__article-set--cosplay,
+#trend-games:checked ~ .trend-carousel__articles .trend-carousel__article-set--games,
+#trend-musik:checked ~ .trend-carousel__articles .trend-carousel__article-set--musik {
+  display: grid;
+}
+
+.trend-article-card {
+  background: rgba(32, 36, 58, 0.76);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: var(--radius-small);
+  backdrop-filter: blur(8px);
+  min-height: 220px;
+  padding: 1.1rem;
+}
+
+.trend-article-card p {
+  color: var(--color-cyan);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+}
+
+.trend-article-card h3 {
+  color: var(--color-white);
+  font-size: 1.15rem;
+  line-height: 1.1;
+  margin-bottom: 0.9rem;
+}
+
+.trend-article-card span {
+  color: var(--color-text-muted);
+  display: block;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.trend-carousel__tips {
+  margin-top: 1.25rem;
+  text-align: left;
+}
+
+.trend-carousel__tip-set {
+  background: linear-gradient(135deg, rgba(255, 43, 189, 0.16), rgba(39, 234, 245, 0.1), rgba(32, 36, 58, 0.7));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-small);
+  backdrop-filter: blur(8px);
+  display: none;
+  padding: 1.3rem 1.4rem;
+}
+
+#trend-season:checked ~ .trend-carousel__tips .trend-carousel__tip-set--season,
+#trend-manga:checked ~ .trend-carousel__tips .trend-carousel__tip-set--manga,
+#trend-cosplay:checked ~ .trend-carousel__tips .trend-carousel__tip-set--cosplay,
+#trend-games:checked ~ .trend-carousel__tips .trend-carousel__tip-set--games,
+#trend-musik:checked ~ .trend-carousel__tips .trend-carousel__tip-set--musik {
+  display: block;
+}
+
+.trend-carousel__tip-label {
+  color: var(--color-pink);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.45rem;
+  text-transform: uppercase;
+}
+
+.trend-carousel__tip-set h3 {
+  color: var(--color-white);
+  font-size: 1.25rem;
+  margin-bottom: 0.9rem;
+}
+
+.trend-carousel__tip-set ul {
+  display: grid;
+  gap: 0.7rem;
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.trend-carousel__tip-set li {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.trend-carousel__tip-set strong {
+  color: var(--color-white);
+}
+
+@media (max-width: 560px) {
+  .trend-carousel__card {
+    height: 205px;
+  }
+
+  .trend-carousel__article-set {
+    grid-template-columns: 1fr;
+  }
+
+  .trend-article-card {
+    min-height: 0;
+  }
+
+  .trend-carousel__controls {
+    gap: 0.5rem;
+  }
+
+  .trend-carousel__controls label {
+    font-size: 0.78rem;
+    padding: 0.42rem 0.7rem;
+  }
+}
