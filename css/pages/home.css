@@ -1,1 +1,111 @@
-﻿
+.opener-img {
+  height: 515px;
+  
+  background-image: url("../../assets/images/img-anime/Header Trends die gerade Explodieren/geschwungen-vector.png"), url("../../assets/images/img-anime/Header Trends die gerade Explodieren/all-anime-opener.png");
+  background-blend-mode: hard-light;
+  background-repeat: no-repeat;
+  background-position-y: center;
+  max-width: 100%;
+}
+
+.text-design{
+  display: flex;
+  flex-direction: column;
+  
+  width: 600px;
+  height: 237px;
+
+  padding-left: 164px;
+}
+
+.text-design >h1{
+  font-size: 64px;
+  font-weight: 700;
+
+  margin-bottom: 30px;
+}
+
+.text-design >p{
+  color: rgb(11, 0, 0);
+
+  margin-top: 0;
+  font-size: 24px;
+  font-weight: 400;
+  
+}
+
+.hero-content {
+  margin: auto;
+  width: 1200px;
+
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.info-content {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+
+  padding: 32px;
+  gap: 32px;
+}
+
+.info-content > h2 {
+  font-size: 64px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.info-content > p {
+  font-size: 24px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.btn-size{
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    
+
+    height: 150px;
+    width: 150px;
+    margin-top: 48px;
+}
+
+.intro-section {
+  margin: auto;
+  width: 1200px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.blog-size > h2 {
+  font-size: 48px;
+}
+
+.blog-size > p {
+  font-size: 24px;
+}
+
+.faq-section {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  height: 498px;
+  margin: 56px;
+}
+
+.faq-section > h2 {
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.featured-section {
+}

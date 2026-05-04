@@ -1,0 +1,10 @@
+label {display:inline-grid;}
+
+input[type=text] {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid red;
+}

@@ -17,30 +17,12 @@
   padding-left: 140px; */
 }
 
-.text-design{
-  display: flex;
-  flex-direction: column;
-  
-  width: 600px;
-  height: 237px;
+.head-logo {
+  border-radius: 50px;
+  border: 0.5px solid white;
 
-  padding-left: 164px;
-}
-
-.text-design >h1{
-  font-size: 64px;
-  font-weight: 700;
-
-  margin-bottom: 30px;
-}
-
-.text-design >p{
-  color: rgb(11, 0, 0);
-
-  margin-top: 0;
-  font-size: 24px;
-  font-weight: 400;
-  
+  width: 72px;
+  height: 72px;
 }
 
 .site-logo {

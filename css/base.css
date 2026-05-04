@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   --color-bg: #0f101a;
   --color-bg-soft: #171a2a;
   --color-surface: #20243a;
@@ -119,36 +119,6 @@ main {
   padding-right: var(--page-padding);
 } */
 
-.hero-content {
-  margin: auto;
-  width: 1200px;
-
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
-
-.info-content {
-  display: flex;
-  text-align: center;
-  flex-direction: column;
-
-  padding: 32px;
-  gap: 32px;
-}
-
-.info-content > h2 {
-  font-size: 64px;
-  font-weight: 700;
-  margin: 0;
-}
-
-.info-content > p {
-  font-size: 24px;
-  font-weight: 400;
-  margin: 0;
-}
-
 .hero-label {
   color: var(--color-cyan);
   font-family: var(--font-label);
@@ -157,53 +127,6 @@ main {
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
-
-.intro-section {
-  margin: auto;
-  width: 1200px;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
-
-.blog-size > h2 {
-  font-size: 48px;
-}
-
-.blog-size > p {
-  font-size: 24px;
-}
-
-.faq-section {
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-
-  height: 498px;
-  margin: 56px;
-}
-
-.faq-section > h2 {
-  font-size: 48px;
-  font-weight: 700;
-}
-
-.featured-section {
-}
-
-label {display:inline-grid;}
-
-input[type=text] {
-  width: 100%;
-  padding: 12px;
-  margin: 10px 0;
-  box-sizing: border-box;
-  border: none;
-  border-bottom: 1px solid red;
-}
-
-
 
 @media (max-width: 360px) {
   h1 {
