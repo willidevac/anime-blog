@@ -6,9 +6,9 @@
   border-bottom: 1px solid rgba(39, 234, 245, 0.12);
   display: flex;
   gap: clamp(2rem, 8vw, 8.5rem);
-  min-height: 72px;
+  height: 128px;
   padding: 0 clamp(1.5rem, 5vw, 3rem);
-  width: 100%;
+  width: 1440px;
 }
 
 .page-header__logo {
