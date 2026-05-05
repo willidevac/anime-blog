@@ -48,8 +48,7 @@ body {
 }
 
 img,
-picture,
-video {
+picture {
   display: block;
   max-width: 100%;
 }
@@ -64,7 +63,6 @@ input,
 textarea {
   font: inherit; }*/
 
-
 /* input::placeholder,
 textarea::placeholder {
   color: var(--color-text-muted);
@@ -74,12 +72,12 @@ button {
   cursor: pointer;
 }
 
-/* h1,
+h1,
 h2,
 h3,
 p {
-  margin-top: 0;
-} */
+  margin: 0;
+}
 
 h1,
 h2,
@@ -106,12 +104,16 @@ h3 {
 }
 
 p {
+  
   color: var(--color-text-muted);
   font-size: 24px;
+  font-weight: 400;
 }
 
 main {
   min-height: 100dvh;
+  height: 3170px;
+  width: 1440px;
 }
 
 /* section {

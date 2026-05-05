@@ -45,7 +45,7 @@
       </section>
       <section class="hero-content">
         <div class="info-content">
-          <h2>News und Empfehlungen</h2>
+          <h2>Aktuelle Highlights</h2>
           <p>
             2026 bringt zahlreiche vielversprechende neue Anime-Serie mit sich,
             die ihr euch auf keinen Fall entgehen lassen solltet. In unserer
@@ -53,11 +53,6 @@
             das Potential besitzen, richtige Highlights zu werden.
           </p>
         </div>
-        <section class="btn-size">
-          <div class="button-trends" href="trends.html">
-            <a>Trends ansehen</a>
-          </div>
-        </section>
         <div class="slider-image" aria-label="Platzhalter fuer Anime Titelbild">
           <!-- Bild oder Design-Element kommt spaeter hier rein -->
 
@@ -210,22 +205,62 @@
           <p>Home, Trends, Artikel und Watchlist.</p>
         </details>
       </section> -->
+      <section class="content-mail">
       <section class="container-section">
-        <h2 class="mb-font">Kontakt</h2>
-        <p>
-          Haben Sie Beschwerden, Fragen, Anregungen oder gibt es etwas Positives
-          oder Erfreuliches, über das Sie uns berichten möchten? Wir werden
-          innerhalb der nächsten 24 Stunden Kontakt mit Ihnen aufnehmen.
-        </p>
-        
-        <form>
-          <label for="fname">First Name</label>
-          <input type="text" id="fname" name="fname" />
-          <label for="lname">Last Name</label>
-          <input type="text" id="lname" name="lname" />
-        </form>
-        
+        <div class="row no-gutters justify-content-center .align-items-stretch no-gutters">
+          <div class="col-md-7">
+            <div class="form h-100 contact-wrap p-5">
+              <h2 class="text-center">Kontakt</h2>
+              <p>
+                Haben Sie Beschwerden, Fragen, Anregungen oder gibt es etwas
+                Positives oder Erfreuliches, über das Sie uns berichten möchten?
+                Wir werden innerhalb der nächsten 24 Stunden Kontakt mit Ihnen
+                aufnehmen.
+              </p>
+
+              <form class="mb-5 method="post" id="contactForm" name="contactForm" novalidate="novalidate">
+ 
+                <div class="row">
+
+                  <div class="col-med-6 form-group mb-3">
+                    <label for class="col-form-label">wie ist dein Name?</label>
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Dein Name">
+                  </div>
+                
+
+                  <div class="col-med-6 form-group mb-3">
+                    <label for class="col-form-label">wie lautet deine eMail?</label>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Deine eMail">
+                  </div>
+                </div>
+ 
+                <div class="row">
+                  <div class="col-md-12 form-group mb-3">
+                    <label for="budget" class="col-form-label">Thema</label>
+                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Dein Thema">
+                  </div>
+                </div>
+ 
+                <div class="row mb-5">
+                  <div class="col-md-12 form-group mb-3">
+                    <label for="message" class="col-form-label">Message</label>
+                    <textarea name="form-control" name="message" id="message" cols="30" rows="4" placeholder="Schreibe deine Nachricht"></textarea>
+                  </div>
+                </div>
+ 
+                <div class="row justify-content-center">
+                  <div class="col-md-5 form-group text-center">
+                    <input type="submit" value="Send Message" class="btn btn-block btn-primary rounded-0 py-2 px-4">
+                   <span class="submitting"></span>
+                  </div>
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
       </section>
+    </section>
     </main>
 
     <footer class="site-footer">
