@@ -138,12 +138,12 @@
 }
 
 .artikel-story__lead {
-  border-left: 3px solid var(--color-pink);
+  
   color: var(--color-white);
   font-size: clamp(1.18rem, 2vw, 1.45rem);
   line-height: 1.55;
   margin: 0;
-  max-width: 760px;
+  
   padding-left: 1.3rem;
 }
 
