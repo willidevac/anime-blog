@@ -1,1 +1,704 @@
-﻿
+.watch-page {
+  --watch-yellow: #ffe27a;
+  --watch-green: #82ff9e;
+  --watch-orange: #ff8a5b;
+  background: var(--color-bg);
+  isolation: isolate;
+  overflow: hidden;
+  position: relative;
+}
+
+.watch-page::before {
+  background:
+    linear-gradient(90deg, rgba(15, 16, 26, 0.95), rgba(15, 16, 26, 0.68) 52%, rgba(15, 16, 26, 0.92)),
+    url("../../assets/images/img-anime/trend-background.jpg") center top / cover no-repeat;
+  content: "";
+  height: 720px;
+  inset: 0 0 auto;
+  opacity: 0.75;
+  position: absolute;
+  z-index: -2;
+}
+
+.watch-page::after {
+  background:
+    linear-gradient(180deg, transparent 0, rgba(15, 16, 26, 0.48) 320px, var(--color-bg) 760px),
+    linear-gradient(90deg, rgba(39, 234, 245, 0.1), transparent 34%, rgba(255, 43, 189, 0.12));
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+}
+
+.watch-hero,
+.watch-section {
+  margin: 0 auto;
+  max-width: 1120px;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.watch-hero {
+  align-items: center;
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 0.85fr);
+  min-height: 680px;
+  padding-bottom: 5rem;
+  padding-top: 5rem;
+}
+
+.watch-kicker {
+  color: var(--color-cyan);
+  font-family: var(--font-label);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  margin: 0 0 0.8rem;
+  text-transform: uppercase;
+}
+
+.watch-hero h1 {
+  color: var(--color-white);
+  font-size: 4.4rem;
+  line-height: 1.02;
+  margin: 0;
+  max-width: 720px;
+}
+
+.watch-hero__copy > p:not(.watch-kicker) {
+  color: rgba(247, 245, 255, 0.84);
+  font-size: 1.35rem;
+  line-height: 1.5;
+  margin: 1.3rem 0 0;
+  max-width: 560px;
+}
+
+.watch-hero__copy,
+.watch-hero__media,
+.watch-section__heading,
+.season-card,
+.week-card,
+.starter-item,
+.plan-grid article {
+  min-width: 0;
+}
+
+.watch-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 2rem;
+}
+
+.watch-hero__actions a,
+.watch-form button {
+  align-items: center;
+  background: var(--color-pink);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-round);
+  color: var(--color-white);
+  display: inline-flex;
+  font-family: var(--font-label);
+  font-size: 0.9rem;
+  font-weight: 700;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.75rem 1.25rem;
+  transition: background 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.watch-hero__actions a + a {
+  background: rgba(32, 36, 58, 0.76);
+  color: var(--color-cyan);
+}
+
+.watch-hero__actions a:hover,
+.watch-form button:hover {
+  background: var(--color-cyan);
+  color: #090a12;
+  transform: translateY(-2px);
+}
+
+.watch-hero__stats {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 2.4rem;
+  max-width: 520px;
+}
+
+.watch-hero__stats span {
+  background: rgba(32, 36, 58, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-small);
+  color: var(--color-text-muted);
+  display: grid;
+  font-size: 0.78rem;
+  gap: 0.1rem;
+  min-height: 76px;
+  padding: 0.9rem;
+}
+
+.watch-hero__stats strong {
+  color: var(--color-white);
+  font-size: 1.55rem;
+  line-height: 1;
+}
+
+.watch-hero__media {
+  aspect-ratio: 4 / 5;
+  border: 1px solid rgba(39, 234, 245, 0.28);
+  border-radius: var(--radius-small);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.44);
+  min-height: 520px;
+  overflow: hidden;
+  position: relative;
+}
+
+.watch-hero__media::after {
+  background: linear-gradient(180deg, transparent 42%, rgba(9, 10, 18, 0.92));
+  content: "";
+  inset: 0;
+  position: absolute;
+}
+
+.watch-hero__media video,
+.watch-hero__media iframe,
+.trailer-card iframe {
+  border: 0;
+  display: block;
+  width: 100%;
+}
+
+.watch-hero__media video {
+  height: 100%;
+  object-fit: cover;
+}
+
+.watch-hero__media--embed {
+  aspect-ratio: auto;
+  background: #090a12;
+  display: grid;
+  grid-template-rows: auto auto;
+  min-height: 0;
+}
+
+.watch-hero__media--embed::after {
+  display: none;
+}
+
+.watch-hero__media--embed iframe {
+  aspect-ratio: 16 / 9;
+  height: auto;
+}
+
+.watch-hero__badge {
+  background: rgba(9, 10, 18, 0.84);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-small);
+  bottom: 1rem;
+  left: 1rem;
+  padding: 0.9rem 1rem;
+  position: absolute;
+  right: 1rem;
+  z-index: 1;
+}
+
+.watch-hero__caption {
+  background: linear-gradient(90deg, rgba(39, 234, 245, 0.09), rgba(255, 43, 189, 0.12));
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 1rem;
+}
+
+.watch-hero__badge span,
+.watch-hero__caption span,
+.trailer-card p,
+.season-card p,
+.week-card__body span,
+.plan-grid span {
+  color: var(--color-cyan);
+  display: block;
+  font-family: var(--font-label);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.watch-hero__badge strong,
+.watch-hero__caption strong {
+  color: var(--color-white);
+  display: block;
+  font-size: 1rem;
+  margin-top: 0.2rem;
+}
+
+.watch-section {
+  padding-bottom: 5.5rem;
+  padding-top: 1rem;
+}
+
+.watch-section__heading {
+  margin-bottom: 2.2rem;
+  max-width: 720px;
+}
+
+.watch-section__heading--split {
+  align-items: end;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: minmax(0, 0.8fr) minmax(280px, 0.5fr);
+  max-width: none;
+}
+
+.watch-section__heading h2,
+.watch-section--suggest h2 {
+  color: var(--color-white);
+  font-size: 2.65rem;
+  line-height: 1.08;
+  margin: 0;
+}
+
+.watch-section__heading p:not(.watch-kicker),
+.watch-section--suggest > div > p {
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  line-height: 1.65;
+  margin: 0.9rem 0 0;
+}
+
+.season-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.trailer-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.trailer-card {
+  background: rgba(32, 36, 58, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-small);
+  overflow: hidden;
+}
+
+.trailer-card iframe {
+  aspect-ratio: 16 / 9;
+  height: auto;
+}
+
+.trailer-card div {
+  padding: 1rem;
+}
+
+.trailer-card p {
+  margin: 0;
+}
+
+.trailer-card h3 {
+  color: var(--color-white);
+  font-size: 1.25rem;
+  line-height: 1.12;
+  margin: 0.4rem 0 0;
+}
+
+.season-card {
+  background: rgba(32, 36, 58, 0.74);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-small);
+  display: flex;
+  flex-direction: column;
+  min-height: 220px;
+  padding: 1.1rem;
+  position: relative;
+}
+
+.season-card::before,
+.plan-grid article::before,
+.watch-faq details::before {
+  background: linear-gradient(90deg, var(--color-cyan), var(--color-pink));
+  content: "";
+  height: 2px;
+  inset: 0 auto auto 0;
+  opacity: 0.8;
+  position: absolute;
+  width: 72px;
+}
+
+.season-card h3,
+.week-card h3,
+.starter-item h3,
+.plan-grid h3 {
+  color: var(--color-white);
+  font-size: 1.25rem;
+  line-height: 1.12;
+  margin: 0.45rem 0 0;
+}
+
+.season-card span,
+.season-card > span,
+.plan-grid p {
+  color: var(--color-text-muted);
+  display: block;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin-top: auto;
+  padding-top: 1.4rem;
+}
+
+.season-card--featured {
+  gap: 1rem;
+  grid-column: span 2;
+  min-height: 280px;
+  overflow: hidden;
+  padding: 0;
+}
+
+.season-card--featured img {
+  height: 220px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.season-card--featured div {
+  padding: 0 1.1rem 1.1rem;
+}
+
+.season-card--featured span {
+  margin-top: 0.8rem;
+  padding-top: 0;
+}
+
+.week-grid {
+  display: grid;
+  gap: 1.2rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.week-card {
+  background: #151827;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-small);
+  min-height: 480px;
+  overflow: hidden;
+}
+
+.week-card img {
+  aspect-ratio: 16 / 10;
+  height: auto;
+  object-fit: cover;
+  width: 100%;
+}
+
+.week-card__body {
+  padding: 1rem;
+}
+
+.week-card__body span {
+  color: var(--watch-yellow);
+  font-size: 0.82rem;
+}
+
+.week-card p,
+.starter-item p,
+.watch-faq p {
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  margin: 0.75rem 0 0;
+}
+
+.starter-layout {
+  align-items: start;
+  display: grid;
+  gap: 1.4rem;
+  grid-template-columns: minmax(320px, 0.75fr) minmax(0, 1fr);
+}
+
+.starter-visual {
+  border-radius: var(--radius-small);
+  margin: 0;
+  overflow: hidden;
+  position: sticky;
+  top: 1.5rem;
+}
+
+.starter-visual img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  width: 100%;
+}
+
+.starter-visual figcaption {
+  background: #111321;
+  color: var(--color-text-muted);
+  font-size: 0.88rem;
+  line-height: 1.45;
+  padding: 1rem;
+}
+
+.starter-list {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.starter-item {
+  align-items: center;
+  background: rgba(32, 36, 58, 0.68);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-small);
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 112px minmax(0, 1fr);
+  min-height: 132px;
+  padding: 0.75rem;
+}
+
+.starter-item img {
+  aspect-ratio: 1 / 1;
+  border-radius: 6px;
+  object-fit: cover;
+  width: 112px;
+}
+
+.starter-item h3 {
+  margin-top: 0;
+}
+
+.plan-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.plan-grid article {
+  background: rgba(9, 10, 18, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-small);
+  min-height: 210px;
+  padding: 1.2rem;
+  position: relative;
+}
+
+.plan-grid span {
+  color: var(--watch-green);
+}
+
+.watch-faq {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.watch-faq details {
+  background: rgba(32, 36, 58, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-small);
+  padding: 1rem 1.2rem;
+  position: relative;
+}
+
+.watch-faq summary {
+  color: var(--color-white);
+  cursor: pointer;
+  font-family: var(--font-label);
+  font-size: 1.05rem;
+  font-weight: 700;
+  list-style: none;
+}
+
+.watch-faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.watch-faq summary::after {
+  color: var(--color-cyan);
+  content: "+";
+  float: right;
+}
+
+.watch-faq details[open] summary::after {
+  content: "-";
+}
+
+.watch-section--suggest {
+  align-items: start;
+  background: linear-gradient(90deg, rgba(39, 234, 245, 0.09), rgba(255, 43, 189, 0.1));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-small);
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: minmax(0, 0.78fr) minmax(320px, 0.6fr);
+  margin-bottom: 5.5rem;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+}
+
+.watch-form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.watch-form label {
+  color: var(--color-white);
+  font-family: var(--font-label);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.watch-form input,
+.watch-form textarea {
+  background: rgba(9, 10, 18, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-small);
+  color: var(--color-white);
+  font: inherit;
+  padding: 0.85rem 1rem;
+  width: 100%;
+}
+
+.watch-form input:focus,
+.watch-form textarea:focus {
+  border-color: var(--color-cyan);
+  outline: none;
+}
+
+.watch-form button {
+  border: 0;
+  justify-self: start;
+  margin-top: 0.3rem;
+}
+
+.watch-page + .site-footer {
+  background:
+    linear-gradient(90deg, rgba(39, 234, 245, 0.08), transparent 28%, rgba(255, 43, 189, 0.08)),
+    #090a12;
+  border-top-color: rgba(39, 234, 245, 0.22);
+}
+
+@media (max-width: 940px) {
+  .watch-hero,
+  .watch-section {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .watch-hero {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    padding-top: 3rem;
+  }
+
+  .watch-hero h1 {
+    font-size: 3.2rem;
+  }
+
+  .watch-hero__media {
+    aspect-ratio: 16 / 10;
+    min-height: 0;
+  }
+
+  .watch-hero__media--embed {
+    aspect-ratio: auto;
+  }
+
+  .watch-section__heading--split,
+  .starter-layout,
+  .watch-section--suggest {
+    grid-template-columns: 1fr;
+  }
+
+  .starter-visual {
+    position: static;
+  }
+
+  .season-grid,
+  .trailer-grid,
+  .week-grid,
+  .plan-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .season-card--featured {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .watch-page::before {
+    height: 560px;
+  }
+
+  .watch-hero,
+  .watch-section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .watch-hero {
+    gap: 2rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .watch-hero h1 {
+    font-size: 2.55rem;
+  }
+
+  .watch-hero__copy > p:not(.watch-kicker) {
+    font-size: 1.05rem;
+  }
+
+  .watch-hero__actions,
+  .watch-hero__stats {
+    grid-template-columns: 1fr;
+  }
+
+  .watch-hero__actions {
+    flex-direction: column;
+  }
+
+  .watch-hero__actions a,
+  .watch-form button {
+    width: 100%;
+  }
+
+  .watch-section {
+    padding-bottom: 4rem;
+  }
+
+  .watch-section__heading h2,
+  .watch-section--suggest h2 {
+    font-size: 2rem;
+  }
+
+  .season-grid,
+  .trailer-grid,
+  .week-grid,
+  .plan-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .season-card--featured {
+    grid-column: auto;
+  }
+
+  .starter-item {
+    grid-template-columns: 86px minmax(0, 1fr);
+  }
+
+  .starter-item img {
+    width: 86px;
+  }
+
+  .watch-section--suggest {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

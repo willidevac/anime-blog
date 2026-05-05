@@ -8,13 +8,9 @@
   /* min-height: 72px; */
   padding: 0 max(var(--page-padding), calc((100vw - var(--content-width)) / 2));
 
-  max-width: 1440px;
+  width: 1440px;
   padding-left: 144px;
   height: 128px;
-
-  /* height: 128px;
-  width: 1440px;
-  padding-left: 140px; */
 }
 
 .head-logo {
