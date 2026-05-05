@@ -52,11 +52,8 @@
 
 .main-article {
   margin: 0 auto;
-  max-width: 1200px;
-  height: 2210px;
-  padding-top: 88px;
-  padding-bottom: 88px;
-  
+  max-width: 1120px;
+  padding: clamp(3.4rem, 5vw, 5.8rem) clamp(1rem, 5vw, 5rem) 5.5rem;
 }
 
 .artikel-hero {
@@ -176,7 +173,7 @@
 }
 
 .artikel-video-card {
-border-radius: 60px;
+  border-radius: 60px;
   width: 931px;
   height: 520px;
 }
@@ -192,7 +189,6 @@ border-radius: 60px;
     #090a12;
   border-top-color: rgba(39, 234, 245, 0.22);
 }
-
 
 @media (max-width: 760px) {
   .artikel-page::before {
@@ -330,13 +326,10 @@ border-radius: 60px;
   gap: 32px;
 }
 
-.list-cover{
-    display: flex;
-    flex-direction: column;
+.list-cover {
+  display: flex;
+  flex-direction: column;
 
-
-    width: 1000px;
-    height: 203px;
-
-
+  width: 1000px;
+  height: 203px;
 }
