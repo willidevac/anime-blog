@@ -13,7 +13,10 @@
     <link rel="stylesheet" href="css/molecules/form.css" />
     <link rel="stylesheet" href="css/molecules/share.css" />
     <link rel="stylesheet" href="css/pages/home.css" />
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+      defer
+    ></script>
     <script src="js/molecules/contact-form.js" defer></script>
   </head>
   <body>
@@ -96,92 +99,129 @@
       </section>
 
       <section class="faq-section">
-          <h2>FAQ</h2>
-          <div class="accordion-size">
-            <div class="border-btn">
-              <button class="accordion" type="button">Worum geht es in diesem Blog?</button>
-              <div class="panel">
-                <p>
-                  Hier tauchen wir in die faszinierende Welt der Anime ein und
-                  teilen mit dir alles, was du über deine Lieblingsserien wissen
-                  möchtest. Von Klassikern bis hin zu aktuellen Veröffentlichungen
-                  decken wir ein breites Spektrum an Themen ab.
-                </p>
-              </div>
-            </div>
-
-            <div class="border-btn">
-              <button class="accordion" type="button">Das bietet dir unser Blog</button>
-              <div class="panel">
-                <p>
-                  Unser Blog enthält Artikel über Trends, Empfehlungen und
-                  spannende Diskussionen. Wir analysieren Charakterentwicklung,
-                  Symbolik und kulturelle Einflüsse und halten dich über neue
-                  Veröffentlichungen, Fortsetzungen und Events auf dem Laufenden.
-                </p>
-              </div>
-            </div>
-
-            <div class="border-btn">
-              <button class="accordion" type="button">Was ist Anime?</button>
-              <div class="panel">
-                <p>
-                  Als Anime wird japanische Animation bezeichnet. Der Begriff ist
-                  sehr breit gefächert, weil es keine festen Vorgaben zu Themen,
-                  Zielgruppen oder Entstehungszeiten gibt.
-                </p>
-              </div>
+        <h2>FAQ</h2>
+        <div class="accordion-size">
+          <div class="border-btn">
+            <button class="accordion" type="button">
+              Worum geht es in diesem Blog?
+            </button>
+            <div class="panel">
+              <p>
+                Hier tauchen wir in die faszinierende Welt der Anime ein und
+                teilen mit dir alles, was du über deine Lieblingsserien wissen
+                möchtest. Von Klassikern bis hin zu aktuellen Veröffentlichungen
+                decken wir ein breites Spektrum an Themen ab.
+              </p>
             </div>
           </div>
+
+          <div class="border-btn">
+            <button class="accordion" type="button">
+              Das bietet dir unser Blog
+            </button>
+            <div class="panel">
+              <p>
+                Unser Blog enthält Artikel über Trends, Empfehlungen und
+                spannende Diskussionen. Wir analysieren Charakterentwicklung,
+                Symbolik und kulturelle Einflüsse und halten dich über neue
+                Veröffentlichungen, Fortsetzungen und Events auf dem Laufenden.
+              </p>
+            </div>
+          </div>
+
+          <div class="border-btn">
+            <button class="accordion" type="button">Was ist Anime?</button>
+            <div class="panel">
+              <p>
+                Als Anime wird japanische Animation bezeichnet. Der Begriff ist
+                sehr breit gefächert, weil es keine festen Vorgaben zu Themen,
+                Zielgruppen oder Entstehungszeiten gibt.
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section class="content-mail">
-          <div class="container-section">
-            <div class="contact-wrap">
-              <h2>Kontakt</h2>
-              <p>
-                Hast du Fragen, Anregungen oder Feedback zu unserem Anime-Blog?
-                Schreib uns eine Nachricht. Wir melden uns innerhalb von 24
-                Stunden bei dir.
-              </p>
+        <div class="container-section">
+          <div class="contact-wrap">
+            <h2>Kontakt</h2>
+            <p>
+              Hast du Fragen, Anregungen oder Feedback zu unserem Anime-Blog?
+              Schreib uns eine Nachricht. Wir melden uns innerhalb von 24
+              Stunden bei dir.
+            </p>
 
-              <form class="contact-form" method="post" id="contactForm" name="contactForm" novalidate>
-                <div class="contact-form__row">
-                  <div class="contact-form__field">
-                    <label for="name">Wie ist dein Name?</label>
-                    <input type="text" name="name" id="name" placeholder="Dein Name" required />
-                    <p class="contact-form__error" id="name-error"></p>
-                  </div>
-
-                  <div class="contact-form__field">
-                    <label for="email">Wie lautet deine E-Mail-Adresse?</label>
-                    <input type="email" name="email" id="email" placeholder="deinname@example.com" required />
-                    <p class="contact-form__error" id="email-error"></p>
-                  </div>
+            <form
+              class="contact-form"
+              method="post"
+              id="contactForm"
+              name="contactForm"
+              novalidate
+            >
+              <div class="contact-form__row">
+                <div class="contact-form__field">
+                  <label for="name">Wie ist dein Name?</label>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    placeholder="Dein Name"
+                    required
+                  />
+                  <p class="contact-form__error" id="name-error"></p>
                 </div>
 
                 <div class="contact-form__field">
-                  <label for="message">Deine Nachricht</label>
-                  <textarea name="message" id="message" rows="5" placeholder="Schreib uns deine Nachricht" required minlength="10"></textarea>
-                  <p class="contact-form__error" id="message-error"></p>
+                  <label for="email">Wie lautet deine E-Mail-Adresse?</label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="deinname@example.com"
+                    required
+                  />
+                  <p class="contact-form__error" id="email-error"></p>
                 </div>
+              </div>
 
-                <div class="contact-form__actions">
-                  <button class="button-primary" type="submit">Nachricht senden</button>
-                  <span class="submitting"></span>
-                </div>
-                <p class="contact-form__status" aria-live="polite"></p>
-              </form>
-            </div>
+              <div class="contact-form__field">
+                <label for="message">Deine Nachricht</label>
+                <textarea
+                  name="message"
+                  id="message"
+                  rows="5"
+                  placeholder="Schreib uns deine Nachricht"
+                  required
+                  minlength="10"
+                ></textarea>
+                <p class="contact-form__error" id="message-error"></p>
+              </div>
+
+              <div class="contact-form__actions">
+                <button class="button-primary" type="submit">
+                  Nachricht senden
+                </button>
+                <span class="submitting"></span>
+              </div>
+              <p class="contact-form__status" aria-live="polite"></p>
+            </form>
           </div>
+        </div>
       </section>
 
       <section class="share-btn" aria-labelledby="home-share-title">
         <div class="share-container">
-          <p id="home-share-title">Follow me for more content like this, and share the article with your friends!</p>
+          <p id="home-share-title">
+            Follow me for more content like this, and share the article with
+            your friends!
+          </p>
           <button class="share-button" type="button">
             <svg aria-hidden="true" viewBox="0 0 24 24">
-              <path d="M18 16.1c-.76 0-1.44.3-1.96.77L8.91 12.7a3.3 3.3 0 0 0 0-1.39l7.05-4.13A2.99 2.99 0 1 0 15 5c0 .23.03.45.08.66L8.03 9.79a3 3 0 1 0 0 4.42l7.12 4.18c-.05.2-.08.4-.08.61a2.93 2.93 0 1 0 2.93-2.9Zm0-12.2a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2ZM6 13.1a1.1 1.1 0 1 1 0-2.2 1.1 1.1 0 0 1 0 2.2Zm12 7a1.1 1.1 0 1 1 0-2.2 1.1 1.1 0 0 1 0 2.2Z" fill="currentColor" />
+              <path
+                d="M18 16.1c-.76 0-1.44.3-1.96.77L8.91 12.7a3.3 3.3 0 0 0 0-1.39l7.05-4.13A2.99 2.99 0 1 0 15 5c0 .23.03.45.08.66L8.03 9.79a3 3 0 1 0 0 4.42l7.12 4.18c-.05.2-.08.4-.08.61a2.93 2.93 0 1 0 2.93-2.9Zm0-12.2a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2ZM6 13.1a1.1 1.1 0 1 1 0-2.2 1.1 1.1 0 0 1 0 2.2Zm12 7a1.1 1.1 0 1 1 0-2.2 1.1 1.1 0 0 1 0 2.2Z"
+                fill="currentColor"
+              />
             </svg>
             Share
           </button>
@@ -191,7 +231,7 @@
 
     <footer class="site-footer">
       <p>&copy; 2026 Anime Pulse</p>
-      <a href="#">Impressum</a>
+      <a href="impressum.html">Impressum</a>
       <a href="#">Cookie Preferences</a>
     </footer>
   </body>
