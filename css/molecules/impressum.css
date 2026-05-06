@@ -1,1 +1,90 @@
+.impressum-page {
+  background:
+    radial-gradient(circle at top left, rgba(39, 234, 245, 0.16), transparent 28rem),
+    linear-gradient(180deg, #0f101a 0%, #171a2a 100%);
+  padding-bottom: clamp(3rem, 7vw, 6rem);
+}
 
+.impressum-hero {
+  margin: 0 auto;
+  max-width: var(--content-width);
+  padding: clamp(3rem, 8vw, 6rem) var(--page-padding) clamp(2rem, 5vw, 4rem);
+}
+
+.impressum-hero h1 {
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  margin-top: 0.75rem;
+}
+
+.impressum-hero p:last-child {
+  font-size: clamp(1rem, 1.7vw, 1.35rem);
+  margin-top: 1.25rem;
+  max-width: 64ch;
+}
+
+.impressum-layout {
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.5rem);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0 auto;
+  max-width: var(--content-width);
+  padding: 0 var(--page-padding);
+}
+
+.impressum-card {
+  background: rgba(32, 36, 58, 0.92);
+  border: 1px solid rgba(39, 234, 245, 0.16);
+  border-radius: var(--radius-small);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.22);
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.impressum-card--wide {
+  grid-column: 1 / -1;
+}
+
+.impressum-card h2 {
+  color: var(--color-cyan);
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
+  margin-bottom: 1rem;
+}
+
+.impressum-card p,
+.impressum-card address {
+  color: var(--color-text-muted);
+  font-size: clamp(1rem, 1.4vw, 1.18rem);
+  font-style: normal;
+  line-height: 1.7;
+}
+
+.impressum-card a {
+  color: var(--color-white);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--color-pink);
+  text-underline-offset: 0.25em;
+}
+
+.impressum-card a:hover,
+.impressum-card a:focus-visible {
+  color: var(--color-cyan);
+}
+
+.impressum-highlight {
+  color: var(--color-white);
+  font-family: var(--font-label);
+  font-weight: 700;
+  margin-top: 0.75rem;
+}
+
+@media (max-width: 760px) {
+  .impressum-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 360px) {
+  .impressum-card {
+    padding: 1rem;
+  }
+}
