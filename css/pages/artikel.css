@@ -98,36 +98,6 @@
   margin-top: 1.5rem;
 }
 
-.author-card {
-  background: rgba(32, 36, 58, 0.82);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 24px;
-  backdrop-filter: blur(10px);
-  min-height: 245px;
-  padding: 1.25rem;
-  text-align: center;
-}
-
-.author-card__avatar {
-  background: linear-gradient(180deg, var(--color-cyan), var(--color-pink));
-  border-radius: 50%;
-  height: 74px;
-  margin: 0 auto 1rem;
-  width: 74px;
-}
-
-.author-card strong {
-  display: block;
-}
-
-.author-card span,
-.author-card p {
-  color: var(--color-text-muted);
-  display: block;
-  font-size: 0.78rem;
-  margin: 0;
-}
-
 .artikel-story {
   margin-top: 4.8rem;
 }
@@ -246,43 +216,6 @@
     margin-top: 1.25rem;
   }
 
-  .author-card {
-    align-items: center;
-    display: grid;
-    gap: 0.75rem 0.9rem;
-    grid-template-columns: 58px minmax(0, 1fr);
-    max-width: 100%;
-    min-height: 0;
-    padding: 0.9rem;
-    text-align: left;
-  }
-
-  .author-card__avatar {
-    height: 58px;
-    margin: 0;
-    width: 58px;
-  }
-
-  .author-card strong,
-  .author-card span,
-  .author-card p {
-    grid-column: 2;
-  }
-
-  .author-card strong {
-    align-self: end;
-  }
-
-  .author-card span {
-    margin-top: -0.35rem;
-  }
-
-  .author-card p {
-    display: none;
-    font-size: 0.74rem;
-    line-height: 1.35;
-  }
-
   .artikel-story__grid,
   .artikel-takeaways {
     grid-template-columns: 1fr;
@@ -316,9 +249,6 @@
     margin-bottom: 2.2rem;
   }
 
-  .pro-tip {
-    padding: 4rem 1rem 1.2rem;
-  }
 }
 
 .info-trends {
@@ -344,39 +274,6 @@
   grid-template-rows: repeat(5, 1fr);
   gap: 8px;
 }
-
-.container-ribbon {
-  display: flex;
-  align-items: baseline;
-  flex-direction: column;
-  margin: 0 auto 64px;
-  max-width: 860px;
-  min-height: 0;
-  width: 100%;
-}
-
-.rn-b {
-  padding: 28px 28px 24px;
-  background-color: #1e2135;
-  border-radius: 0 26px 26px 26px;
-  width: 100%;
-}
-
-.ribbon {
-  width: 144px;
-  min-height: 54px;
-  font-size: 24px;
-  padding: 8px 10px;
-  position: relative;
-  left: -32px;
-  top: 18px;
-  text-align: center;
-  border-radius: 12px;
-  transform: rotate(-14deg);
-  background-color: var(--color-pink);
-  color: white;
-}
-
 
 @media (max-width: 760px) {
   .artikel-video-card {

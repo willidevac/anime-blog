@@ -1,0 +1,64 @@
+.container-ribbon {
+  align-items: baseline;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto 64px;
+  max-width: 860px;
+  min-height: 0;
+  width: 100%;
+}
+
+.rn-b {
+  background-color: #1e2135;
+  border-radius: 0 26px 26px 26px;
+  padding: 28px 28px 24px;
+  width: 100%;
+}
+
+.ribbon {
+  background-color: var(--color-pink);
+  border-radius: 12px;
+  color: var(--color-white);
+  font-size: 24px;
+  left: -32px;
+  min-height: 54px;
+  padding: 8px 10px;
+  position: relative;
+  text-align: center;
+  top: 18px;
+  transform: rotate(-14deg);
+  width: 144px;
+}
+
+.pro-tip {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-small);
+  margin: 5rem auto 0;
+  max-width: 680px;
+  padding: 1.4rem 1.5rem 1.2rem 7rem;
+  position: relative;
+}
+
+.pro-tip strong {
+  background: var(--color-pink);
+  border-radius: 4px;
+  color: var(--color-white);
+  font-size: 0.8rem;
+  left: -0.5rem;
+  padding: 0.55rem 1.1rem;
+  position: absolute;
+  top: 1rem;
+  transform: rotate(-8deg);
+}
+
+.pro-tip p {
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+@media (max-width: 760px) {
+  .pro-tip {
+    padding: 4rem 1rem 1.2rem;
+  }
+}
