@@ -1,12 +1,13 @@
-.slider-image{
-    display: flex;
-    justify-content: center;
+.slider-image {
+  display: flex;
+  justify-content: center;
+  max-width: 1200px;
+  width: 100%;
 }
 
-.slider-btn-size{
+.slider-btn-size {
   height: 32px;
   width: 32px;
-  
 }
 
 
@@ -15,9 +16,10 @@
 
   background-color: black;
 
-  width: 1200px;
+  aspect-ratio: 1200 / 533;
   height: 533px;
-
+  max-width: 1200px;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -48,20 +50,28 @@
   height: 100%;
 }
 
-.slider_a_element > img{
-  width: 1200px;
-    height: 570px; 
+.slider_a_element > img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
 }
 
 
-.slider_a input[value="one"]:checked~.slider_a_wrapper{
-    transform: translateX(calc(100% /3));
+.slider_a input[value="one"]:checked ~ .slider_a_wrapper {
+  transform: translateX(calc(100% / 3));
 }
 
-.slider_a input[value="tow"]:checked~.slider_a_wrapper{
-    transform: translateX(0);
+.slider_a input[value="tow"]:checked ~ .slider_a_wrapper {
+  transform: translateX(0);
 }
 
-.slider_a input[value="three"]:checked~.slider_a_wrapper{
-    transform: translateX(calc(-100% /3));
+.slider_a input[value="three"]:checked ~ .slider_a_wrapper {
+  transform: translateX(calc(-100% / 3));
+}
+
+@media (max-width: 760px) {
+  .slider_a {
+    height: auto;
+    min-height: 320px;
+  }
 }

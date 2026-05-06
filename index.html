@@ -5,28 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Anime Pulse | Home</title>
     <link rel="stylesheet" href="css/base.css" />
-    <link rel="stylesheet" href="css/molecules/header.css" />
+    <link rel="stylesheet" href="css/molecules/page-header.css" />
     <link rel="stylesheet" href="css/molecules/footer.css" />
     <link rel="stylesheet" href="css/molecules/buttons.css" />
     <link rel="stylesheet" href="css/molecules/slider.css" />
     <link rel="stylesheet" href="css/molecules/faq.css" />
     <link rel="stylesheet" href="css/molecules/form.css" />
     <link rel="stylesheet" href="css/pages/home.css" />
-    <link rel="stylesheet" href="css/molecules/page-header.css">
-    <link rel="stylesheet" href="js/molecules/contact-form.js">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
+    <script src="js/molecules/contact-form.js" defer></script>
   </head>
   <body>
-   <header class="page-header">
-      <img
-        class="head-logo"
-        src="./assets/images/img-anime/Header Trends die gerade Explodieren/witch-hat-atelier.png"
-        alt=""
-      />
-      <!-- <a class="page-header__logo" href="index.html">ANIME PULSE</a> -->
+    <header class="page-header">
+      <a class="page-header__logo" href="index.html">ANIME PULSE</a>
       <nav class="page-header__nav" aria-label="Hauptnavigation">
         <a class="is-active" href="index.html">Home</a>
         <a href="trends.html">Trends</a>
-        <a  href="artikel.html">Artikel</a>
+        <a href="artikel.html">Artikel</a>
         <a href="watchlist.html">Watchlist</a>
       </nav>
     </header>
@@ -44,19 +39,17 @@
           </p>
         </div>
       </section>
-      <section class="home-hero"">
+      <section class="home-hero">
         <div class="info-content">
           <h2>Aktuelle Highlights</h2>
           <p>
-            2026 bringt zahlreiche vielversprechende neue Anime-Serie mit sich,
+            2026 bringt zahlreiche vielversprechende neue Anime-Serien mit sich,
             die ihr euch auf keinen Fall entgehen lassen solltet. In unserer
-            großen Jahresübersicht stellen wir euch neun Neustarts haben, die
-            das Potential besitzen, richtige Highlights zu werden..
+            großen Jahresübersicht stellen wir euch neun Neustarts vor, die das
+            Potenzial besitzen, echte Highlights zu werden.
           </p>
         </div>
-        <div class="slider-image" aria-label="Platzhalter fuer Anime Titelbild">
-          <!-- Bild oder Design-Element kommt spaeter hier rein -->
-
+        <div class="slider-image" aria-label="Anime-Titelbilder">
           <section class="slider_a">
             <input
               class="slider-btn-size"
@@ -100,120 +93,92 @@
             </div>
           </section>
         </div>
-      
-
-        <!-- <section class="intro-section">
-        <div class="blog-size">
-          <h2>Unser Blog</h2>
-          <p>
-            Auf dieser Seite stellen wir kurz vor, worum es in unserem Blog
-            geht. Das Design orientiert sich am Neo-Tokyo-Trends-Stil aus Figma.
-          </p>
-        </div>
-        </section> -->
-
         <section class="faq-section">
-           <h2>FAQ</h2>
-            <div class="accordion-size">
-             <div class="border-btn">
-               <button class="accordion">Worum geht es in diesem Blog?</button>
-            <div class="panel">
-              <p>
-                Hier tauchen wir in die faszinierende Welt der Anime ein und
-                teilen mit dir alles, was du über deine Lieblingsserie wissen
-                möchtest. Von klassischen Serien bis hin zu aktuellen
-                Veröffentlichungen, wir decken ein breites Spektrum an Themen
-                ab, um deinen Horizont zu erweitern.
-              </p>
+          <h2>FAQ</h2>
+          <div class="accordion-size">
+            <div class="border-btn">
+              <button class="accordion" type="button">Worum geht es in diesem Blog?</button>
+              <div class="panel">
+                <p>
+                  Hier tauchen wir in die faszinierende Welt der Anime ein und
+                  teilen mit dir alles, was du über deine Lieblingsserien wissen
+                  möchtest. Von Klassikern bis hin zu aktuellen Veröffentlichungen
+                  decken wir ein breites Spektrum an Themen ab.
+                </p>
               </div>
-             </div>
+            </div>
 
-          <div class="border-btn">
-            <button class="accordion">Das bietet dir unser Blog</button>
-            <div class="panel">
-              <p>
-                Unser Blog enthält auch Artikel über Trends, Empfehlungen und
-                spannende Diskussionen über kontroverse Themen. Wir gehen auf
-                die Bedeutung von Charakterentwicklung ein, analysieren die
-                Symbolik in den Geschichten und beleuchten die kulturellen
-                Einflüsse, die Anime prägen. Außerdem halten wir dich über die
-                neuesten Veröffentlichungen, Ankündigungen von Fortsetzungen und
-                kommenden Events auf dem Laufenden
-              </p>
+            <div class="border-btn">
+              <button class="accordion" type="button">Das bietet dir unser Blog</button>
+              <div class="panel">
+                <p>
+                  Unser Blog enthält Artikel über Trends, Empfehlungen und
+                  spannende Diskussionen. Wir analysieren Charakterentwicklung,
+                  Symbolik und kulturelle Einflüsse und halten dich über neue
+                  Veröffentlichungen, Fortsetzungen und Events auf dem Laufenden.
+                </p>
+              </div>
+            </div>
+
+            <div class="border-btn">
+              <button class="accordion" type="button">Was ist Anime?</button>
+              <div class="panel">
+                <p>
+                  Als Anime wird japanische Animation bezeichnet. Der Begriff ist
+                  sehr breit gefächert, weil es keine festen Vorgaben zu Themen,
+                  Zielgruppen oder Entstehungszeiten gibt.
+                </p>
+              </div>
             </div>
           </div>
-
-          <div class="border-btn">
-            <button class="accordion">Was ist Anime?</button>
-            <div class="panel">
-              <p>
-                Als Anime kann jede japanische Animation bezeichnet werden. Es
-                handelt sich daher um einen sehr breitgefächerten Begriff, da es
-                keine konkreten Vorgaben zu Themen, Zielgruppen oder der
-                Entstehungszeit gibt.
-            n  </p>
-              </div>
-            </div>
-           </div>
-
         </section>
+
         <section class="content-mail">
-          <section class="container-section">
-           <div class="row no-gutters justify-content-center .align-items-stretch no-gutters">
-            <div class="col-md-7">
-            <div class="form h-100 contact-wrap p-5">
-              <h2 class="text-center">Kontakt</h2>
+          <div class="container-section">
+            <div class="contact-wrap">
+              <h2>Kontakt</h2>
               <p>
-                Haben Sie Beschwerden, Fragen, Anregungen oder gibt es etwas
-                Positives oder Erfreuliches, über das Sie uns berichten möchten?
-                Wir werden innerhalb der nächsten 24 Stunden Kontakt mit Ihnen
-                aufnehmen.
+                Hast du Fragen, Anregungen oder Feedback zu unserem Anime-Blog?
+                Schreib uns eine Nachricht. Wir melden uns innerhalb von 24
+                Stunden bei dir.
               </p>
-          </section>
-              <form class="mb-5 method="post" id="contactForm" name="contactForm" novalidate="novalidate">
- 
-                <div class="row">
 
-                  <div class="col-med-6 form-group mb-3">
-                    <label for class="col-form-label">wie ist dein Name?</label>
-                    <input type="text" class="form-control" name="name" id="name" placeholder="Dein Name">
+              <form class="contact-form" method="post" id="contactForm" name="contactForm" novalidate>
+                <div class="contact-form__row">
+                  <div class="contact-form__field">
+                    <label for="name">Wie ist dein Name?</label>
+                    <input type="text" name="name" id="name" placeholder="Dein Name" required />
+                    <p class="contact-form__error" id="name-error"></p>
                   </div>
-                
 
-                  <div class="col-med-6 form-group mb-3">
-                    <label for class="col-form-label">wie lautet deine eMail?</label>
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Deine eMail">
+                  <div class="contact-form__field">
+                    <label for="email">Wie lautet deine E-Mail-Adresse?</label>
+                    <input type="email" name="email" id="email" placeholder="deinname@example.com" required />
+                    <p class="contact-form__error" id="email-error"></p>
                   </div>
                 </div>
- 
-                <div class="row">
-                  <div class="col-md-12 form-group mb-3">
-                    <label for="budget" class="col-form-label">Thema</label>
-                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Dein Thema">
-                  </div>
+
+                <div class="contact-form__field">
+                  <label for="subject">Worum geht es?</label>
+                  <input type="text" name="subject" id="subject" placeholder="Thema deiner Nachricht" required />
+                  <p class="contact-form__error" id="subject-error"></p>
                 </div>
- 
-                <!-- <div class="row">
-                  <div class="col-md-12 form-group mb-3">
-                    <label for="message" class="col-form-label">Message</label>
-                    <textarea name="form-control" name="message" id="message" cols="30" rows="4" placeholder="Schreibe deine Nachricht"></textarea>
-                  </div>
-                </div> -->
- 
-                <div class="row justify-content-center">
-                  <div class="col-md-5 form-group text-center">
-                    <input type="submit" value="Send Message" class="btn btn-block btn-primary rounded-0 py-2 px-4">
-                   <span class="submitting"></span>
-                  </div>
+
+                <div class="contact-form__field">
+                  <label for="message">Deine Nachricht</label>
+                  <textarea name="message" id="message" rows="5" placeholder="Schreib uns deine Nachricht" required minlength="10"></textarea>
+                  <p class="contact-form__error" id="message-error"></p>
                 </div>
+
+                <div class="contact-form__actions">
+                  <button class="button-primary" type="submit">Nachricht senden</button>
+                  <span class="submitting"></span>
+                </div>
+                <p class="contact-form__status" aria-live="polite"></p>
               </form>
-  
-               </div>
-            
+            </div>
           </div>
         </section>
-      
-
       </section>
     </main>
 

@@ -1,4 +1,4 @@
-/* Neues Header-Molecule für Seite 2: nur die obere Menüleiste wie im Figma. */
+/* Gemeinsames Header-Molecule fuer alle Seiten. */
 
 .page-header {
   align-items: center;
@@ -12,13 +12,18 @@
 }
 
 .page-header__logo {
-  color: var(--color-white);
+  background-image: url("../../assets/images/img-anime/Header Trends die gerade Explodieren/witch-hat-atelier.png");
+  background-position: center;
+  background-size: cover;
+  border: 0.5px solid var(--color-white);
+  border-radius: 50px;
+  color: transparent;
+  display: block;
   flex-shrink: 0;
-  font-family: var(--font-display);
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-size: 0;
+  height: 72px;
+  overflow: hidden;
+  width: 72px;
 }
 
 .page-header__nav {
@@ -60,6 +65,7 @@
     align-items: flex-start;
     flex-direction: column;
     gap: var(--space-sm);
+    height: auto;
     min-height: 0;
     padding-bottom: var(--space-sm);
     padding-top: var(--space-sm);
@@ -81,7 +87,8 @@
 
 @media (max-width: 360px) {
   .page-header__logo {
-    font-size: 0.85rem;
+    height: 64px;
+    width: 64px;
   }
 
   .page-header__nav {

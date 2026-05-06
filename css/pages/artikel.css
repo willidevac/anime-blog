@@ -216,7 +216,7 @@
       );
   }
 
-  .artikel-article {
+  .main-article {
     padding-top: 2.6rem;
   }
 
@@ -318,19 +318,16 @@
 .info-trends {
   display: flex;
   flex-direction: column;
-  
+  min-height: 0;
   margin-bottom: 48px;
-  height: 644px;
-
   gap: 32px;
 }
 
 .list-cover {
   display: flex;
   flex-direction: column;
-
-  width: 1000px;
-  height: 203px;
+  max-width: 1000px;
+  width: 100%;
 }
 
 .parent {
@@ -378,13 +375,10 @@
 }
 
 
-.btn {
-  border: none;
-  border-radius: 5px;
-  padding: 12px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  background-color: #282A35;
-  color: white;
-  position: relative;
+@media (max-width: 760px) {
+  .artikel-video-card {
+    border-radius: 24px;
+    height: auto;
+    width: 100%;
+  }
 }
