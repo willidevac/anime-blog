@@ -3,20 +3,45 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin-bottom: 144px;
+  margin-bottom: 120px;
 }
 
 .share-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 144px;
+  margin-top: 96px;
+  max-width: 490px;
+  position: relative;
+  width: 100%;
+}
 
-  width: 490px;
+.share-container::before {
+  border-bottom: 2px solid rgba(247, 245, 255, 0.42);
+  border-left: 2px solid rgba(247, 245, 255, 0.42);
+  border-radius: 0 0 0 48px;
+  content: "";
+  height: 48px;
+  left: 46px;
+  position: absolute;
+  top: 48px;
+  transform: rotate(-10deg);
+  width: 78px;
+}
+
+.share-container::after {
+  border-bottom: 8px solid transparent;
+  border-left: 12px solid rgba(247, 245, 255, 0.42);
+  border-top: 8px solid transparent;
+  content: "";
+  left: 125px;
+  position: absolute;
+  top: 94px;
 }
 
 .share-container > p {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 500;
-  padding-bottom: 48px;
+  line-height: 1.25;
+  padding-bottom: 32px;
 }

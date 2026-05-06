@@ -25,7 +25,6 @@ if (contactForm) {
   const fields = {
     name: contactForm.querySelector("#name"),
     email: contactForm.querySelector("#email"),
-    subject: contactForm.querySelector("#subject"),
     message: contactForm.querySelector("#message"),
   };
 
@@ -65,11 +64,6 @@ if (contactForm) {
 
     if (!isValidEmail(fields.email.value.trim())) {
       showError(fields.email, "Bitte gib eine gültige E-Mail-Adresse ein.");
-      isValid = false;
-    }
-
-    if (fields.subject.value.trim().length < 3) {
-      showError(fields.subject, "Bitte gib ein Thema mit mindestens drei Zeichen ein.");
       isValid = false;
     }
 

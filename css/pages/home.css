@@ -41,34 +41,38 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: clamp(2rem, 5vw, 4.5rem);
-  padding: 120px var(--page-padding);
+  gap: 40px;
+  padding: 96px max(var(--page-padding), calc((100vw - 1120px) / 2)) 40px;
 }
 
 .info-content {
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  max-width: 920px;
+  gap: 24px;
+  max-width: 900px;
   text-align: center;
 }
 
 .info-content > h2 {
-  font-size: 64px;
+  font-size: clamp(2.4rem, 5vw, 4rem);
   font-weight: 700;
   margin: 0;
 }
 
 .info-content > p {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 400;
+  line-height: 1.38;
 }
 
 .faq-section {
   display: flex;
   flex-direction: column;
-  margin: 56px 0;
+  margin: 24px auto 0;
+  max-width: 1120px;
+  padding: 64px var(--page-padding) 40px;
   text-align: center;
+  width: 100%;
 }
 
 .faq-section > h2 {
