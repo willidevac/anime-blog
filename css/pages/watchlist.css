@@ -34,19 +34,19 @@
 .watch-hero,
 .watch-section {
   margin: 0 auto;
-  max-width: 1120px;
-  padding-left: 3rem;
-  padding-right: 3rem;
+  max-width: 980px;
+  padding-left: clamp(1rem, 5vw, 3rem);
+  padding-right: clamp(1rem, 5vw, 3rem);
 }
 
 .watch-hero {
   align-items: center;
   display: grid;
-  gap: 3rem;
-  grid-template-columns: minmax(0, 1fr) minmax(340px, 0.85fr);
-  min-height: 680px;
-  padding-bottom: 5rem;
-  padding-top: 5rem;
+  gap: clamp(2rem, 5vw, 4rem);
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.82fr);
+  min-height: 560px;
+  padding-bottom: 4rem;
+  padding-top: 4.5rem;
 }
 
 .watch-kicker {
@@ -61,7 +61,7 @@
 
 .watch-hero h1 {
   color: var(--color-white);
-  font-size: 4.4rem;
+  font-size: clamp(3rem, 5.8vw, 4.2rem);
   line-height: 1.02;
   margin: 0;
   max-width: 720px;
@@ -72,7 +72,7 @@
   font-size: 1.35rem;
   line-height: 1.5;
   margin: 1.3rem 0 0;
-  max-width: 560px;
+  max-width: 680px;
 }
 
 .watch-hero__copy,
@@ -89,7 +89,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.9rem;
-  margin-top: 2rem;
+  margin-top: 1.6rem;
 }
 
 .watch-hero__actions a,
@@ -125,7 +125,7 @@
   display: grid;
   gap: 0.75rem;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin-top: 2.4rem;
+  margin-top: 1.8rem;
   max-width: 520px;
 }
 
@@ -152,7 +152,7 @@
   border: 1px solid rgba(39, 234, 245, 0.28);
   border-radius: var(--radius-small);
   box-shadow: 0 28px 70px rgba(0, 0, 0, 0.44);
-  min-height: 520px;
+  min-height: 0;
   overflow: hidden;
   position: relative;
 }
@@ -236,12 +236,12 @@
 }
 
 .watch-section {
-  padding-bottom: 5.5rem;
-  padding-top: 1rem;
+  padding-bottom: 4.8rem;
+  padding-top: 0;
 }
 
 .watch-section__heading {
-  margin-bottom: 2.2rem;
+  margin-bottom: 2rem;
   max-width: 720px;
 }
 
@@ -249,7 +249,7 @@
   align-items: end;
   display: grid;
   gap: 2rem;
-  grid-template-columns: minmax(0, 0.8fr) minmax(280px, 0.5fr);
+  grid-template-columns: minmax(0, 0.82fr) minmax(260px, 0.5fr);
   max-width: none;
 }
 
@@ -272,7 +272,7 @@
 .season-grid {
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .trailer-grid {
@@ -281,46 +281,6 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.trailer-card {
-  background: rgba(32, 36, 58, 0.72);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-small);
-  overflow: hidden;
-}
-
-.trailer-card iframe {
-  aspect-ratio: 16 / 9;
-  height: auto;
-}
-
-.trailer-card div {
-  padding: 1rem;
-}
-
-.trailer-card p {
-  margin: 0;
-}
-
-.trailer-card h3 {
-  color: var(--color-white);
-  font-size: 1.25rem;
-  line-height: 1.12;
-  margin: 0.4rem 0 0;
-}
-
-.season-card {
-  background: rgba(32, 36, 58, 0.74);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-small);
-  display: flex;
-  flex-direction: column;
-  min-height: 220px;
-  padding: 1.1rem;
-  position: relative;
-}
-
-.season-card::before,
-.plan-grid article::before,
 .watch-faq details::before {
   background: linear-gradient(90deg, var(--color-cyan), var(--color-pink));
   content: "";
@@ -331,82 +291,12 @@
   width: 72px;
 }
 
-.season-card h3,
-.week-card h3,
-.starter-item h3,
-.plan-grid h3 {
-  color: var(--color-white);
-  font-size: 1.25rem;
-  line-height: 1.12;
-  margin: 0.45rem 0 0;
-}
-
-.season-card span,
-.season-card > span,
-.plan-grid p {
-  color: var(--color-text-muted);
-  display: block;
-  font-size: 0.92rem;
-  line-height: 1.5;
-  margin-top: auto;
-  padding-top: 1.4rem;
-}
-
-.season-card--featured {
-  gap: 1rem;
-  grid-column: span 2;
-  min-height: 280px;
-  overflow: hidden;
-  padding: 0;
-}
-
-.season-card--featured img {
-  height: 220px;
-  object-fit: cover;
-  width: 100%;
-}
-
-.season-card--featured div {
-  padding: 0 1.1rem 1.1rem;
-}
-
-.season-card--featured span {
-  margin-top: 0.8rem;
-  padding-top: 0;
-}
-
 .week-grid {
   display: grid;
   gap: 1.2rem;
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.week-card {
-  background: #151827;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-small);
-  min-height: 480px;
-  overflow: hidden;
-}
-
-.week-card img {
-  aspect-ratio: 16 / 10;
-  height: auto;
-  object-fit: cover;
-  width: 100%;
-}
-
-.week-card__body {
-  padding: 1rem;
-}
-
-.week-card__body span {
-  color: var(--watch-yellow);
-  font-size: 0.82rem;
-}
-
-.week-card p,
-.starter-item p,
 .watch-faq p {
   color: var(--color-text-muted);
   font-size: 0.92rem;
@@ -418,7 +308,7 @@
   align-items: start;
   display: grid;
   gap: 1.4rem;
-  grid-template-columns: minmax(320px, 0.75fr) minmax(0, 1fr);
+  grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1fr);
 }
 
 .starter-visual {
@@ -448,51 +338,16 @@
   gap: 0.85rem;
 }
 
-.starter-item {
-  align-items: center;
-  background: rgba(32, 36, 58, 0.68);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-small);
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: 112px minmax(0, 1fr);
-  min-height: 132px;
-  padding: 0.75rem;
-}
-
-.starter-item img {
-  aspect-ratio: 1 / 1;
-  border-radius: 6px;
-  object-fit: cover;
-  width: 112px;
-}
-
-.starter-item h3 {
-  margin-top: 0;
-}
-
 .plan-grid {
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.plan-grid article {
-  background: rgba(9, 10, 18, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-small);
-  min-height: 210px;
-  padding: 1.2rem;
-  position: relative;
-}
-
-.plan-grid span {
-  color: var(--watch-green);
-}
-
 .watch-faq {
   display: grid;
-  gap: 0.8rem;
+  gap: 1rem;
+  max-width: 880px;
 }
 
 .watch-faq details {
@@ -533,7 +388,7 @@
   border-radius: var(--radius-small);
   display: grid;
   gap: 2rem;
-  grid-template-columns: minmax(0, 0.78fr) minmax(320px, 0.6fr);
+  grid-template-columns: minmax(0, 0.78fr) minmax(300px, 0.6fr);
   margin-bottom: 5.5rem;
   padding-bottom: 2rem;
   padding-top: 2rem;
@@ -541,7 +396,7 @@
 
 .watch-form {
   display: grid;
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
 .watch-form label {
@@ -553,12 +408,13 @@
 
 .watch-form input,
 .watch-form textarea {
-  background: rgba(9, 10, 18, 0.72);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: var(--radius-small);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(247, 245, 255, 0.72);
+  border-radius: 0;
   color: var(--color-white);
   font: inherit;
-  padding: 0.85rem 1rem;
+  padding: 0.7rem 0 0.9rem;
   width: 100%;
 }
 
@@ -624,9 +480,6 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .season-card--featured {
-    grid-column: span 2;
-  }
 }
 
 @media (max-width: 640px) {
@@ -681,18 +534,6 @@
   .week-grid,
   .plan-grid {
     grid-template-columns: 1fr;
-  }
-
-  .season-card--featured {
-    grid-column: auto;
-  }
-
-  .starter-item {
-    grid-template-columns: 86px minmax(0, 1fr);
-  }
-
-  .starter-item img {
-    width: 86px;
   }
 
   .watch-section--suggest {

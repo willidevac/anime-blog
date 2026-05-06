@@ -1,10 +1,10 @@
 .content-mail {
-  padding: 56px var(--page-padding);
+  padding: 56px var(--page-padding) 120px;
 }
 
 .container-section {
   margin: 0 auto;
-  max-width: 1100px;
+  max-width: 960px;
   width: 100%;
 }
 
@@ -27,9 +27,9 @@
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 32px;
   margin: 48px auto 56px;
-  max-width: 920px;
+  max-width: 880px;
   width: 100%;
 }
 
@@ -58,15 +58,16 @@
 
 .contact-form input,
 .contact-form textarea {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(39, 234, 245, 0.28);
-  border-radius: 10px;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(247, 245, 255, 0.72);
+  border-radius: 0;
   color: var(--color-white);
   display: block;
   font-size: 18px;
   line-height: 1.5;
   min-height: 48px;
-  padding: 12px 16px;
+  padding: 8px 0 12px;
   transition:
     border-color 160ms ease,
     box-shadow 160ms ease;
@@ -76,7 +77,7 @@
 .contact-form input:focus,
 .contact-form textarea:focus {
   border-color: var(--color-cyan);
-  box-shadow: 0 0 0 3px rgba(39, 234, 245, 0.14);
+  box-shadow: none;
   outline: none;
 }
 
@@ -86,7 +87,7 @@
 }
 
 .contact-form textarea {
-  min-height: 150px;
+  min-height: 96px;
   resize: vertical;
 }
 
