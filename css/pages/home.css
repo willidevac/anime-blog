@@ -1,46 +1,61 @@
+.artikel-page {
+  background-color: var(--color-bg);
+  isolation: isolate;
+  overflow: hidden;
+  position: relative;
+}
+
 .opener-img {
   height: 515px;
-  
-  background-image: url("../../assets/images/img-anime/Header Trends die gerade Explodieren/geschwungen-vector.png"), url("../../assets/images/img-anime/Header Trends die gerade Explodieren/all-anime-opener.png");
+
+  background-image:
+    url("../../assets/images/img-anime/Header Trends die gerade Explodieren/geschwungen-vector.png"),
+    url("../../assets/images/img-anime/Header Trends die gerade Explodieren/all-anime-opener.png");
   background-blend-mode: hard-light;
   background-repeat: no-repeat;
   background-position-y: center;
   max-width: 100%;
 }
 
-.text-design{
+.home-page {
+  background-color: var(--color-bg);
+  isolation: isolate;
+  overflow: hidden;
+  position: relative;
+}
+
+.text-design {
   display: flex;
   flex-direction: column;
-  
+
   width: 600px;
   height: 237px;
 
   padding-left: 164px;
 }
 
-.text-design >h1{
+.text-design > h1 {
   font-size: 64px;
   font-weight: 700;
 
   margin-bottom: 30px;
 }
 
-.text-design >p{
+.text-design > p {
   color: rgb(11, 0, 0);
 
   margin-top: 0;
   font-size: 24px;
   font-weight: 400;
-  
 }
 
-.hero-content {
-  margin: auto;
-  width: 1200px;
-
-  display: flex;
+.home-hero {
   flex-direction: column;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  padding: 120px;
+  
 }
 
 .info-content {
@@ -64,16 +79,15 @@
   margin: 0;
 }
 
-.btn-size{
-    margin: auto;
+.btn-size {
+  margin: auto;
 
-    display: flex;
-    flex-direction: column;
-    
+  display: flex;
+  flex-direction: column;
 
-    height: 150px;
-    width: 150px;
-    margin-top: 48px;
+  height: 150px;
+  width: 150px;
+  margin-top: 48px;
 }
 
 .intro-section {
@@ -93,12 +107,11 @@
 }
 
 .faq-section {
-  margin: auto;
+
   display: flex;
   flex-direction: column;
   text-align: center;
 
-  height: 498px;
   margin: 56px;
 }
 
