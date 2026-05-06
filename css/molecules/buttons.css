@@ -120,3 +120,76 @@
   background-color: #ccda46;
   border-color: #ccda46;
 }
+
+.btn-share-look{
+  height: 48px;
+  width: 158px;
+
+  border-radius: 40px;
+}
+
+
+.button {
+  
+  font-weight: 400;
+  background: #f2295b;
+  color: white;
+  padding: 0.35em 0;
+  font-size: 17px;
+  border: none;
+  border-radius: 40px;
+  letter-spacing: 0.08em;
+  position: relative;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 48px;
+  padding-left: 3em;
+  padding-right: 0.5em;
+}
+
+.button .icon {
+  background: #fff;
+  margin-right: 1em;
+  height: 32px;
+  width: 32px;
+  border-radius: 0.5em;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 5px;
+  transition: all .7s;
+  gap: 10px;
+}
+
+.shere {
+  width: 32px;
+  height: 32px;
+}
+
+.button:hover .icon {
+  width: calc(100% - 0.6rem);
+}
+
+.button:hover .shere {
+  width: calc(100% - 0.6rem);
+  display: none;
+}
+
+.button .icon-shere {
+  color: #f2295b;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: none;
+}
+
+.button:hover .icon .icon-shere {
+  display: flex;
+}
+
+.button >p{
+  color: white;
+  padding-left: 8px;
+}
