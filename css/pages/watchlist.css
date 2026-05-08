@@ -4,7 +4,6 @@
   --watch-orange: #ff8a5b;
   background: var(--color-bg);
   isolation: isolate;
-  overflow: hidden;
   position: relative;
 }
 

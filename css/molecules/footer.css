@@ -3,32 +3,15 @@
   background: #090a12;
   border-top: 1px solid rgba(39, 234, 245, 0.12);
   display: grid;
-  gap: var(--space-md);
-  grid-template-columns: 1fr auto 1fr;
+  column-gap: var(--space-md);
+  row-gap: 0.65rem;
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto
+    auto
+    calc((var(--content-width) - 880px) / 2);
   height: 152px;
   padding: var(--space-md) max(var(--page-padding), calc((100vw - var(--content-width)) / 2));
-  --footer-dot-1: var(--color-pink);
-  --footer-dot-2: var(--color-text);
-  --footer-dot-3: var(--color-text);
-  --footer-dot-4: var(--color-text);
-}
-
-.site-footer--page-2 {
-  --footer-dot-1: var(--color-text);
-  --footer-dot-2: var(--color-pink);
-}
-
-.site-footer--page-3 {
-  --footer-dot-1: var(--color-text);
-  --footer-dot-2: var(--color-text);
-  --footer-dot-3: var(--color-pink);
-}
-
-.site-footer--page-4 {
-  --footer-dot-1: var(--color-text);
-  --footer-dot-2: var(--color-text);
-  --footer-dot-3: var(--color-text);
-  --footer-dot-4: var(--color-pink);
 }
 
 .site-footer p {
@@ -50,38 +33,40 @@
 }
 
 .site-footer a:first-of-type {
-  justify-self: center;
-}
-
-.site-footer a:last-of-type {
+  grid-column: 2;
   justify-self: start;
 }
 
-.site-footer::after {
-  align-self: center;
-  background:
-    radial-gradient(circle, var(--footer-dot-1) 0 46%, transparent 49%) 0 50% / 14px 14px no-repeat,
-    radial-gradient(circle, var(--footer-dot-2) 0 46%, transparent 49%) 24px 50% / 14px 14px no-repeat,
-    radial-gradient(circle, var(--footer-dot-3) 0 46%, transparent 49%) 48px 50% / 14px 14px no-repeat,
-    radial-gradient(circle, var(--footer-dot-4) 0 46%, transparent 49%) 72px 50% / 14px 14px no-repeat;
-  content: "";
-  height: 18px;
-  justify-self: end;
-  width: 86px;
+.site-footer a:last-of-type {
+  grid-column: 3;
+  justify-self: start;
 }
 
 @media (max-width: 720px) {
   .site-footer {
-    align-items: flex-start;
-    display: flex;
-    flex-direction: column;
+    align-items: center;
+    gap: 0.65rem 1rem;
+    grid-template-columns: 1fr auto;
+    height: auto;
     min-height: 0;
+    padding-bottom: 1.25rem;
+    padding-top: 1.25rem;
   }
 
-  .site-footer a:first-of-type,
-  .site-footer a:last-of-type,
-  .site-footer::after {
-    justify-self: auto;
+  .site-footer p {
+    grid-column: 1 / -1;
+    justify-self: start;
   }
+
+  .site-footer a:first-of-type {
+    grid-column: 1;
+    justify-self: start;
+  }
+
+  .site-footer a:last-of-type {
+    grid-column: 2;
+    justify-self: start;
+  }
+
 }
 

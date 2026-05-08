@@ -1,7 +1,6 @@
 .trend-page {
   background-color: var(--color-bg);
   isolation: isolate;
-  overflow: hidden;
   position: relative;
 }
 
@@ -13,7 +12,6 @@
   inset: 0 0 auto;
   opacity: 0.52;
   position: absolute;
-  transform: scale(1.02);
   transform-origin: center top;
   z-index: -2;
 }

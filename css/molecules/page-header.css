@@ -31,6 +31,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: clamp(1.4rem, 4vw, 3rem);
+  min-width: 0;
 }
 
 .page-header__nav a {
@@ -72,7 +73,8 @@
   }
 
   .page-header__nav {
-    gap: var(--space-md);
+    column-gap: clamp(1rem, 7vw, var(--space-md));
+    row-gap: var(--space-xs);
     width: 100%;
   }
 
