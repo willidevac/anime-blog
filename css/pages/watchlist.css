@@ -86,9 +86,34 @@
 }
 
 .watch-author-card {
-  grid-column: 2;
-  justify-self: stretch;
+  align-items: center;
+  display: grid;
+  gap: 0.25rem 0.9rem;
+  grid-template-columns: 58px minmax(0, 1fr);
+  justify-self: start;
+  margin-bottom: 1.4rem;
+  max-width: 520px;
   min-height: 0;
+  padding: 0.9rem 1rem;
+  text-align: left;
+}
+
+.watch-author-card .author-card__avatar {
+  grid-row: 1 / 4;
+  height: 58px;
+  margin: 0;
+  width: 58px;
+}
+
+.watch-author-card strong,
+.watch-author-card span,
+.watch-author-card p {
+  grid-column: 2;
+}
+
+.watch-author-card p {
+  font-size: 0.8rem;
+  line-height: 1.35;
 }
 
 .watch-hero__actions {
@@ -471,10 +496,6 @@
 
   .watch-hero__media--embed {
     aspect-ratio: auto;
-  }
-
-  .watch-author-card {
-    grid-column: auto;
   }
 
   .watch-section__heading--split,
