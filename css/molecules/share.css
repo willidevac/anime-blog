@@ -1,61 +1,73 @@
-.share-btn {
+.container-btn {
   display: flex;
   justify-content: center;
+
+  padding: 0 var(--page-padding);
+  text-align: center;
+}
+
+.share-btn,
+.home-share-title,
+.trends-share-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   margin: clamp(3rem, 6vw, 5rem) auto clamp(4rem, 7vw, 6rem);
   padding: 0 var(--page-padding);
   text-align: center;
 }
 
 .share-container {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  display: grid;
-  grid-template-columns: 135px minmax(0, 1fr);
-  justify-items: center;
-  max-height: 154px;
-  max-width: 493px;
-  position: relative;
-  width: 100%;
 }
 
 .share-container::before {
   border-bottom: 4px solid rgba(39, 234, 245, 0.72);
   border-left: 4px solid rgba(39, 234, 245, 0.72);
-  border-radius: 0 0 0 135px;
+  border-radius: 155px 300px 555px 800px;
   content: "";
-  height: 86px;
-  left: 10px;
-  position: absolute;
-  top: 38px;
-  transform: rotate(-8deg);
-  width: 98px;
+
+  width: 106.9px;
+  height: 65.03px;
+
+  left: -200px;
+  position: relative;
+  top: 140px;
+  transform: rotate(28deg);
+
+  margin-top: clamp(3rem, 6vw, 5rem);
 }
 
 .share-container::after {
   border-bottom: 12px solid transparent;
-  border-left: 24px solid rgba(39, 234, 245, 0.72);
+  border-left: 24px solid rgb(39, 235, 245);
   border-top: 12px solid transparent;
   content: "";
-  left: 100px;
-  position: absolute;
-  top: 112px;
-  transform: rotate(-8deg);
+  left: -160px;
+  position: relative;
+  top: -26px;
+  transform: rotate(-12deg);
 }
 
 .share-container > p {
   color: var(--color-cyan);
   font-family: var(--font-label);
-  font-size: clamp(1.15rem, 3vw, 1.85rem);
+  font-size: clamp(1.15rem, 3vw, 1.59rem);
   font-weight: 700;
   grid-column: 1 / -1;
   letter-spacing: 0;
   line-height: 1.12;
   max-width: 493px;
-  padding-bottom: 34px;
+  padding-bottom: 48px;
   text-shadow: 0 0 18px rgba(39, 234, 245, 0.18);
 }
 
-.share-button,
-.share-container .button {
+.share-button {
+  height: 48px;
+  width: 158px;
   align-items: center;
   background: #343331;
   border: 1px solid rgba(255, 255, 255, 0.14);
@@ -65,12 +77,14 @@
   font-family: var(--font-label);
   font-size: 1.4rem;
   font-weight: 700;
-  gap: 14px;
-  grid-column: 2;
+  gap: 10px;
+  /* grid-column: 2; */
   justify-content: center;
   line-height: 1;
-  min-height: 54px;
-  min-width: 190px;
+}
+.share-container .button {
+  min-height: 48px;
+  min-width: 158px;
   padding: 12px 28px;
   position: relative;
   transition:
@@ -143,7 +157,7 @@
 
   .share-button,
   .share-container .button {
-    grid-column: 1;
+    /* grid-column: 1; */
     min-height: 64px;
     min-width: min(100%, 260px);
     padding: 14px 28px;

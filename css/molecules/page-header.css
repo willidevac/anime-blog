@@ -1,7 +1,10 @@
 /* Gemeinsames Header-Molecule fuer alle Seiten. */
+.header-container {
+  display: flex;
+}
 
 .page-header {
-  align-items: start;
+  align-items: center;
   background: #090a12;
   border-bottom: 1px solid rgba(39, 234, 245, 0.12);
   display: flex;
@@ -20,13 +23,14 @@
   color: transparent;
   display: block;
   flex-shrink: 0;
-  font-size: 0;
+
   height: 72px;
   overflow: hidden;
   width: 72px;
 }
 
 .page-header__nav {
+  padding-left: 300px;
   align-items: center;
   display: flex;
   flex-wrap: wrap;
@@ -87,7 +91,7 @@
 .page-header__nav a {
   color: var(--color-text);
   font-family: var(--font-label);
-  font-size: 0.88rem;
+  font-size: 30px;
   font-weight: 700;
   letter-spacing: 0.03em;
   padding: 1.55rem 0 1.35rem;
