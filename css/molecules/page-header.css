@@ -115,7 +115,7 @@
   width: 100%;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 912px) {
   .page-header {
     align-items: center;
     display: grid;
@@ -123,8 +123,15 @@
     grid-template-columns: auto 1fr;
     height: auto;
     min-height: 0;
+    padding-left: clamp(1rem, 4vw, 2rem);
+    padding-right: clamp(1rem, 4vw, 2rem);
     padding-bottom: var(--space-sm);
     padding-top: var(--space-sm);
+  }
+
+  .page-header__logo {
+    height: 64px;
+    width: 64px;
   }
 
   .page-header__menu {
@@ -163,6 +170,7 @@
   }
 
   .page-header__nav a {
+    font-size: clamp(1rem, 3vw, 1.35rem);
     padding: 0.45rem 0;
   }
 
