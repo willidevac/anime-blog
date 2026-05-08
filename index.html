@@ -69,50 +69,77 @@
             Potenzial besitzen, echte Highlights zu werden.
           </p>
         </div>
-        <div class="slider-image" aria-label="Anime-Titelbilder">
-          <section class="slider_a">
-            <input
-              class="slider-btn-size"
-              type="radio"
-              name="slider"
-              value="one"
-              checked
-            />
-            <input
-              class="slider-btn-size"
-              type="radio"
-              name="slider"
-              value="tow"
-            />
-            <input
-              class="slider-btn-size"
-              type="radio"
-              name="slider"
-              value="three"
-            />
+        <section
+          class="home-carousel"
+          aria-label="Klickbares Artikel-Carousel"
+        >
+          <input
+            class="home-carousel__input"
+            type="radio"
+            name="home-carousel"
+            id="home-carousel-frieren"
+          />
+          <input
+            class="home-carousel__input"
+            type="radio"
+            name="home-carousel"
+            id="home-carousel-witch"
+            checked
+          />
+          <input
+            class="home-carousel__input"
+            type="radio"
+            name="home-carousel"
+            id="home-carousel-onepunch"
+          />
 
-            <div class="slider_a_wrapper">
-              <div class="slider_a_element">
+          <div class="home-carousel__stage">
+            <a class="home-carousel__card home-carousel__card--frieren" href="artikel-frieren.html">
+            <span class="home-carousel__media">
                 <img
                   src="./assets/images/img-anime/Anime über die alle reden/beyond-jouneys-end-season-2.jpg"
-                  alt=""
+                  alt="Frieren Beyond Journey's End Season 2"
                 />
-              </div>
-              <div class="slider_a_element">
+            </span>
+            <span class="home-carousel__content">
+              <small>Trend Radar</small>
+              <strong>Welche Anime-Trends gerade überall auftauchen</strong>
+            </span>
+          </a>
+
+            <a class="home-carousel__card home-carousel__card--witch" href="artikel-witch-hat.html">
+            <span class="home-carousel__media home-carousel__media--poster">
                 <img
-                  src="./assets/images/img-anime/Anime über die alle reden/jujutsu-kaisen.jpg"
-                  alt=""
+                  src="./assets/images/img-anime/Anime über die alle reden/atelier-of-witch-hat-11.jpeg"
+                  alt="Atelier of Witch Hat Band 11 Cover"
                 />
-              </div>
-              <div class="slider_a_element">
+            </span>
+            <span class="home-carousel__content">
+              <small>Watchlist</small>
+              <strong>Warum Witch Hat Atelier auf deine Liste gehört</strong>
+            </span>
+          </a>
+
+            <a class="home-carousel__card home-carousel__card--onepunch" href="artikel-one-punch-man.html">
+            <span class="home-carousel__media">
                 <img
                   src="./assets/images/img-anime/Anime über die alle reden/sidehammer-onepuchman.png"
-                  alt=""
+                  alt="One Punch Man"
                 />
-              </div>
-            </div>
-          </section>
-        </div>
+            </span>
+            <span class="home-carousel__content">
+              <small>Artikel</small>
+              <strong>Warum Anime gerade so stark im Trend liegt</strong>
+            </span>
+          </a>
+          </div>
+
+          <div class="home-carousel__controls" aria-label="Carousel Steuerung">
+            <label for="home-carousel-frieren">Frieren</label>
+            <label for="home-carousel-witch">Witch Hat</label>
+            <label for="home-carousel-onepunch">One Punch Man</label>
+          </div>
+        </section>
       </section>
 
       <section class="faq-section">
