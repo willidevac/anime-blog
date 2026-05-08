@@ -76,12 +76,19 @@
 
 .watch-hero__copy,
 .watch-hero__media,
+.watch-author-card,
 .watch-section__heading,
 .season-card,
 .week-card,
 .starter-item,
 .plan-grid article {
   min-width: 0;
+}
+
+.watch-author-card {
+  grid-column: 2;
+  justify-self: stretch;
+  min-height: 0;
 }
 
 .watch-hero__actions {
@@ -303,6 +310,10 @@
   margin: 0.75rem 0 0;
 }
 
+.watch-faq details[open] p {
+  animation: page-rise-in 180ms ease both;
+}
+
 .starter-layout {
   align-items: start;
   display: grid;
@@ -460,6 +471,10 @@
 
   .watch-hero__media--embed {
     aspect-ratio: auto;
+  }
+
+  .watch-author-card {
+    grid-column: auto;
   }
 
   .watch-section__heading--split,

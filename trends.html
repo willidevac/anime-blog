@@ -12,11 +12,23 @@
     <link rel="stylesheet" href="css/molecules/sliders/trend-carousel.css" />
     <link rel="stylesheet" href="css/molecules/share.css" />
     <link rel="stylesheet" href="css/pages/trends.css" />
+    <script src="js/molecules/site-nav.js" defer></script>
   </head>
   <body>
     <header class="page-header">
       <a class="page-header__logo" href="index.html">ANIME PULSE</a>
-      <nav class="page-header__nav" aria-label="Hauptnavigation">
+      <button
+        class="page-header__menu"
+        type="button"
+        aria-controls="site-nav"
+        aria-expanded="false"
+        aria-label="Menü öffnen"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="page-header__nav" id="site-nav" aria-label="Hauptnavigation">
         <a class="is-active" href="trends.html">Trends</a>
         <a href="artikel.html">Artikel</a>
         <a href="watchlist.html">Watchlist</a>
@@ -43,7 +55,11 @@
           </div>
 
           <aside class="author-card" aria-label="Autor">
-            <div class="author-card__avatar"></div>
+            <img
+              class="author-card__avatar"
+              src="assets/images/img-anime/author-avatar.png"
+              alt="Anime Pulse Autor Avatar"
+            />
             <strong>Anime Pulse Team</strong>
             <span>Autor</span>
             <p>

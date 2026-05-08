@@ -17,12 +17,24 @@
       src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
       defer
     ></script>
+    <script src="js/molecules/site-nav.js" defer></script>
     <script src="js/molecules/contact-form.js" defer></script>
   </head>
   <body>
     <header class="page-header">
       <a class="page-header__logo" href="index.html">ANIME PULSE</a>
-      <nav class="page-header__nav" aria-label="Hauptnavigation">
+      <button
+        class="page-header__menu"
+        type="button"
+        aria-controls="site-nav"
+        aria-expanded="false"
+        aria-label="Menü öffnen"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="page-header__nav" id="site-nav" aria-label="Hauptnavigation">
         <a href="trends.html">Trends</a>
         <a href="artikel.html">Artikel</a>
         <a href="watchlist.html">Watchlist</a>

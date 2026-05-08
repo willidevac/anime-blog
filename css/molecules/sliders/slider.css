@@ -45,7 +45,7 @@
   position: absolute;
   display: flex;
 
-  transition: all 1s ease-in-out;
+  transition: transform 420ms ease;
 }
 
 .slider_a_element {

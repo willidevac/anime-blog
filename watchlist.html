@@ -7,14 +7,27 @@
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/molecules/page-header.css" />
     <link rel="stylesheet" href="css/molecules/footer.css" />
+    <link rel="stylesheet" href="css/molecules/author-box.css" />
     <link rel="stylesheet" href="css/molecules/cards.css" />
     <link rel="stylesheet" href="css/molecules/share.css" />
     <link rel="stylesheet" href="css/pages/watchlist.css" />
+    <script src="js/molecules/site-nav.js" defer></script>
   </head>
   <body>
     <header class="page-header">
       <a class="page-header__logo" href="index.html">ANIME PULSE</a>
-      <nav class="page-header__nav" aria-label="Hauptnavigation">
+      <button
+        class="page-header__menu"
+        type="button"
+        aria-controls="site-nav"
+        aria-expanded="false"
+        aria-label="Menü öffnen"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="page-header__nav" id="site-nav" aria-label="Hauptnavigation">
         <a href="trends.html">Trends</a>
         <a href="artikel.html">Artikel</a>
         <a class="is-active" href="watchlist.html">Watchlist</a>
@@ -63,6 +76,20 @@
             <strong>Dorohedoro Season 2</strong>
           </div>
         </div>
+
+        <aside class="author-card watch-author-card" aria-label="Autor">
+          <img
+            class="author-card__avatar"
+            src="assets/images/img-anime/author-avatar.png"
+            alt="Anime Pulse Autor Avatar"
+          />
+          <strong>Anime Pulse Team</strong>
+          <span>Autor</span>
+          <p>
+            Kuratiert neue Season-Picks, Trailer und Empfehlungen für deine
+            nächste Watchlist.
+          </p>
+        </aside>
       </section>
 
       <section
