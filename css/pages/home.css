@@ -1,6 +1,17 @@
+.container-section-home {
+  width: 1440px;
+  height: 515px;
+}
+
+.home-opener {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .opener-img {
   animation: soft-fade-in 480ms ease both;
-  height: 515px;
+  /* height: 515px; */
 
   background-image:
     url("../../assets/images/img-anime/Header Trends die gerade Explodieren/geschwungen-vector.png"),
@@ -8,7 +19,7 @@
   background-blend-mode: hard-light;
   background-repeat: no-repeat;
   background-position-y: center;
-  max-width: 100%;
+  /* max-width: 100%; */
   padding: 72px var(--page-padding);
 }
 
@@ -102,4 +113,3 @@
     padding-top: 72px;
   }
 }
-

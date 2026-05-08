@@ -1,7 +1,7 @@
 /* Gemeinsames Header-Molecule fuer alle Seiten. */
 
 .page-header {
-  align-items: center;
+  justify-content: center;
   background: #090a12;
   border-bottom: 1px solid rgba(39, 234, 245, 0.12);
   display: flex;
