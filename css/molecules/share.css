@@ -20,7 +20,7 @@
 .share-container::before {
   border-bottom: 4px solid rgba(39, 234, 245, 0.72);
   border-left: 4px solid rgba(39, 234, 245, 0.72);
-  border-radius: 0 0 0 78px;
+  border-radius: 0 0 0 135px;
   content: "";
   height: 86px;
   left: 10px;
