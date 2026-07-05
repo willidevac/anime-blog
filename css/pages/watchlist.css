@@ -3,6 +3,7 @@
   --watch-card-line: rgba(255, 255, 255, 0.12);
   background: var(--color-bg);
   isolation: isolate;
+  overflow-wrap: anywhere;
   position: relative;
 }
 
@@ -45,6 +46,17 @@
   min-height: 600px;
   padding-bottom: 4rem;
   padding-top: 4.5rem;
+}
+
+.watch-hero__copy,
+.watch-hero__feature,
+.watch-section__heading,
+.watch-section__heading > *,
+.watch-controls,
+.watch-grid,
+.watch-anime-card,
+.trailer-card {
+  min-width: 0;
 }
 
 .watch-kicker {
@@ -153,6 +165,11 @@
   background: #111321;
   object-fit: cover;
   width: 100%;
+}
+
+.watch-hero__feature a {
+  color: var(--color-white);
+  font-weight: 700;
 }
 
 .watch-hero__feature div,

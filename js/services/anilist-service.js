@@ -1,3 +1,4 @@
+(() => {
 const ANILIST_ENDPOINT = "https://graphql.anilist.co";
 
 const MEDIA_FIELDS = `
@@ -187,3 +188,4 @@ function normalizeTrailer(trailer) {
 window.AnimePulseAniList = {
   loadWatchlistData,
 };
+})();

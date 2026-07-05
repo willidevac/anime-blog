@@ -1,3 +1,4 @@
+(() => {
 const { loadWatchlistData } = window.AnimePulseAniList;
 const { WATCHLIST_FALLBACK } = window;
 
@@ -389,3 +390,4 @@ function escapeHtml(value) {
 function escapeAttribute(value) {
   return escapeHtml(value || "");
 }
+})();
