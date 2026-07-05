@@ -57,22 +57,30 @@
     <main class="watch-page" data-watchlist-app>
       <section class="watch-hero" aria-labelledby="watch-title">
         <div class="watch-hero__copy">
-          <p class="watch-kicker">Live Watchlist | Jikan Daten</p>
-          <h1 id="watch-title">Was du als Nächstes schauen solltest</h1>
-          <p data-watch-hero-description>
+          <p class="watch-kicker" data-i18n="heroKicker">Live Watchlist | Jikan Daten</p>
+          <h1 id="watch-title" data-i18n="heroTitle">Was du als Nächstes schauen solltest</h1>
+          <p data-watch-hero-description data-i18n="heroDescription">
             Aktuelle Anime-Daten werden geladen. Falls die API nicht erreichbar
             ist, bleibt eine kuratierte Fallback-Watchlist sichtbar.
           </p>
 
-          <div class="watch-hero__actions" aria-label="Watchlist Sprungmarken">
-            <a href="#airing-now">Läuft gerade</a>
-            <a href="#upcoming-anime">Bald verfügbar</a>
+          <div
+            class="watch-hero__actions"
+            aria-label="Watchlist Sprungmarken"
+            data-i18n-attr="aria-label:heroActionsLabel"
+          >
+            <a href="#airing-now" data-i18n="airingShort">Läuft gerade</a>
+            <a href="#upcoming-anime" data-i18n="upcomingShort">Bald verfügbar</a>
             <a href="#trending-anime">Trends</a>
           </div>
 
-          <div class="watch-hero__stats" aria-label="Watchlist Überblick">
-            <span><strong data-watch-count-airing>0</strong> Läuft</span>
-            <span><strong data-watch-count-upcoming>0</strong> Bald</span>
+          <div
+            class="watch-hero__stats"
+            aria-label="Watchlist Überblick"
+            data-i18n-attr="aria-label:statsLabel"
+          >
+            <span><strong data-watch-count-airing>0</strong> <span data-i18n="airingStat">Läuft</span></span>
+            <span><strong data-watch-count-upcoming>0</strong> <span data-i18n="upcomingStat">Bald</span></span>
             <span><strong data-watch-count-trending>0</strong> Trends</span>
           </div>
         </div>
@@ -85,9 +93,9 @@
             height="960"
           />
           <div>
-            <p>Fallback Pick</p>
+            <p data-i18n="fallbackPick">Fallback Pick</p>
             <h2>Witch Hat Atelier</h2>
-            <span>
+            <span data-i18n="fallbackHeroText">
               Ruhige Fantasy, starke Welt und ein sehr guter Startpunkt für die
               nächste Watchlist.
             </span>
@@ -101,10 +109,10 @@
       >
         <div class="watch-section__heading watch-section__heading--split">
           <div>
-            <p class="watch-kicker">Aktuelle Auswahl</p>
-            <h2 id="controls-title">Watchlist filtern</h2>
+            <p class="watch-kicker" data-i18n="controlsKicker">Aktuelle Auswahl</p>
+            <h2 id="controls-title" data-i18n="controlsTitle">Watchlist filtern</h2>
           </div>
-          <p>
+          <p data-i18n="controlsDescription">
             Die Daten kommen primär aus Jikan/MyAnimeList. Filter und Sortierung laufen im
             Browser, damit keine unnötigen API-Anfragen entstehen.
           </p>
@@ -114,16 +122,26 @@
           Watchlist wird geladen...
         </div>
 
-        <form class="watch-controls" aria-label="Watchlist Filter">
+        <form
+          class="watch-controls"
+          aria-label="Watchlist Filter"
+          data-i18n-attr="aria-label:filterLabel"
+        >
+          <fieldset class="watch-language-switch" data-watch-language>
+            <legend data-i18n="languageLabel">Sprache</legend>
+            <button type="button" data-watch-lang="de">DE</button>
+            <button type="button" data-watch-lang="en">EN</button>
+          </fieldset>
+
           <label>
-            Genre
+            <span data-i18n="genreLabel">Genre</span>
             <select data-watch-filter-genre>
               <option value="all">Alle Genres</option>
             </select>
           </label>
 
           <label>
-            Status
+            <span data-i18n="statusLabel">Status</span>
             <select data-watch-filter-status>
               <option value="all">Alle Status</option>
               <option value="RELEASING">Läuft gerade</option>
@@ -133,7 +151,7 @@
           </label>
 
           <label>
-            Sortierung
+            <span data-i18n="sortLabel">Sortierung</span>
             <select data-watch-sort>
               <option value="trending">Trending</option>
               <option value="score">Bewertung</option>
@@ -151,8 +169,8 @@
       >
         <div class="watch-section__heading">
           <p class="watch-kicker">Airing Now</p>
-          <h2 id="airing-title">Läuft gerade</h2>
-          <p>
+          <h2 id="airing-title" data-i18n="airingTitle">Läuft gerade</h2>
+          <p data-i18n="airingDescription">
             Aktuelle Serien mit Status, Bewertung, Genres und nächster Episode,
             sobald die Live-API diese Daten bereitstellt.
           </p>
@@ -170,7 +188,7 @@
             <div>
               <p>Fallback | Fantasy</p>
               <h3>Witch Hat Atelier</h3>
-              <span>
+              <span data-i18n="fallbackCardText">
                 Wenn die API nicht erreichbar ist, bleibt diese kuratierte
                 Empfehlung sichtbar.
               </span>
@@ -186,8 +204,8 @@
       >
         <div class="watch-section__heading">
           <p class="watch-kicker">Upcoming</p>
-          <h2 id="upcoming-title">Bald verfügbar</h2>
-          <p>
+          <h2 id="upcoming-title" data-i18n="upcomingTitle">Bald verfügbar</h2>
+          <p data-i18n="upcomingDescription">
             Kommende Titel, die bereits genug Aufmerksamkeit bekommen, um auf
             deiner Watchlist vorzumerken.
           </p>
@@ -203,8 +221,8 @@
       >
         <div class="watch-section__heading">
           <p class="watch-kicker">Trending</p>
-          <h2 id="trending-title">Gerade im Gespräch</h2>
-          <p>
+          <h2 id="trending-title" data-i18n="trendingTitle">Gerade im Gespräch</h2>
+          <p data-i18n="trendingDescription">
             Titel mit hoher Aktivität, Popularität oder Bewertung. Ideal, wenn
             du schnell sehen willst, worüber gerade gesprochen wird.
           </p>
@@ -220,9 +238,9 @@
         <div class="watch-section__heading watch-section__heading--split">
           <div>
             <p class="watch-kicker">Trailer</p>
-            <h2 id="trailer-title">Aktuelle Videos</h2>
+            <h2 id="trailer-title" data-i18n="trailerTitle">Aktuelle Videos</h2>
           </div>
-          <p>
+          <p data-i18n="trailerDescription">
             Trailer werden nur angezeigt, wenn die Datenquelle einen passenden
             YouTube-Trailer liefert. Sonst bleibt der Bereich ruhig.
           </p>
@@ -236,9 +254,9 @@
         aria-labelledby="sources-title"
       >
         <div class="watch-section__heading">
-          <p class="watch-kicker">Quellen</p>
-          <h2 id="sources-title">Woher die Daten kommen</h2>
-          <p>
+          <p class="watch-kicker" data-i18n="sourcesKicker">Quellen</p>
+          <h2 id="sources-title" data-i18n="sourcesTitle">Woher die Daten kommen</h2>
+          <p data-i18n="sourcesDescription">
             Anime-Daten werden über die Jikan API geladen. Lokale
             Fallbacks sorgen dafür, dass die Watchlist auch bei API-Ausfall
             lesbar bleibt. AniList bleibt die bessere Datenquelle fuer einen
@@ -247,13 +265,13 @@
           </p>
         </div>
         <a class="watch-source-link" href="https://jikan.moe/"
-          >Jikan API Dokumentation</a
+          data-i18n="sourceLink">Jikan API Dokumentation</a
         >
       </section>
 
       <section class="share-btn" aria-labelledby="watchlist-share-title">
         <div class="share-container">
-          <p id="watchlist-share-title">
+          <p id="watchlist-share-title" data-i18n="shareText">
             Follow me for more content like this, and share the article with
             your friends!
           </p>
@@ -264,7 +282,7 @@
                 fill="currentColor"
               />
             </svg>
-            Share
+            <span data-i18n="shareButton">Share</span>
           </button>
         </div>
       </section>
