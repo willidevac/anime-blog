@@ -1,43 +1,55 @@
 const accordions = document.querySelectorAll(".accordion");
 const contactForm = document.querySelector("#contactForm");
+const emailJsConfig = {
+  publicKey: "y-Itndfvvj0xlf6go",
+  serviceId: "service_y2k99hc",
+  templateId: "template_g0e3ide",
+};
 
-let emailJsConfig;
-let fields;
-let formFields;
-let statusMessage;
-let submitButton;
-
-accordions.forEach((accordion) => {
-  accordion.addEventListener("click", () => {
-    toggleAccordion(accordion);
-  });
-});
+initAccordions();
 
 if (contactForm) {
-  emailJsConfig = {
-    publicKey: "y-Itndfvvj0xlf6go",
-    serviceId: "service_y2k99hc",
-    templateId: "template_g0e3ide",
+  initContactForm();
+}
+
+// Verknüpft alle FAQ-Buttons mit der Accordion-Funktion.
+function initAccordions() {
+  accordions.forEach((accordion) => {
+    accordion.addEventListener("click", () => {
+      toggleAccordion(accordion);
+    });
+  });
+}
+
+// Bereitet das Kontaktformular und seine EventListener vor.
+function initContactForm() {
+  const fields = getContactFields();
+  const formContext = {
+    fields: fields,
+    formFields: Object.values(fields),
+    statusMessage: contactForm.querySelector(".contact-form__status"),
+    submitButton: contactForm.querySelector("button[type='submit']"),
   };
 
-  fields = {
+  formContext.formFields.forEach((field) => {
+    field.addEventListener("input", () => {
+      clearFieldError(field);
+      clearStatusMessage(formContext.statusMessage);
+    });
+  });
+
+  contactForm.addEventListener("submit", (event) => {
+    submitContactForm(event, formContext);
+  });
+}
+
+// Sammelt die Formularfelder in einem gemeinsamen Objekt.
+function getContactFields() {
+  return {
     name: contactForm.querySelector("#name"),
     email: contactForm.querySelector("#email"),
     message: contactForm.querySelector("#message"),
   };
-
-  formFields = Object.values(fields);
-  statusMessage = contactForm.querySelector(".contact-form__status");
-  submitButton = contactForm.querySelector("button[type='submit']");
-
-  formFields.forEach((field) => {
-    field.addEventListener("input", () => {
-      clearFieldError(field);
-      clearStatusMessage();
-    });
-  });
-
-  contactForm.addEventListener("submit", submitContactForm);
 }
 
 // Öffnet oder schließt einen FAQ-Accordion-Bereich.
@@ -78,7 +90,7 @@ function clearFieldError(field) {
 }
 
 // Entfernt den aktuellen Formularstatus.
-function clearStatusMessage() {
+function clearStatusMessage(statusMessage) {
   statusMessage.textContent = "";
   statusMessage.classList.remove("is-error");
 }
@@ -89,10 +101,10 @@ function isValidEmail(email) {
 }
 
 // Prüft alle Formularfelder und gibt true oder false zurück.
-function validateContactForm() {
+function validateContactForm(fields, formFields) {
   formFields.forEach(clearFieldError);
 
-  const invalidRules = getValidationRules().filter((rule) => {
+  const invalidRules = getValidationRules(fields).filter((rule) => {
     return rule.isInvalid;
   });
 
@@ -104,7 +116,7 @@ function validateContactForm() {
 }
 
 // Erstellt die Validierungsregeln für das Kontaktformular.
-function getValidationRules() {
+function getValidationRules(fields) {
   return [
     {
       field: fields.name,
@@ -125,7 +137,7 @@ function getValidationRules() {
 }
 
 // Prüft, ob EmailJS mit echten Konfigurationswerten nutzbar ist.
-function hasValidEmailJsConfig() {
+function hasValidEmailJsConfig(emailJsConfig) {
   const configValues = Object.values(emailJsConfig);
 
   return configValues.every((value) => {
@@ -134,7 +146,7 @@ function hasValidEmailJsConfig() {
 }
 
 // Sperrt oder entsperrt den Senden-Button während des Sendens.
-function setSubmitState(isSubmitting) {
+function setSubmitState(submitButton, isSubmitting) {
   submitButton.disabled = isSubmitting;
   submitButton.textContent = isSubmitting
     ? "Wird gesendet..."
@@ -142,24 +154,26 @@ function setSubmitState(isSubmitting) {
 }
 
 // Sendet das Kontaktformular mit EmailJS.
-async function submitContactForm(event) {
+async function submitContactForm(event, formContext) {
   event.preventDefault();
-  clearStatusMessage();
+  const { fields, formFields, statusMessage, submitButton } = formContext;
 
-  if (!validateContactForm()) {
+  clearStatusMessage(statusMessage);
+
+  if (!validateContactForm(fields, formFields)) {
     statusMessage.textContent = "Bitte prüfe die markierten Felder.";
     statusMessage.classList.add("is-error");
     return;
   }
 
-  if (!hasValidEmailJsConfig() || !window.emailjs) {
+  if (!hasValidEmailJsConfig(emailJsConfig) || !window.emailjs) {
     statusMessage.textContent =
       "Bitte trage zuerst deine EmailJS-Daten im JavaScript ein.";
     statusMessage.classList.add("is-error");
     return;
   }
 
-  setSubmitState(true);
+  setSubmitState(submitButton, true);
 
   try {
     await window.emailjs.sendForm(
@@ -179,7 +193,7 @@ async function submitContactForm(event) {
       "Die Nachricht konnte nicht gesendet werden. Bitte versuche es später erneut.";
     statusMessage.classList.add("is-error");
   } finally {
-    setSubmitState(false);
+    setSubmitState(submitButton, false);
   }
 }
 
