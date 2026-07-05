@@ -31,10 +31,7 @@
       property="og:image"
       content="https://willidevac.github.io/anime-blog/assets/images/img-anime/Play%20Watchlist/watchlist%20anime-Miniaturansicht.jpg"
     />
-    <meta
-      property="og:image:alt"
-      content="Anime Pulse Watchlist Vorschau"
-    />
+    <meta property="og:image:alt" content="Anime Pulse Watchlist Vorschau" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Anime Pulse | Watchlist" />
@@ -98,8 +95,12 @@
     <main class="watch-page" data-watchlist-app>
       <section class="watch-hero" aria-labelledby="watch-title">
         <div class="watch-hero__copy">
-          <p class="watch-kicker" data-i18n="heroKicker">Live Watchlist | Jikan Daten</p>
-          <h1 id="watch-title" data-i18n="heroTitle">Was du als Nächstes schauen solltest</h1>
+          <p class="watch-kicker" data-i18n="heroKicker">
+            Live Watchlist | Jikan Daten
+          </p>
+          <h1 id="watch-title" data-i18n="heroTitle">
+            Was du als Nächstes schauen solltest
+          </h1>
           <p data-watch-hero-description data-i18n="heroDescription">
             Aktuelle Anime-Daten werden geladen. Falls die API nicht erreichbar
             ist, bleibt eine kuratierte Fallback-Watchlist sichtbar.
@@ -111,7 +112,9 @@
             data-i18n-attr="aria-label:heroActionsLabel"
           >
             <a href="#airing-now" data-i18n="airingShort">Läuft gerade</a>
-            <a href="#upcoming-anime" data-i18n="upcomingShort">Bald verfügbar</a>
+            <a href="#upcoming-anime" data-i18n="upcomingShort"
+              >Bald verfügbar</a
+            >
             <a href="#trending-anime">Trends</a>
           </div>
 
@@ -120,8 +123,14 @@
             aria-label="Watchlist Überblick"
             data-i18n-attr="aria-label:statsLabel"
           >
-            <span><strong data-watch-count-airing>0</strong> <span data-i18n="airingStat">Läuft</span></span>
-            <span><strong data-watch-count-upcoming>0</strong> <span data-i18n="upcomingStat">Bald</span></span>
+            <span
+              ><strong data-watch-count-airing>0</strong>
+              <span data-i18n="airingStat">Läuft</span></span
+            >
+            <span
+              ><strong data-watch-count-upcoming>0</strong>
+              <span data-i18n="upcomingStat">Bald</span></span
+            >
             <span><strong data-watch-count-trending>0</strong> Trends</span>
           </div>
         </div>
@@ -150,16 +159,25 @@
       >
         <div class="watch-section__heading watch-section__heading--split">
           <div>
-            <p class="watch-kicker" data-i18n="controlsKicker">Aktuelle Auswahl</p>
-            <h2 id="controls-title" data-i18n="controlsTitle">Watchlist filtern</h2>
+            <p class="watch-kicker" data-i18n="controlsKicker">
+              Aktuelle Auswahl
+            </p>
+            <h2 id="controls-title" data-i18n="controlsTitle">
+              Watchlist filtern
+            </h2>
           </div>
           <p data-i18n="controlsDescription">
-            Die Daten kommen primär aus Jikan/MyAnimeList. Filter und Sortierung laufen im
-            Browser, damit keine unnötigen API-Anfragen entstehen.
+            Die Daten kommen primär aus Jikan/MyAnimeList. Filter und Sortierung
+            laufen im Browser, damit keine unnötigen API-Anfragen entstehen.
           </p>
         </div>
 
-        <div class="watch-status" role="status" aria-live="polite" data-watch-status>
+        <div
+          class="watch-status"
+          role="status"
+          aria-live="polite"
+          data-watch-status
+        >
           Watchlist wird geladen...
         </div>
 
@@ -262,7 +280,9 @@
       >
         <div class="watch-section__heading">
           <p class="watch-kicker">Trending</p>
-          <h2 id="trending-title" data-i18n="trendingTitle">Gerade im Gespräch</h2>
+          <h2 id="trending-title" data-i18n="trendingTitle">
+            Gerade im Gespräch
+          </h2>
           <p data-i18n="trendingDescription">
             Titel mit hoher Aktivität, Popularität oder Bewertung. Ideal, wenn
             du schnell sehen willst, worüber gerade gesprochen wird.
@@ -296,17 +316,22 @@
       >
         <div class="watch-section__heading">
           <p class="watch-kicker" data-i18n="sourcesKicker">Quellen</p>
-          <h2 id="sources-title" data-i18n="sourcesTitle">Woher die Daten kommen</h2>
+          <h2 id="sources-title" data-i18n="sourcesTitle">
+            Woher die Daten kommen
+          </h2>
           <p data-i18n="sourcesDescription">
-            Anime-Daten werden über die Jikan API geladen. Lokale
-            Fallbacks sorgen dafür, dass die Watchlist auch bei API-Ausfall
-            lesbar bleibt. AniList bleibt die bessere Datenquelle fuer einen
-            spaeteren Proxy- oder Build-Step, ist aber direkt im Browser per
-            CORS blockiert. News-Texte werden nicht automatisch kopiert.
+            Anime-Daten werden über die Jikan API geladen. Lokale Fallbacks
+            sorgen dafür, dass die Watchlist auch bei API-Ausfall lesbar bleibt.
+            AniList bleibt die bessere Datenquelle fuer einen spaeteren Proxy-
+            oder Build-Step, ist aber direkt im Browser per CORS blockiert.
+            News-Texte werden nicht automatisch kopiert.
           </p>
         </div>
-        <a class="watch-source-link" href="https://jikan.moe/"
-          data-i18n="sourceLink">Jikan API Dokumentation</a
+        <a
+          class="watch-source-link"
+          href="https://jikan.moe/"
+          data-i18n="sourceLink"
+          >Jikan API Dokumentation</a
         >
       </section>
 
@@ -316,7 +341,9 @@
       >
         <div>
           <p class="watch-kicker" data-i18n="suggestKicker">Community Pick</p>
-          <h2 id="suggest-title" data-i18n="suggestTitle">Empfehlung einreichen</h2>
+          <h2 id="suggest-title" data-i18n="suggestTitle">
+            Empfehlung einreichen
+          </h2>
           <p data-i18n="suggestDescription">
             Fehlt ein Anime, der unbedingt auf die Liste gehört? Trag ihn ein
             und sammle kurz, warum er sich lohnt.
@@ -325,13 +352,17 @@
 
         <form class="watch-form" id="watchForm" novalidate>
           <div class="watch-form__field">
-            <label for="anime-title" data-i18n="suggestAnimeTitle">Anime-Titel</label>
+            <label for="anime-title" data-i18n="suggestAnimeTitle"
+              >Anime-Titel</label
+            >
             <input id="anime-title" name="anime-title" type="text" />
             <span class="watch-form__error" aria-live="polite"></span>
           </div>
 
           <div class="watch-form__field">
-            <label for="anime-reason" data-i18n="suggestReason">Warum auf die Watchlist?</label>
+            <label for="anime-reason" data-i18n="suggestReason"
+              >Warum auf die Watchlist?</label
+            >
             <textarea id="anime-reason" name="anime-reason" rows="4"></textarea>
             <span class="watch-form__error" aria-live="polite"></span>
           </div>

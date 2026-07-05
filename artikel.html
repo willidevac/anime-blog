@@ -91,16 +91,24 @@
             Beginne mit bekannten Klassikern, die einen festen Platz in der
             Geschichte der Animation haben.
           </p>
-          <div class="artikel-carousel" aria-label="artikel-Kategorie">
-            <video class="artikel-video-card" controls>
+          <figure class="artikel-carousel" aria-labelledby="artikel-video-title">
+            <video
+              class="artikel-video-card"
+              controls
+              aria-describedby="artikel-video-title"
+            >
               <source
                 src="./assets/images/img-anime/Play Watchlist/watchlist anime.mp4"
                 type="video/mp4"
               />
+              Dein Browser kann dieses Video nicht abspielen.
             </video>
-          </div>
+            <figcaption class="artikel-video-caption" id="artikel-video-title">
+              Video-Einblick in aktuelle Watchlist-Empfehlungen
+            </figcaption>
+          </figure>
 
-          <div class="artikel-pick-carousel" aria-label="Einsteiger Carousel">
+          <div class="artikel-pick-carousel" aria-label="Einsteiger-Empfehlungen">
             <input
               class="artikel-pick-carousel__input"
               type="radio"
@@ -170,7 +178,10 @@
               </div>
             </div>
 
-            <div class="artikel-pick-carousel__controls">
+            <div
+              class="artikel-pick-carousel__controls"
+              aria-label="Einsteiger-Empfehlungen auswählen"
+            >
               <label for="artikel-pick-action">Action</label>
               <label for="artikel-pick-story">Story</label>
               <label for="artikel-pick-comedy">Comedy</label>
@@ -243,13 +254,12 @@
           </section>
         </div>
 
-        <section class="share-btn">
+        <section class="share-btn" aria-labelledby="artikel-share-title">
           <div class="share-container">
-            <p>
+            <p id="artikel-share-title">
               Folge uns für mehr Content, und <br />
               teile es mit deinen Freunden
             </p>
-            <!-- <button class="btn-share-look">Share</button> -->
             <button class="button btn-share-look" type="button">
               <div class="icon">
                 <svg
