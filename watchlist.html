@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="css/tailwind.css" />
     <script src="js/molecules/site-nav.js" defer></script>
     <script src="js/pages/watchlist-fallback.js" defer></script>
-    <script src="js/services/anilist-service.js" defer></script>
+    <script src="js/services/anime-data-service.js" defer></script>
     <script src="js/pages/watchlist-api.js" defer></script>
   </head>
   <body>
@@ -57,7 +57,7 @@
     <main class="watch-page" data-watchlist-app>
       <section class="watch-hero" aria-labelledby="watch-title">
         <div class="watch-hero__copy">
-          <p class="watch-kicker">Live Watchlist | AniList Daten</p>
+          <p class="watch-kicker">Live Watchlist | Jikan Daten</p>
           <h1 id="watch-title">Was du als Nächstes schauen solltest</h1>
           <p data-watch-hero-description>
             Aktuelle Anime-Daten werden geladen. Falls die API nicht erreichbar
@@ -105,7 +105,7 @@
             <h2 id="controls-title">Watchlist filtern</h2>
           </div>
           <p>
-            Die Daten kommen primär aus AniList. Filter und Sortierung laufen im
+            Die Daten kommen primär aus Jikan/MyAnimeList. Filter und Sortierung laufen im
             Browser, damit keine unnötigen API-Anfragen entstehen.
           </p>
         </div>
@@ -154,7 +154,7 @@
           <h2 id="airing-title">Läuft gerade</h2>
           <p>
             Aktuelle Serien mit Status, Bewertung, Genres und nächster Episode,
-            sobald AniList diese Daten bereitstellt.
+            sobald die Live-API diese Daten bereitstellt.
           </p>
         </div>
 
@@ -239,13 +239,15 @@
           <p class="watch-kicker">Quellen</p>
           <h2 id="sources-title">Woher die Daten kommen</h2>
           <p>
-            Anime-Daten werden über die AniList GraphQL API geladen. Lokale
+            Anime-Daten werden über die Jikan API geladen. Lokale
             Fallbacks sorgen dafür, dass die Watchlist auch bei API-Ausfall
-            lesbar bleibt. News-Texte werden nicht automatisch kopiert.
+            lesbar bleibt. AniList bleibt die bessere Datenquelle fuer einen
+            spaeteren Proxy- oder Build-Step, ist aber direkt im Browser per
+            CORS blockiert. News-Texte werden nicht automatisch kopiert.
           </p>
         </div>
-        <a class="watch-source-link" href="https://docs.anilist.co/"
-          >AniList API Dokumentation</a
+        <a class="watch-source-link" href="https://jikan.moe/"
+          >Jikan API Dokumentation</a
         >
       </section>
 

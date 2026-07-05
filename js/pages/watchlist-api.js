@@ -1,5 +1,5 @@
 (() => {
-const { loadWatchlistData } = window.AnimePulseAniList;
+const { loadWatchlistData } = window.AnimePulseDataService;
 const { WATCHLIST_FALLBACK } = window;
 const FALLBACK_COVER =
   "assets/images/img-anime/Top 3 Anime für Einsteiger/einstieg-templet.png";
@@ -52,13 +52,13 @@ async function initWatchlist() {
     state.data = mergeWithFallback(liveData);
     state.source = "live";
     renderWatchlist(state.data);
-    setStatus("Live-Daten von AniList geladen.");
+    setStatus("Live-Daten von Jikan geladen.");
   } catch (error) {
     state.data = WATCHLIST_FALLBACK;
     state.source = "fallback";
     renderWatchlist(state.data);
-    console.warn("AniList konnte nicht geladen werden:", error.message);
-    setStatus("AniList ist gerade nicht erreichbar. Kuratierte Fallback-Daten werden angezeigt.");
+    console.warn("Live-Daten konnten nicht geladen werden:", error.message);
+    setStatus("Die Live-API ist gerade nicht erreichbar. Kuratierte Fallback-Daten werden angezeigt.");
   }
 }
 
@@ -111,7 +111,7 @@ function renderHero(data) {
       height="960"
     />
     <div>
-      <p>${state.source === "live" ? "AniList Trend" : "Fallback Pick"}</p>
+      <p>${state.source === "live" ? "Live Trend" : "Fallback Pick"}</p>
       <h2>${escapeHtml(heroAnime.title)}</h2>
       <span>${escapeHtml(truncateText(heroAnime.description, 180))}</span>
       ${heroAnime.siteUrl ? `<a href="${escapeAttribute(heroAnime.siteUrl)}">Quelle öffnen</a>` : ""}
@@ -119,7 +119,7 @@ function renderHero(data) {
   `;
 
   if (elements.heroDescription) {
-    elements.heroDescription.textContent = `${heroAnime.title} ist aktuell der stärkste Pick in dieser Ansicht. Datenquelle: ${state.source === "live" ? "AniList API" : "lokaler Fallback"}.`;
+    elements.heroDescription.textContent = `${heroAnime.title} ist aktuell der stärkste Pick in dieser Ansicht. Datenquelle: ${state.source === "live" ? "Jikan API" : "lokaler Fallback"}.`;
   }
 }
 

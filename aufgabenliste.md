@@ -16,6 +16,14 @@ Die beste Grundlage fuer dieses Projekt ist:
 2. Optional AnimeSchedule.net API fuer genaue Ausstrahlungszeiten
 3. Optional News-/RSS-Quellen nur als Inspiration und Quellenverweis
 
+Update nach Implementierungstest:
+
+- AniList ist fachlich weiterhin die bessere Datenquelle.
+- Direkte Browser-Fetches von der statischen Seite zu AniList werden aber durch CORS blockiert.
+- Ohne Backend, Proxy oder Build-Step muss die clientseitige Live-Version deshalb eine browserfreundliche API nutzen.
+- Fuer die erste statische Umsetzung wird deshalb Jikan genutzt.
+- Spaeter sollte AniList ueber einen kleinen Proxy oder einen Build-Step nachgezogen werden.
+
 ### Warum AniList als Haupt-API?
 
 - Offizielle und gut dokumentierte GraphQL API
