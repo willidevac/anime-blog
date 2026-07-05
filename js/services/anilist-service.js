@@ -1,5 +1,6 @@
 (() => {
 const ANILIST_ENDPOINT = "https://graphql.anilist.co";
+const CACHE_TTL_MS = 30 * 60 * 1000;
 
 const MEDIA_FIELDS = `
   id
@@ -83,6 +84,12 @@ const WATCHLIST_QUERIES = {
 async function loadWatchlistData(options = {}) {
   const seasonYear = options.seasonYear || new Date().getFullYear();
   const perPage = options.perPage || 9;
+  const cacheKey = `anime-pulse-watchlist-v1-${seasonYear}-${perPage}`;
+  const cachedData = readCachedData(cacheKey);
+
+  if (cachedData) {
+    return cachedData;
+  }
 
   const [airing, upcoming, trending] = await Promise.all([
     requestAniList(WATCHLIST_QUERIES.airing, {
@@ -100,11 +107,15 @@ async function loadWatchlistData(options = {}) {
     }),
   ]);
 
-  return {
+  const data = {
     airing: normalizeMediaList(airing),
     upcoming: normalizeMediaList(upcoming),
     trending: normalizeMediaList(trending),
   };
+
+  writeCachedData(cacheKey, data);
+
+  return data;
 }
 
 async function requestAniList(query, variables) {
@@ -183,6 +194,37 @@ function normalizeTrailer(trailer) {
     embedUrl: `https://www.youtube-nocookie.com/embed/${trailer.id}`,
     thumbnail: trailer.thumbnail || "",
   };
+}
+
+function readCachedData(cacheKey) {
+  try {
+    const cachedItem = sessionStorage.getItem(cacheKey);
+
+    if (!cachedItem) {
+      return null;
+    }
+
+    const parsedItem = JSON.parse(cachedItem);
+    const isFresh = Date.now() - parsedItem.createdAt < CACHE_TTL_MS;
+
+    return isFresh ? parsedItem.data : null;
+  } catch {
+    return null;
+  }
+}
+
+function writeCachedData(cacheKey, data) {
+  try {
+    sessionStorage.setItem(
+      cacheKey,
+      JSON.stringify({
+        createdAt: Date.now(),
+        data,
+      }),
+    );
+  } catch {
+    // Cache ist nur eine Optimierung. Wenn er nicht verfuegbar ist, laeuft die Seite weiter.
+  }
 }
 
 window.AnimePulseAniList = {

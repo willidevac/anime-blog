@@ -1,6 +1,8 @@
 (() => {
 const { loadWatchlistData } = window.AnimePulseAniList;
 const { WATCHLIST_FALLBACK } = window;
+const FALLBACK_COVER =
+  "assets/images/img-anime/Top 3 Anime für Einsteiger/einstieg-templet.png";
 
 const state = {
   data: WATCHLIST_FALLBACK,
@@ -55,7 +57,8 @@ async function initWatchlist() {
     state.data = WATCHLIST_FALLBACK;
     state.source = "fallback";
     renderWatchlist(state.data);
-    setStatus(`AniList ist gerade nicht erreichbar. Fallback-Daten werden angezeigt. ${error.message}`);
+    console.warn("AniList konnte nicht geladen werden:", error.message);
+    setStatus("AniList ist gerade nicht erreichbar. Kuratierte Fallback-Daten werden angezeigt.");
   }
 }
 
@@ -102,7 +105,7 @@ function renderHero(data) {
 
   elements.heroCard.innerHTML = `
     <img
-      src="${escapeAttribute(heroAnime.coverImage)}"
+      src="${escapeAttribute(getCoverImage(heroAnime))}"
       alt="${escapeAttribute(heroAnime.title)}"
       width="720"
       height="960"
@@ -147,7 +150,7 @@ function renderAnimeCard(anime) {
   return `
     <article class="watch-anime-card">
       <img
-        src="${escapeAttribute(anime.coverImage)}"
+        src="${escapeAttribute(getCoverImage(anime))}"
         alt="${escapeAttribute(anime.title)}"
         width="480"
         height="640"
@@ -368,6 +371,10 @@ function formatScore(score) {
   }
 
   return `${score}%`;
+}
+
+function getCoverImage(anime) {
+  return anime.coverImage || anime.bannerImage || FALLBACK_COVER;
 }
 
 function truncateText(text, maxLength) {
