@@ -2833,7 +2833,101 @@ main {
   padding: 1rem;
 }
 .watch-section--sources {
-  padding-bottom: 5.5rem;
+  padding-bottom: 3.5rem;
+}
+.watch-section--suggest {
+  align-items: start;
+  background: linear-gradient(90deg, rgba(39, 234, 245, 0.09), rgba(255, 43, 189, 0.1));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-small);
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: minmax(0, 0.78fr) minmax(300px, 0.6fr);
+  margin-bottom: 5rem;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+}
+.watch-section--suggest > div > p {
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  line-height: 1.65;
+  margin: 0.9rem 0 0;
+}
+.watch-form {
+  display: grid;
+  gap: 1rem;
+}
+.watch-form__field {
+  display: grid;
+  gap: 0.35rem;
+}
+.watch-form label {
+  color: var(--color-white);
+  font-family: var(--font-label);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+.watch-form input, .watch-form textarea {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(247, 245, 255, 0.72);
+  border-radius: 0;
+  color: var(--color-white);
+  font: inherit;
+  padding: 0.7rem 0 0.9rem;
+  width: 100%;
+}
+.watch-form input:focus, .watch-form textarea:focus {
+  border-color: var(--color-cyan);
+  outline: none;
+}
+.watch-form__field.is-invalid input, .watch-form__field.is-invalid textarea {
+  border-color: var(--color-pink);
+}
+.watch-form__error, .watch-form__status {
+  color: var(--color-cyan);
+  font-size: 0.85rem;
+  min-height: 1.2em;
+}
+.watch-form__error, .watch-form__status.is-error {
+  color: var(--color-pink);
+}
+.watch-form button {
+  align-items: center;
+  background: var(--color-pink);
+  border: 0;
+  border-radius: var(--radius-round);
+  color: var(--color-white);
+  display: inline-flex;
+  font-family: var(--font-label);
+  font-weight: 700;
+  justify-content: center;
+  justify-self: start;
+  min-height: 44px;
+  padding: 0.75rem 1.25rem;
+}
+.watch-form__suggestions {
+  display: grid;
+  gap: 0.7rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.watch-form__suggestion {
+  background: rgba(9, 10, 18, 0.42);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-small);
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.75rem;
+}
+.watch-form__suggestion strong {
+  color: var(--color-white);
+}
+.watch-form__suggestion span {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
 }
 .watch-page + .site-footer {
   background: linear-gradient(90deg, rgba(39, 234, 245, 0.08), transparent 28%, rgba(255, 43, 189, 0.08)), #090a12;
@@ -2845,7 +2939,7 @@ main {
     min-height: 0;
     padding-top: 3rem;
   }
-  .watch-section__heading--split, .watch-controls {
+  .watch-section__heading--split, .watch-controls, .watch-section--suggest {
     grid-template-columns: 1fr;
   }
   .watch-grid {
@@ -2870,7 +2964,7 @@ main {
   .watch-hero__actions {
     flex-direction: column;
   }
-  .watch-hero__actions a, .watch-source-link {
+  .watch-hero__actions a, .watch-source-link, .watch-form button {
     width: 100%;
   }
   .watch-hero__stats, .watch-grid, .trailer-grid {

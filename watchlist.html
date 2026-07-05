@@ -27,6 +27,8 @@
     />
     <link rel="stylesheet" href="css/tailwind.css" />
     <script src="js/molecules/site-nav.js" defer></script>
+    <script src="js/molecules/share-button.js" defer></script>
+    <script src="js/molecules/watchlist-form.js" defer></script>
     <script src="js/pages/watchlist-fallback.js" defer></script>
     <script src="js/services/anime-data-service.js" defer></script>
     <script src="js/pages/watchlist-api.js" defer></script>
@@ -267,6 +269,42 @@
         <a class="watch-source-link" href="https://jikan.moe/"
           data-i18n="sourceLink">Jikan API Dokumentation</a
         >
+      </section>
+
+      <section
+        class="watch-section watch-section--suggest"
+        aria-labelledby="suggest-title"
+      >
+        <div>
+          <p class="watch-kicker">Community Pick</p>
+          <h2 id="suggest-title">Empfehlung einreichen</h2>
+          <p>
+            Fehlt ein Anime, der unbedingt auf die Liste gehört? Trag ihn ein
+            und sammle kurz, warum er sich lohnt.
+          </p>
+        </div>
+
+        <form class="watch-form" id="watchForm" novalidate>
+          <div class="watch-form__field">
+            <label for="anime-title">Anime-Titel</label>
+            <input id="anime-title" name="anime-title" type="text" />
+            <span class="watch-form__error" aria-live="polite"></span>
+          </div>
+
+          <div class="watch-form__field">
+            <label for="anime-reason">Warum auf die Watchlist?</label>
+            <textarea id="anime-reason" name="anime-reason" rows="4"></textarea>
+            <span class="watch-form__error" aria-live="polite"></span>
+          </div>
+
+          <button type="submit">Vormerken</button>
+          <p class="watch-form__status" aria-live="polite"></p>
+          <ul
+            class="watch-form__suggestions"
+            id="watchSuggestionList"
+            aria-label="Vorgemerkte Empfehlungen"
+          ></ul>
+        </form>
       </section>
 
       <section class="share-btn" aria-labelledby="watchlist-share-title">
