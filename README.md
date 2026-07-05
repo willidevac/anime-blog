@@ -26,6 +26,8 @@
 
 <div align="center">
 
+![Anime Pulse preview](./assets/screenshots/anime-pulse-preview.gif)
+
 Anime Pulse ist ein responsiver Anime-Blog mit Startseite, Trend-Bereich, Artikelseiten, Watchlist und Kontaktformular.
 Das Projekt dient als Lernprojekt für saubere HTML-Struktur, modularen CSS-Aufbau, Tailwind CSS per npm/pnpm und verständliches JavaScript.
 
@@ -35,7 +37,6 @@ Das Projekt dient als Lernprojekt für saubere HTML-Struktur, modularen CSS-Aufb
 
 - [Requirements](#requirements)
 - [Tech Stack](#tech-stack)
-- [Preview](#preview)
 - [Quickstart](#quickstart)
 - [Warum node_modules nicht gepusht wird](#warum-node_modules-nicht-gepusht-wird)
 - [Development](#development)
@@ -65,10 +66,6 @@ VS Code mit Live Server
 | Tailwind CSS v4 | Utility-Klassen und lokaler CSS-Build                 |
 | JavaScript ES6+ | Navigation, FAQ-Akkordeon, Formularlogik, Validierung |
 | EmailJS         | Vorbereitung für das Kontaktformular                  |
-
-## Preview
-
-![Anime Pulse preview](./assets/screenshots/anime-pulse-preview.gif)
 
 ## Quickstart
 
