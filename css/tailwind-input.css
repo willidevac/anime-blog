@@ -1,0 +1,19 @@
+@import "tailwindcss" source("..");
+
+@import "./base.css";
+@import "./molecules/page-header.css";
+@import "./molecules/footer.css";
+@import "./molecules/buttons.css";
+@import "./molecules/cards.css";
+@import "./molecules/author-box.css";
+@import "./molecules/faq.css";
+@import "./molecules/form.css";
+@import "./molecules/impressum.css";
+@import "./molecules/pro-tip.css";
+@import "./molecules/share.css";
+@import "./molecules/sliders/slider.css";
+@import "./molecules/sliders/trend-carousel.css";
+@import "./pages/home.css";
+@import "./pages/artikel.css";
+@import "./pages/trends.css";
+@import "./pages/watchlist.css";
