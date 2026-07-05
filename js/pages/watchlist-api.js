@@ -4,6 +4,11 @@ const { WATCHLIST_FALLBACK } = window;
 const state = {
   data: WATCHLIST_FALLBACK,
   source: "fallback",
+  filters: {
+    genre: "all",
+    status: "all",
+    sort: "trending",
+  },
 };
 
 const elements = {
@@ -21,11 +26,17 @@ const elements = {
     upcoming: document.querySelector('[data-watch-section="upcoming"]'),
     trending: document.querySelector('[data-watch-section="trending"]'),
   },
+  filters: {
+    genre: document.querySelector("[data-watch-filter-genre]"),
+    status: document.querySelector("[data-watch-filter-status]"),
+    sort: document.querySelector("[data-watch-sort]"),
+  },
 };
 
 initWatchlist();
 
 async function initWatchlist() {
+  bindControls();
   setStatus("Live-Daten werden geladen...");
   renderWatchlist(WATCHLIST_FALLBACK);
 
@@ -48,12 +59,20 @@ async function initWatchlist() {
 }
 
 function renderWatchlist(data) {
-  renderCounts(data);
-  renderHero(data);
-  renderSection("airing", data.airing);
-  renderSection("upcoming", data.upcoming);
-  renderSection("trending", data.trending);
-  renderTrailers(data);
+  populateGenreOptions(data);
+
+  const filteredData = {
+    airing: filterAndSortEntries(data.airing),
+    upcoming: filterAndSortEntries(data.upcoming),
+    trending: filterAndSortEntries(data.trending),
+  };
+
+  renderCounts(filteredData);
+  renderHero(filteredData);
+  renderSection("airing", filteredData.airing);
+  renderSection("upcoming", filteredData.upcoming);
+  renderSection("trending", filteredData.trending);
+  renderTrailers(filteredData);
 }
 
 function renderCounts(data) {
@@ -68,6 +87,15 @@ function renderHero(data) {
   const heroAnime = data.trending?.[0] || data.airing?.[0] || data.upcoming?.[0];
 
   if (!heroAnime || !elements.heroCard) {
+    if (elements.heroCard) {
+      elements.heroCard.innerHTML = `
+        <div class="watch-hero__empty">
+          <p>Keine Treffer</p>
+          <h2>Filter anpassen</h2>
+          <span>Mit den aktuellen Filtern gibt es keinen Hero-Pick.</span>
+        </div>
+      `;
+    }
     return;
   }
 
@@ -100,7 +128,7 @@ function renderSection(section, entries) {
 
   if (!entries?.length) {
     container.innerHTML = `
-      <p class="watch-empty">Für diesen Bereich sind gerade keine Einträge vorhanden.</p>
+      <p class="watch-empty">Für diesen Bereich sind mit den aktuellen Filtern keine Einträge vorhanden.</p>
     `;
     return;
   }
@@ -216,6 +244,80 @@ function renderTrailers(data) {
       `;
     })
     .join("");
+}
+
+function bindControls() {
+  elements.filters.genre?.addEventListener("change", (event) => {
+    state.filters.genre = event.target.value;
+    renderWatchlist(state.data);
+    updateFilterStatus();
+  });
+
+  elements.filters.status?.addEventListener("change", (event) => {
+    state.filters.status = event.target.value;
+    renderWatchlist(state.data);
+    updateFilterStatus();
+  });
+
+  elements.filters.sort?.addEventListener("change", (event) => {
+    state.filters.sort = event.target.value;
+    renderWatchlist(state.data);
+    updateFilterStatus();
+  });
+}
+
+function populateGenreOptions(data) {
+  const select = elements.filters.genre;
+
+  if (!select) {
+    return;
+  }
+
+  const currentValue = select.value || "all";
+  const genres = [...new Set(Object.values(data).flat().flatMap((anime) => anime.genres || []))]
+    .filter(Boolean)
+    .sort((a, b) => a.localeCompare(b, "de"));
+
+  select.innerHTML = [
+    '<option value="all">Alle Genres</option>',
+    ...genres.map((genre) => `<option value="${escapeAttribute(genre)}">${escapeHtml(genre)}</option>`),
+  ].join("");
+  select.value = genres.includes(currentValue) ? currentValue : "all";
+  state.filters.genre = select.value;
+}
+
+function filterAndSortEntries(entries = []) {
+  return entries
+    .filter((anime) => {
+      const matchesGenre =
+        state.filters.genre === "all" || anime.genres?.includes(state.filters.genre);
+      const matchesStatus =
+        state.filters.status === "all" || anime.status === state.filters.status;
+
+      return matchesGenre && matchesStatus;
+    })
+    .sort((first, second) => sortEntries(first, second, state.filters.sort));
+}
+
+function sortEntries(first, second, sortKey) {
+  const sorters = {
+    score: () => (second.averageScore || 0) - (first.averageScore || 0),
+    popularity: () => (second.popularity || 0) - (first.popularity || 0),
+    start: () =>
+      (second.seasonYear || 0) - (first.seasonYear || 0) ||
+      String(second.season || "").localeCompare(String(first.season || ""), "de"),
+    trending: () => (second.popularity || 0) - (first.popularity || 0),
+  };
+
+  return (sorters[sortKey] || sorters.trending)();
+}
+
+function updateFilterStatus() {
+  const genre = state.filters.genre === "all" ? "alle Genres" : state.filters.genre;
+  const status =
+    state.filters.status === "all" ? "alle Status" : formatStatus(state.filters.status);
+
+  setStatus(`Ansicht gefiltert: ${genre}, ${status}, Sortierung ${state.filters.sort}.`);
 }
 
 function mergeWithFallback(liveData) {
