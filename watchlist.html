@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="css/tailwind.css" />
     <script src="js/molecules/site-nav.js" defer></script>
     <script src="js/molecules/share-button.js" defer></script>
+    <script src="js/molecules/watchlist-form.js" defer></script>
   </head>
   <body>
     <header class="page-header">
@@ -555,14 +556,47 @@
           </p>
         </div>
 
-        <form class="watch-form">
-          <label for="anime-title">Anime-Titel</label>
-          <input id="anime-title" name="anime-title" type="text" />
+        <form class="watch-form" id="watchForm" novalidate>
+          <div class="watch-form__field">
+            <label for="anime-title">Anime-Titel</label>
+            <input
+              id="anime-title"
+              name="anime-title"
+              type="text"
+              aria-describedby="anime-title-error"
+              required
+            />
+            <p
+              class="watch-form__error"
+              id="anime-title-error"
+              aria-live="polite"
+            ></p>
+          </div>
 
-          <label for="anime-reason">Warum auf die Watchlist?</label>
-          <textarea id="anime-reason" name="anime-reason" rows="4"></textarea>
+          <div class="watch-form__field">
+            <label for="anime-reason">Warum auf die Watchlist?</label>
+            <textarea
+              id="anime-reason"
+              name="anime-reason"
+              rows="4"
+              aria-describedby="anime-reason-error"
+              required
+              minlength="10"
+            ></textarea>
+            <p
+              class="watch-form__error"
+              id="anime-reason-error"
+              aria-live="polite"
+            ></p>
+          </div>
 
           <button type="submit">Vormerken</button>
+          <p class="watch-form__status" aria-live="polite"></p>
+          <ul
+            class="watch-form__suggestions"
+            id="watchSuggestionList"
+            aria-label="Vorgemerkte Empfehlungen"
+          ></ul>
         </form>
       </section>
 
