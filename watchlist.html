@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Anime Pulse Watchlist mit aktuellen Anime-Trends, laufenden Serien, kommenden Releases, Trailern und kuratierten Empfehlungen."
+    />
     <title>Anime Pulse | Watchlist</title>
     <link
       rel="icon"
@@ -23,6 +27,7 @@
     />
     <link rel="stylesheet" href="css/tailwind.css" />
     <script src="js/molecules/site-nav.js" defer></script>
+    <script type="module" src="js/pages/watchlist-api.js"></script>
   </head>
   <body>
     <header class="page-header">
@@ -41,528 +46,205 @@
       <nav class="page-header__nav" id="site-nav" aria-label="Hauptnavigation">
         <a href="trends.html">Trends</a>
         <a href="artikel.html">Artikel</a>
-        <a class="is-active" href="watchlist.html">Watchlist</a>
+        <a class="is-active" aria-current="page" href="watchlist.html"
+          >Watchlist</a
+        >
       </nav>
     </header>
 
-    <main class="watch-page">
+    <main class="watch-page" data-watchlist-app>
       <section class="watch-hero" aria-labelledby="watch-title">
         <div class="watch-hero__copy">
-          <p class="watch-kicker">Watchlist Update | Mai 2026</p>
+          <p class="watch-kicker">Live Watchlist | AniList Daten</p>
           <h1 id="watch-title">Was du als Nächstes schauen solltest</h1>
-          <p>
-            Eine kuratierte Watchlist für neue Season-Picks, starke Rückkehrer
-            und Anime, die sich perfekt zum Nachholen eignen.
+          <p data-watch-hero-description>
+            Aktuelle Anime-Daten werden geladen. Falls die API nicht erreichbar
+            ist, bleibt eine kuratierte Fallback-Watchlist sichtbar.
           </p>
 
           <div class="watch-hero__actions" aria-label="Watchlist Sprungmarken">
-            <a href="#season-picks">Season-Picks</a>
-            <a href="#starter-picks">Einsteiger</a>
+            <a href="#airing-now">Läuft gerade</a>
+            <a href="#upcoming-anime">Bald verfügbar</a>
+            <a href="#trending-anime">Trends</a>
           </div>
 
           <div class="watch-hero__stats" aria-label="Watchlist Überblick">
-            <span><strong>8</strong> Picks</span>
-            <span><strong>3</strong> Top-Titel</span>
-            <span><strong>2026</strong> Update</span>
+            <span><strong data-watch-count-airing>0</strong> Läuft</span>
+            <span><strong data-watch-count-upcoming>0</strong> Bald</span>
+            <span><strong data-watch-count-trending>0</strong> Trends</span>
           </div>
         </div>
 
-        <div class="watch-hero__media watch-hero__media--embed">
-          <iframe
-            src="https://www.youtube-nocookie.com/embed/oQSz3MaA35E"
-            title="Dorohedoro Season 2 Official Trailer"
-            allow="
-              accelerometer;
-              autoplay;
-              clipboard-write;
-              encrypted-media;
-              gyroscope;
-              picture-in-picture;
-              web-share;
-            "
-            allowfullscreen
-          ></iframe>
-          <div class="watch-hero__caption">
-            <span>Aktueller Trailer</span>
-            <strong>Dorohedoro Season 2</strong>
+        <article class="watch-hero__feature" data-watch-hero-card>
+          <img
+            src="assets/images/img-anime/Top 3 Anime für Einsteiger/witch-hat-atelier.png"
+            alt="Witch Hat Atelier"
+            width="720"
+            height="960"
+          />
+          <div>
+            <p>Fallback Pick</p>
+            <h2>Witch Hat Atelier</h2>
+            <span>
+              Ruhige Fantasy, starke Welt und ein sehr guter Startpunkt für die
+              nächste Watchlist.
+            </span>
           </div>
+        </article>
+      </section>
+
+      <section
+        class="watch-section watch-section--controls"
+        aria-labelledby="controls-title"
+      >
+        <div class="watch-section__heading watch-section__heading--split">
+          <div>
+            <p class="watch-kicker">Aktuelle Auswahl</p>
+            <h2 id="controls-title">Watchlist filtern</h2>
+          </div>
+          <p>
+            Die Daten kommen primär aus AniList. Filter und Sortierung laufen im
+            Browser, damit keine unnötigen API-Anfragen entstehen.
+          </p>
         </div>
+
+        <div class="watch-status" role="status" aria-live="polite" data-watch-status>
+          Watchlist wird geladen...
+        </div>
+
+        <form class="watch-controls" aria-label="Watchlist Filter">
+          <label>
+            Genre
+            <select data-watch-filter-genre>
+              <option value="all">Alle Genres</option>
+            </select>
+          </label>
+
+          <label>
+            Status
+            <select data-watch-filter-status>
+              <option value="all">Alle Status</option>
+              <option value="RELEASING">Läuft gerade</option>
+              <option value="NOT_YET_RELEASED">Noch nicht gestartet</option>
+              <option value="FINISHED">Abgeschlossen</option>
+            </select>
+          </label>
+
+          <label>
+            Sortierung
+            <select data-watch-sort>
+              <option value="trending">Trending</option>
+              <option value="score">Bewertung</option>
+              <option value="popularity">Popularität</option>
+              <option value="start">Season/Jahr</option>
+            </select>
+          </label>
+        </form>
+      </section>
+
+      <section
+        class="watch-section"
+        id="airing-now"
+        aria-labelledby="airing-title"
+      >
+        <div class="watch-section__heading">
+          <p class="watch-kicker">Airing Now</p>
+          <h2 id="airing-title">Läuft gerade</h2>
+          <p>
+            Aktuelle Serien mit Status, Bewertung, Genres und nächster Episode,
+            sobald AniList diese Daten bereitstellt.
+          </p>
+        </div>
+
+        <div class="watch-grid" data-watch-section="airing">
+          <article class="watch-anime-card">
+            <img
+              src="assets/images/img-anime/Top 3 Anime für Einsteiger/witch-hat-atelier.png"
+              alt="Witch Hat Atelier"
+              width="480"
+              height="640"
+              loading="lazy"
+            />
+            <div>
+              <p>Fallback | Fantasy</p>
+              <h3>Witch Hat Atelier</h3>
+              <span>
+                Wenn die API nicht erreichbar ist, bleibt diese kuratierte
+                Empfehlung sichtbar.
+              </span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section
+        class="watch-section"
+        id="upcoming-anime"
+        aria-labelledby="upcoming-title"
+      >
+        <div class="watch-section__heading">
+          <p class="watch-kicker">Upcoming</p>
+          <h2 id="upcoming-title">Bald verfügbar</h2>
+          <p>
+            Kommende Titel, die bereits genug Aufmerksamkeit bekommen, um auf
+            deiner Watchlist vorzumerken.
+          </p>
+        </div>
+
+        <div class="watch-grid" data-watch-section="upcoming"></div>
+      </section>
+
+      <section
+        class="watch-section"
+        id="trending-anime"
+        aria-labelledby="trending-title"
+      >
+        <div class="watch-section__heading">
+          <p class="watch-kicker">Trending</p>
+          <h2 id="trending-title">Gerade im Gespräch</h2>
+          <p>
+            Titel mit hoher Aktivität, Popularität oder Bewertung. Ideal, wenn
+            du schnell sehen willst, worüber gerade gesprochen wird.
+          </p>
+        </div>
+
+        <div class="watch-grid" data-watch-section="trending"></div>
       </section>
 
       <section
         class="watch-section watch-section--trailers"
         aria-labelledby="trailer-title"
       >
-        <aside class="author-card watch-author-card" aria-label="Autor">
-          <img
-            class="author-card__avatar"
-            src="assets/images/img-anime/author-avatar.png"
-            alt="Anime Pulse Autor Avatar"
-          />
-          <strong>Anime Pulse Team</strong>
-          <span>Autor</span>
-          <p>
-            Kuratiert neue Season-Picks, Trailer und Empfehlungen für deine
-            nächste Watchlist.
-          </p>
-        </aside>
-
         <div class="watch-section__heading watch-section__heading--split">
           <div>
-            <p class="watch-kicker">Official Trailers</p>
-            <h2 id="trailer-title">Aktuelle Anime-Trailer</h2>
+            <p class="watch-kicker">Trailer</p>
+            <h2 id="trailer-title">Aktuelle Videos</h2>
           </div>
           <p>
-            Offizielle YouTube-Embeds von Crunchyroll und den
-            Anime-Promo-Kanälen für die wichtigsten Spring-2026-Picks.
+            Trailer werden nur angezeigt, wenn die Datenquelle einen passenden
+            YouTube-Trailer liefert. Sonst bleibt der Bereich ruhig.
           </p>
         </div>
 
-        <div class="trailer-grid">
-          <article class="trailer-card">
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/d1reryPOMX0"
-              title="Witch Hat Atelier Official Trailer"
-              loading="lazy"
-              allow="
-                accelerometer;
-                autoplay;
-                clipboard-write;
-                encrypted-media;
-                gyroscope;
-                picture-in-picture;
-                web-share;
-              "
-              allowfullscreen
-            ></iframe>
-            <div>
-              <p>April 2026</p>
-              <h3>Witch Hat Atelier</h3>
-            </div>
-          </article>
-
-          <article class="trailer-card">
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/EAUcBiCydRc"
-              title="Liar Game Official Trailer"
-              loading="lazy"
-              allow="
-                accelerometer;
-                autoplay;
-                clipboard-write;
-                encrypted-media;
-                gyroscope;
-                picture-in-picture;
-                web-share;
-              "
-              allowfullscreen
-            ></iframe>
-            <div>
-              <p>April 2026</p>
-              <h3>LIAR GAME</h3>
-            </div>
-          </article>
-
-          <article class="trailer-card">
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/t0Ruh2QBpqg"
-              title="MARRIAGETOXIN Official Trailer"
-              loading="lazy"
-              allow="
-                accelerometer;
-                autoplay;
-                clipboard-write;
-                encrypted-media;
-                gyroscope;
-                picture-in-picture;
-                web-share;
-              "
-              allowfullscreen
-            ></iframe>
-            <div>
-              <p>April 2026</p>
-              <h3>MARRIAGETOXIN</h3>
-            </div>
-          </article>
-
-          <article class="trailer-card">
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/jVl4bY81iIs"
-              title="Re:ZERO Season 4 Official Trailer"
-              loading="lazy"
-              allow="
-                accelerometer;
-                autoplay;
-                clipboard-write;
-                encrypted-media;
-                gyroscope;
-                picture-in-picture;
-                web-share;
-              "
-              allowfullscreen
-            ></iframe>
-            <div>
-              <p>April 2026</p>
-              <h3>Re:ZERO Season 4</h3>
-            </div>
-          </article>
-        </div>
+        <div class="trailer-grid" data-watch-trailers></div>
       </section>
 
       <section
-        class="watch-section watch-section--queue"
-        id="season-picks"
-        aria-labelledby="season-title"
+        class="watch-section watch-section--sources"
+        aria-labelledby="sources-title"
       >
         <div class="watch-section__heading">
-          <p class="watch-kicker">Season Queue</p>
-          <h2 id="season-title">Spring 2026 auf dem Radar</h2>
+          <p class="watch-kicker">Quellen</p>
+          <h2 id="sources-title">Woher die Daten kommen</h2>
           <p>
-            Diese Titel tauchen in den aktuellen Lineups und Simulcast-Plänen
-            besonders häufig auf. Die Mischung deckt Fantasy, Action,
-            Psychothriller und große Franchise-Rückkehrer ab.
+            Anime-Daten werden über die AniList GraphQL API geladen. Lokale
+            Fallbacks sorgen dafür, dass die Watchlist auch bei API-Ausfall
+            lesbar bleibt. News-Texte werden nicht automatisch kopiert.
           </p>
         </div>
-
-        <div class="season-grid">
-          <article class="season-card season-card--featured">
-            <img
-              src="assets/images/img-anime/Top 3 Anime für Einsteiger/witch-hat-atelier.png"
-              alt="Ruhige Fantasy-Landschaft für Witch Hat Atelier"
-            />
-            <div>
-              <p>Must Watch</p>
-              <h3>Witch Hat Atelier</h3>
-              <span
-                >Magische Coming-of-Age-Fantasy mit ruhiger Bildsprache und
-                großem Hype durch die Manga-Vorlage.</span
-              >
-            </div>
-          </article>
-
-          <article class="season-card">
-            <p>Dark Fantasy</p>
-            <h3>Dorohedoro Season 2</h3>
-            <span
-              >Schmutzige Stadt, seltsame Magie und ein Stil, der sich bewusst
-              nicht glatt anfühlt.</span
-            >
-          </article>
-
-          <article class="season-card">
-            <p>Psychothriller</p>
-            <h3>LIAR GAME</h3>
-            <span
-              >Für alle, die Manipulation, Mindgames und taktische Spannung
-              lieber als reine Action schauen.</span
-            >
-          </article>
-
-          <article class="season-card">
-            <p>Big Return</p>
-            <h3>Re:ZERO Season 4</h3>
-            <span
-              >Der perfekte Pick, wenn du Isekai mit Drama, Druck und
-              emotionalen Eskalationen suchst.</span
-            >
-          </article>
-
-          <article class="season-card">
-            <p>Sci-Fi Adventure</p>
-            <h3>Dr. STONE SCIENCE FUTURE</h3>
-            <span
-              >Senku bleibt die beste Wahl für alle, die Abenteuer mit
-              Erfindungen und Teamgefühl mögen.</span
-            >
-          </article>
-
-          <article class="season-card">
-            <p>Action Comedy</p>
-            <h3>MARRIAGETOXIN</h3>
-            <span
-              >Assassin-Energie, Dating-Chaos und ein Konzept, das sich deutlich
-              von den Standard-Picks abhebt.</span
-            >
-          </article>
-
-          <article class="season-card">
-            <p>Long Run</p>
-            <h3>One Piece - Elbaph Arc</h3>
-            <span
-              >Für Fans, die große Abenteuer mögen: Die Reise der Strohhüte
-              führt ins Land der Riesen.</span
-            >
-          </article>
-        </div>
-      </section>
-
-      <section
-        class="watch-section watch-section--week"
-        id="top-week"
-        aria-labelledby="week-title"
-      >
-        <div class="watch-section__heading watch-section__heading--split">
-          <div>
-            <p class="watch-kicker">Top 3</p>
-            <h2 id="week-title">Anime dieser Woche</h2>
-          </div>
-          <p>
-            Drei schnelle Picks, wenn du heute Abend nicht lange scrollen
-            willst.
-          </p>
-        </div>
-
-        <div class="week-grid">
-          <article class="week-card">
-            <img
-              src="assets/images/img-anime/Top 3 Anime dieser Woche/solo-leveling.png"
-              alt="Solo Leveling Gruppenvisual"
-            />
-            <div class="week-card__body">
-              <span>01</span>
-              <h3>Solo Leveling</h3>
-              <p>
-                Für Power-Fantasy, große Kämpfe und einen schnellen Einstieg
-                ohne viel Leerlauf.
-              </p>
-            </div>
-          </article>
-
-          <article class="week-card">
-            <img
-              src="assets/images/img-anime/Top 3 Anime dieser Woche/re.zero-season-4.png"
-              alt="Re:ZERO Season 4 Visual"
-            />
-            <div class="week-card__body">
-              <span>02</span>
-              <h3>Re:ZERO Season 4</h3>
-              <p>
-                Für Drama, Zeitschleifen-Nerven und Figuren, die selten eine
-                einfache Entscheidung bekommen.
-              </p>
-            </div>
-          </article>
-
-          <article class="week-card">
-            <img
-              src="assets/images/img-anime/Top 3 Anime dieser Woche/jujutsu-kaisen-all-man.png"
-              alt="Jujutsu Kaisen Charaktergruppe"
-            />
-            <div class="week-card__body">
-              <span>03</span>
-              <h3>Jujutsu Kaisen</h3>
-              <p>
-                Der starke Nachhol-Pick, wenn du moderne Battle-Shonen mit Stil
-                und Tempo willst.
-              </p>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section
-        class="watch-section watch-section--starter"
-        id="starter-picks"
-        aria-labelledby="starter-title"
-      >
-        <div class="watch-section__heading">
-          <p class="watch-kicker">Startklar</p>
-          <h2 id="starter-title">Top 5 für Einsteiger</h2>
-          <p>
-            Diese Reihe ist für Leute gedacht, die Anime neu entdecken oder
-            jemandem einen leichten Einstieg empfehlen möchten.
-          </p>
-        </div>
-
-        <div class="starter-layout">
-          <figure class="starter-visual">
-            <img
-              src="assets/images/img-anime/Top 3 Anime für Einsteiger/einstieg-templet.png"
-              alt="Helle Fantasy-Landschaft als Einstiegsmotiv"
-            />
-            <figcaption>
-              Sanfter Start oder volle Action: Die Watchlist sortiert nach
-              Stimmung.
-            </figcaption>
-          </figure>
-
-          <div class="starter-list">
-            <article class="starter-item">
-              <img
-                src="assets/images/img-anime/Top 3 Anime für Einsteiger/witch-hat-atelier.png"
-                alt="Witch Hat Atelier Landschaft"
-              />
-              <div>
-                <h3>Witch Hat Atelier</h3>
-                <p>
-                  Für ruhige Fantasy, schöne Welten und einen magischen Start.
-                </p>
-              </div>
-            </article>
-
-            <article class="starter-item">
-              <img
-                src="assets/images/img-anime/Top 3 Anime für Einsteiger/one-punch-man.jpg"
-                alt="One Punch Man Visual"
-              />
-              <div>
-                <h3>One Punch Man</h3>
-                <p>
-                  Für Comedy, Action und einen Helden, der jede Szene trocken
-                  bricht.
-                </p>
-              </div>
-            </article>
-
-            <article class="starter-item">
-              <img
-                src="assets/images/img-anime/Top 3 Anime für Einsteiger/demon-slayer.png"
-                alt="Demon Slayer Visual"
-              />
-              <div>
-                <h3>Demon Slayer</h3>
-                <p>
-                  Für emotionale Motivation, klare Ziele und spektakuläre
-                  Kämpfe.
-                </p>
-              </div>
-            </article>
-
-            <article class="starter-item">
-              <img
-                src="assets/images/img-anime/Top 3 Anime für Einsteiger/my-hero-academia.png"
-                alt="My Hero Academia Visual"
-              />
-              <div>
-                <h3>My Hero Academia</h3>
-                <p>
-                  Für Superhelden, Schulgefühl und viele Figuren zum
-                  Mitfiebern.
-                </p>
-              </div>
-            </article>
-
-            <article class="starter-item">
-              <img
-                src="assets/images/img-anime/Top 3 Anime für Einsteiger/classroom-of-elite.png"
-                alt="Classroom of the Elite Visual"
-              />
-              <div>
-                <h3>Classroom of the Elite</h3>
-                <p>
-                  Für Strategie, Rankings und ruhige Spannung statt
-                  Daueraction.
-                </p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section
-        class="watch-section watch-section--plan"
-        aria-labelledby="plan-title"
-      >
-        <div class="watch-section__heading watch-section__heading--split">
-          <div>
-            <p class="watch-kicker">Watch Mode</p>
-            <h2 id="plan-title">So sortierst du deine Liste</h2>
-          </div>
-          <p>
-            Die beste Watchlist ist nicht die längste. Sie passt zu der Zeit,
-            die du wirklich hast.
-          </p>
-        </div>
-
-        <div class="plan-grid">
-          <article>
-            <span>30 Min.</span>
-            <h3>Eine Folge testen</h3>
-            <p>
-              Witch Hat Atelier, LIAR GAME oder One Punch Man, wenn du schnell
-              entscheiden willst.
-            </p>
-          </article>
-          <article>
-            <span>Abend</span>
-            <h3>Drei Folgen am Stück</h3>
-            <p>
-              Re:ZERO, Solo Leveling oder Demon Slayer, wenn du direkt in
-              Spannung fallen möchtest.
-            </p>
-          </article>
-          <article>
-            <span>Wochenende</span>
-            <h3>Langer Arc</h3>
-            <p>
-              One Piece, Dr. STONE oder My Hero Academia, wenn du mehr Welt und
-              Crew-Gefühl willst.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section
-        class="watch-section watch-section--faq"
-        aria-labelledby="faq-title"
-      >
-        <div class="watch-section__heading">
-          <p class="watch-kicker">FAQ</p>
-          <h2 id="faq-title">Kurz vor dem Start</h2>
-        </div>
-
-        <div class="watch-faq">
-          <details>
-            <summary>Welche Serie sollte ich zuerst schauen?</summary>
-            <p>
-              Wenn du etwas Aktuelles willst, starte mit Witch Hat Atelier oder
-              Re:ZERO Season 4. Wenn du neu im Thema bist, ist One Punch Man der
-              schnellste Einstieg.
-            </p>
-          </details>
-
-          <details>
-            <summary>Was passt zu einem ruhigen Abend?</summary>
-            <p>
-              Witch Hat Atelier und Dr. STONE sind gute Picks, weil beide nicht
-              nur über Kämpfe funktionieren, sondern über Welt, Neugier und
-              Atmosphäre.
-            </p>
-          </details>
-
-          <details>
-            <summary>Was schaue ich mit Freunden?</summary>
-            <p>
-              Solo Leveling, Jujutsu Kaisen und Demon Slayer funktionieren gut
-              in Gruppen, weil die Folgen klare Höhepunkte und viel
-              Gesprächsstoff liefern.
-            </p>
-          </details>
-        </div>
-      </section>
-
-      <section
-        class="watch-section watch-section--suggest"
-        aria-labelledby="suggest-title"
-      >
-        <div>
-          <p class="watch-kicker">Community Pick</p>
-          <h2 id="suggest-title">Empfehlung einreichen</h2>
-          <p>
-            Fehlt ein Anime, der unbedingt auf die Liste gehört? Trag ihn ein
-            und sammle kurz, warum er sich lohnt.
-          </p>
-        </div>
-
-        <form class="watch-form">
-          <label for="anime-title">Anime-Titel</label>
-          <input id="anime-title" name="anime-title" type="text" />
-
-          <label for="anime-reason">Warum auf die Watchlist?</label>
-          <textarea id="anime-reason" name="anime-reason" rows="4"></textarea>
-
-          <button type="submit">Vormerken</button>
-        </form>
+        <a class="watch-source-link" href="https://docs.anilist.co/"
+          >AniList API Dokumentation</a
+        >
       </section>
 
       <section class="share-btn" aria-labelledby="watchlist-share-title">
@@ -591,4 +273,3 @@
     </footer>
   </body>
 </html>
-
