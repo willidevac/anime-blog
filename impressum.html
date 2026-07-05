@@ -9,6 +9,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png" />
     <link rel="stylesheet" href="css/tailwind.css" />
     <script src="js/molecules/site-nav.js" defer></script>
+    <script src="js/molecules/cookie-preferences.js" defer></script>
   </head>
   <body>
     <header class="page-header">
@@ -129,7 +130,14 @@
     <footer class="site-footer">
       <p>&copy; 2026 Anime Pulse</p>
       <a href="impressum.html">Impressum</a>
-      <a href="#">Cookie Preferences</a>
+      <button
+        class="cookie-preferences-button"
+        type="button"
+        aria-haspopup="dialog"
+        aria-controls="cookiePreferencesDialog"
+      >
+        Cookie Preferences
+      </button>
     </footer>
   </body>
 </html>

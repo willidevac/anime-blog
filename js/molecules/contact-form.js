@@ -185,10 +185,15 @@ async function submitContactForm(event, formContext) {
       },
     );
 
-    statusMessage.textContent = "Danke! Deine Nachricht wurde erfolgreich gesendet.";
+    statusMessage.textContent =
+      "Danke! Deine Nachricht wurde erfolgreich gesendet.";
     contactForm.reset();
   } catch (error) {
-    console.error("EmailJS Fehler:", error.status, error.text || error.message || error);
+    console.error(
+      "EmailJS Fehler:",
+      error.status,
+      error.text || error.message || error,
+    );
     statusMessage.textContent =
       "Die Nachricht konnte nicht gesendet werden. Bitte versuche es später erneut.";
     statusMessage.classList.add("is-error");
@@ -196,4 +201,3 @@ async function submitContactForm(event, formContext) {
     setSubmitState(submitButton, false);
   }
 }
-
