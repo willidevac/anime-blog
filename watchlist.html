@@ -70,6 +70,7 @@
     <script src="js/pages/watchlist-fallback.js" defer></script>
     <script src="js/services/anime-data-service.js" defer></script>
     <script src="js/pages/watchlist-api.js" defer></script>
+    <script src="js/molecules/cookie-preferences.js" defer></script>
   </head>
   <body>
     <header class="page-header">
@@ -368,7 +369,14 @@
     <footer class="site-footer site-footer--page-4">
       <p>&copy; 2026 Anime Pulse</p>
       <a href="impressum.html">Impressum</a>
-      <a href="#">Cookie Preferences</a>
+      <button
+        class="cookie-preferences-button"
+        type="button"
+        aria-haspopup="dialog"
+        aria-controls="cookiePreferencesDialog"
+      >
+        Cookie Preferences
+      </button>
     </footer>
   </body>
 </html>
