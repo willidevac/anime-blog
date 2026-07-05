@@ -6,6 +6,7 @@
 @import "./molecules/buttons.css";
 @import "./molecules/cards.css";
 @import "./molecules/author-box.css";
+@import "./molecules/article-layout.css";
 @import "./molecules/faq.css";
 @import "./molecules/form.css";
 @import "./molecules/impressum.css";
