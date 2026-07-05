@@ -1,4 +1,4 @@
-export const WATCHLIST_FALLBACK = {
+window.WATCHLIST_FALLBACK = {
   airing: [
     {
       id: "fallback-witch-hat",
@@ -156,4 +156,3 @@ export const WATCHLIST_FALLBACK = {
     },
   ],
 };
-

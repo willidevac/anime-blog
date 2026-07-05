@@ -79,7 +79,7 @@ const WATCHLIST_QUERIES = {
   `,
 };
 
-export async function loadWatchlistData(options = {}) {
+async function loadWatchlistData(options = {}) {
   const seasonYear = options.seasonYear || new Date().getFullYear();
   const perPage = options.perPage || 9;
 
@@ -184,3 +184,6 @@ function normalizeTrailer(trailer) {
   };
 }
 
+window.AnimePulseAniList = {
+  loadWatchlistData,
+};
