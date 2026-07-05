@@ -276,9 +276,9 @@
         aria-labelledby="suggest-title"
       >
         <div>
-          <p class="watch-kicker">Community Pick</p>
-          <h2 id="suggest-title">Empfehlung einreichen</h2>
-          <p>
+          <p class="watch-kicker" data-i18n="suggestKicker">Community Pick</p>
+          <h2 id="suggest-title" data-i18n="suggestTitle">Empfehlung einreichen</h2>
+          <p data-i18n="suggestDescription">
             Fehlt ein Anime, der unbedingt auf die Liste gehört? Trag ihn ein
             und sammle kurz, warum er sich lohnt.
           </p>
@@ -286,23 +286,24 @@
 
         <form class="watch-form" id="watchForm" novalidate>
           <div class="watch-form__field">
-            <label for="anime-title">Anime-Titel</label>
+            <label for="anime-title" data-i18n="suggestAnimeTitle">Anime-Titel</label>
             <input id="anime-title" name="anime-title" type="text" />
             <span class="watch-form__error" aria-live="polite"></span>
           </div>
 
           <div class="watch-form__field">
-            <label for="anime-reason">Warum auf die Watchlist?</label>
+            <label for="anime-reason" data-i18n="suggestReason">Warum auf die Watchlist?</label>
             <textarea id="anime-reason" name="anime-reason" rows="4"></textarea>
             <span class="watch-form__error" aria-live="polite"></span>
           </div>
 
-          <button type="submit">Vormerken</button>
+          <button type="submit" data-i18n="suggestSubmit">Vormerken</button>
           <p class="watch-form__status" aria-live="polite"></p>
           <ul
             class="watch-form__suggestions"
             id="watchSuggestionList"
             aria-label="Vorgemerkte Empfehlungen"
+            data-i18n-attr="aria-label:suggestionListLabel"
           ></ul>
         </form>
       </section>

@@ -1,5 +1,19 @@
 const watchForm = document.querySelector("#watchForm");
 const watchSuggestions = [];
+const watchFormTranslations = {
+  de: {
+    invalidForm: "Bitte prüfe die markierten Felder.",
+    success: "Danke! Deine Empfehlung wurde vorgemerkt.",
+    titleMin: "Bitte gib mindestens zwei Zeichen ein.",
+    reasonMin: "Bitte schreibe mindestens zehn Zeichen.",
+  },
+  en: {
+    invalidForm: "Please check the highlighted fields.",
+    success: "Thanks! Your recommendation has been saved.",
+    titleMin: "Please enter at least two characters.",
+    reasonMin: "Please write at least ten characters.",
+  },
+};
 
 if (watchForm) {
   initWatchForm();
@@ -43,7 +57,7 @@ function submitWatchSuggestion(event, formContext) {
   clearWatchFormStatus(statusMessage);
 
   if (!validateWatchForm(fields, formFields)) {
-    statusMessage.textContent = "Bitte prüfe die markierten Felder.";
+    statusMessage.textContent = getWatchFormText("invalidForm");
     statusMessage.classList.add("is-error");
     return;
   }
@@ -51,7 +65,7 @@ function submitWatchSuggestion(event, formContext) {
   watchSuggestions.push(getWatchSuggestion(fields));
   renderWatchSuggestions(suggestionList);
   watchForm.reset();
-  statusMessage.textContent = "Danke! Deine Empfehlung wurde vorgemerkt.";
+  statusMessage.textContent = getWatchFormText("success");
 }
 
 // Prüft alle Formularfelder und gibt true oder false zurück.
@@ -75,12 +89,12 @@ function getWatchValidationRules(fields) {
     {
       field: fields.title,
       isInvalid: fields.title.value.trim().length < 2,
-      message: "Bitte gib mindestens zwei Zeichen ein.",
+      message: getWatchFormText("titleMin"),
     },
     {
       field: fields.reason,
       isInvalid: fields.reason.value.trim().length < 10,
-      message: "Bitte schreibe mindestens zehn Zeichen.",
+      message: getWatchFormText("reasonMin"),
     },
   ];
 }
@@ -146,4 +160,10 @@ function clearFieldError(field) {
 function clearWatchFormStatus(statusMessage) {
   statusMessage.textContent = "";
   statusMessage.classList.remove("is-error");
+}
+
+function getWatchFormText(key) {
+  const locale = document.documentElement.lang === "en" ? "en" : "de";
+
+  return watchFormTranslations[locale][key] || watchFormTranslations.de[key] || key;
 }

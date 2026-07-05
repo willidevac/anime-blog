@@ -58,6 +58,14 @@ const TRANSLATIONS = {
     sourcesDescription:
       "Anime-Daten werden über die Jikan API geladen. Lokale Fallbacks sorgen dafür, dass die Watchlist auch bei API-Ausfall lesbar bleibt. AniList bleibt die bessere Datenquelle für einen späteren Proxy- oder Build-Step, ist aber direkt im Browser per CORS blockiert. News-Texte werden nicht automatisch kopiert.",
     sourceLink: "Jikan API Dokumentation",
+    suggestKicker: "Community Pick",
+    suggestTitle: "Empfehlung einreichen",
+    suggestDescription:
+      "Fehlt ein Anime, der unbedingt auf die Liste gehört? Trag ihn ein und sammle kurz, warum er sich lohnt.",
+    suggestAnimeTitle: "Anime-Titel",
+    suggestReason: "Warum auf die Watchlist?",
+    suggestSubmit: "Vormerken",
+    suggestionListLabel: "Vorgemerkte Empfehlungen",
     shareText:
       "Follow me for more content like this, and share the article with your friends!",
     shareButton: "Share",
@@ -145,6 +153,14 @@ const TRANSLATIONS = {
     sourcesDescription:
       "Anime data is loaded via the Jikan API. Local fallbacks keep the watchlist readable even if the API is unavailable. AniList remains the stronger data source for a future proxy or build step, but direct browser requests are blocked by CORS. News articles are not copied automatically.",
     sourceLink: "Jikan API documentation",
+    suggestKicker: "Community Pick",
+    suggestTitle: "Submit a recommendation",
+    suggestDescription:
+      "Missing an anime that belongs on the list? Add it and briefly explain why it is worth watching.",
+    suggestAnimeTitle: "Anime title",
+    suggestReason: "Why should it be on the watchlist?",
+    suggestSubmit: "Save recommendation",
+    suggestionListLabel: "Saved recommendations",
     shareText:
       "Follow me for more content like this, and share the article with your friends!",
     shareButton: "Share",
@@ -219,7 +235,8 @@ initWatchlist();
 
 async function initWatchlist() {
   bindControls();
-  setStatus("Live-Daten werden geladen...");
+  applyTranslations();
+  setStatus(t("loading"));
   renderWatchlist(WATCHLIST_FALLBACK);
 
   try {
@@ -231,13 +248,13 @@ async function initWatchlist() {
     state.data = mergeWithFallback(liveData);
     state.source = "live";
     renderWatchlist(state.data);
-    setStatus("Live-Daten von Jikan geladen.");
+    setStatus(t("liveLoaded"));
   } catch (error) {
     state.data = WATCHLIST_FALLBACK;
     state.source = "fallback";
     renderWatchlist(state.data);
     console.warn("Live-Daten konnten nicht geladen werden:", error.message);
-    setStatus("Die Live-API ist gerade nicht erreichbar. Kuratierte Fallback-Daten werden angezeigt.");
+    setStatus(t("liveFailed"));
   }
 }
 
@@ -430,6 +447,12 @@ function renderTrailers(data) {
 }
 
 function bindControls() {
+  elements.languageButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      setLocale(button.dataset.watchLang);
+    });
+  });
+
   elements.filters.genre?.addEventListener("change", (event) => {
     state.filters.genre = event.target.value;
     renderWatchlist(state.data);
@@ -556,6 +579,94 @@ function getCoverImage(anime) {
   return anime.coverImage || anime.bannerImage || FALLBACK_COVER;
 }
 
+function getAnimeDescription(anime) {
+  return state.locale === "en" && anime.descriptionEn
+    ? anime.descriptionEn
+    : anime.description;
+}
+
+function applyTranslations() {
+  document.documentElement.lang = state.locale;
+  document.title = t("pageTitle");
+
+  const menuButton = document.querySelector(".page-header__menu");
+  menuButton?.setAttribute("aria-label", t("menuOpen"));
+
+  elements.i18nTargets.forEach((element) => {
+    element.textContent = t(element.dataset.i18n);
+  });
+
+  elements.i18nAttrTargets.forEach((element) => {
+    element.dataset.i18nAttr.split(";").forEach((mapping) => {
+      const [attribute, key] = mapping.split(":");
+
+      if (attribute && key) {
+        element.setAttribute(attribute.trim(), t(key.trim()));
+      }
+    });
+  });
+
+  updateSelectLabels();
+  updateLanguageButtons();
+}
+
+function updateSelectLabels() {
+  setOptionLabel(elements.filters.genre, "all", t("allGenres"));
+  setOptionLabel(elements.filters.status, "all", t("allStatus"));
+  setOptionLabel(elements.filters.status, "RELEASING", t("releasing"));
+  setOptionLabel(elements.filters.status, "NOT_YET_RELEASED", t("notYetReleased"));
+  setOptionLabel(elements.filters.status, "FINISHED", t("finished"));
+  setOptionLabel(elements.filters.sort, "score", t("scoreSort"));
+  setOptionLabel(elements.filters.sort, "popularity", t("popularitySort"));
+  setOptionLabel(elements.filters.sort, "start", t("startSort"));
+}
+
+function setOptionLabel(select, value, label) {
+  const option = select?.querySelector(`option[value="${value}"]`);
+
+  if (option) {
+    option.textContent = label;
+  }
+}
+
+function updateLanguageButtons() {
+  elements.languageButtons.forEach((button) => {
+    const isActive = button.dataset.watchLang === state.locale;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
+}
+
+function setLocale(locale) {
+  if (!TRANSLATIONS[locale] || locale === state.locale) {
+    return;
+  }
+
+  state.locale = locale;
+  localStorage.setItem("anime-pulse-watchlist-lang", locale);
+  applyTranslations();
+  renderWatchlist(state.data);
+  setStatus(state.source === "live" ? t("liveLoaded") : t("liveFailed"));
+}
+
+function getInitialLocale() {
+  const savedLocale = localStorage.getItem("anime-pulse-watchlist-lang");
+
+  if (TRANSLATIONS[savedLocale]) {
+    return savedLocale;
+  }
+
+  return navigator.language?.toLowerCase().startsWith("en") ? "en" : "de";
+}
+
+function getLocaleDateCode() {
+  return state.locale === "en" ? "en-US" : "de-DE";
+}
+
+function t(key) {
+  return TRANSLATIONS[state.locale]?.[key] || TRANSLATIONS.de[key] || key;
+}
+
 function truncateText(text, maxLength) {
   if (!text || text.length <= maxLength) {
     return text || "";
@@ -575,5 +686,211 @@ function escapeHtml(value) {
 
 function escapeAttribute(value) {
   return escapeHtml(value || "");
+}
+
+function renderHero(data) {
+  const heroAnime = data.trending?.[0] || data.airing?.[0] || data.upcoming?.[0];
+
+  if (!heroAnime || !elements.heroCard) {
+    if (elements.heroCard) {
+      elements.heroCard.innerHTML = `
+        <div class="watch-hero__empty">
+          <p>${escapeHtml(t("noHeroKicker"))}</p>
+          <h2>${escapeHtml(t("noHeroTitle"))}</h2>
+          <span>${escapeHtml(t("noHeroText"))}</span>
+        </div>
+      `;
+    }
+    return;
+  }
+
+  elements.heroCard.innerHTML = `
+    <img
+      src="${escapeAttribute(getCoverImage(heroAnime))}"
+      alt="${escapeAttribute(heroAnime.title)}"
+      width="720"
+      height="960"
+    />
+    <div>
+      <p>${state.source === "live" ? escapeHtml(t("liveTrend")) : escapeHtml(t("fallbackPick"))}</p>
+      <h2>${escapeHtml(heroAnime.title)}</h2>
+      <span>${escapeHtml(truncateText(getAnimeDescription(heroAnime), 180))}</span>
+      ${heroAnime.siteUrl ? `<a href="${escapeAttribute(heroAnime.siteUrl)}">${escapeHtml(t("sourceOpen"))}</a>` : ""}
+    </div>
+  `;
+
+  if (elements.heroDescription) {
+    elements.heroDescription.textContent = `${heroAnime.title} ${t("strongestPick")} ${t("heroSource")}: ${state.source === "live" ? "Jikan API" : t("localFallback")}.`;
+  }
+}
+
+function renderSection(section, entries) {
+  const container = elements.sections[section];
+
+  if (!container) {
+    return;
+  }
+
+  if (!entries?.length) {
+    container.innerHTML = `
+      <p class="watch-empty">${escapeHtml(t("noEntries"))}</p>
+    `;
+    return;
+  }
+
+  container.innerHTML = entries.map(renderAnimeCard).join("");
+}
+
+function renderAnimeCard(anime) {
+  const meta = [
+    formatStatus(anime.status),
+    formatSeason(anime.season, anime.seasonYear),
+    anime.format,
+  ].filter(Boolean);
+
+  return `
+    <article class="watch-anime-card">
+      <img
+        src="${escapeAttribute(getCoverImage(anime))}"
+        alt="${escapeAttribute(anime.title)}"
+        width="480"
+        height="640"
+        loading="lazy"
+      />
+      <div>
+        <p>${escapeHtml(meta.join(" | ") || t("animePick"))}</p>
+        <h3>${escapeHtml(anime.title)}</h3>
+        <span>${escapeHtml(truncateText(getAnimeDescription(anime), 160))}</span>
+        <dl class="watch-anime-card__meta">
+          <div>
+            <dt>Score</dt>
+            <dd>${formatScore(anime.averageScore)}</dd>
+          </div>
+          <div>
+            <dt>${escapeHtml(t("episodes"))}</dt>
+            <dd>${anime.episodes || escapeHtml(t("open"))}</dd>
+          </div>
+          <div>
+            <dt>Studio</dt>
+            <dd>${escapeHtml(anime.studio)}</dd>
+          </div>
+        </dl>
+        ${renderGenres(anime.genres)}
+        ${renderAiring(anime.nextAiringEpisode)}
+        ${anime.siteUrl ? `<a class="watch-card-link" href="${escapeAttribute(anime.siteUrl)}">${escapeHtml(t("moreInfo"))}</a>` : ""}
+      </div>
+    </article>
+  `;
+}
+
+function renderAiring(nextAiringEpisode) {
+  if (!nextAiringEpisode?.airingAt) {
+    return "";
+  }
+
+  const date = new Date(nextAiringEpisode.airingAt * 1000);
+
+  return `
+    <p class="watch-next-episode">
+      ${escapeHtml(t("episode"))} ${nextAiringEpisode.episode} ${escapeHtml(t("appears"))} ${date.toLocaleDateString(getLocaleDateCode(), {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+      })}.
+    </p>
+  `;
+}
+
+function renderTrailers(data) {
+  if (!elements.trailerGrid) {
+    return;
+  }
+
+  const trailers = Object.values(data)
+    .flat()
+    .filter((anime) => anime.trailer?.embedUrl)
+    .slice(0, 4);
+
+  if (!trailers.length) {
+    elements.trailerGrid.innerHTML = `
+      <p class="watch-empty">${escapeHtml(t("noTrailers"))}</p>
+    `;
+    return;
+  }
+
+  elements.trailerGrid.innerHTML = trailers
+    .map((anime) => {
+      return `
+        <article class="trailer-card">
+          <iframe
+            src="${escapeAttribute(anime.trailer.embedUrl)}"
+            title="${escapeAttribute(`${anime.title} Trailer`)}"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+          <div>
+            <p>${escapeHtml(formatSeason(anime.season, anime.seasonYear) || "Trailer")}</p>
+            <h3>${escapeHtml(anime.title)}</h3>
+          </div>
+        </article>
+      `;
+    })
+    .join("");
+}
+
+function populateGenreOptions(data) {
+  const select = elements.filters.genre;
+
+  if (!select) {
+    return;
+  }
+
+  const currentValue = select.value || "all";
+  const genres = [...new Set(Object.values(data).flat().flatMap((anime) => anime.genres || []))]
+    .filter(Boolean)
+    .sort((a, b) => a.localeCompare(b, state.locale));
+
+  select.innerHTML = [
+    `<option value="all">${escapeHtml(t("allGenres"))}</option>`,
+    ...genres.map((genre) => `<option value="${escapeAttribute(genre)}">${escapeHtml(genre)}</option>`),
+  ].join("");
+  select.value = genres.includes(currentValue) ? currentValue : "all";
+  state.filters.genre = select.value;
+}
+
+function updateFilterStatus() {
+  const genre = state.filters.genre === "all" ? t("allGenresStatus") : state.filters.genre;
+  const status =
+    state.filters.status === "all" ? t("allStatusStatus") : formatStatus(state.filters.status);
+
+  setStatus(`${t("filteredView")}: ${genre}, ${status}, ${t("sorting")} ${state.filters.sort}.`);
+}
+
+function formatStatus(status) {
+  const labels = {
+    RELEASING: t("releasing"),
+    NOT_YET_RELEASED: t("notYetReleased"),
+    FINISHED: t("finished"),
+    CANCELLED: t("cancelled"),
+    HIATUS: t("hiatus"),
+  };
+
+  return labels[status] || status || "";
+}
+
+function formatSeason(season, year) {
+  const labels = {
+    WINTER: t("winter"),
+    SPRING: t("spring"),
+    SUMMER: t("summer"),
+    FALL: t("fall"),
+  };
+
+  if (!season && !year) {
+    return "";
+  }
+
+  return [labels[season] || season, year].filter(Boolean).join(" ");
 }
 })();

@@ -250,7 +250,41 @@
 .watch-controls {
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: minmax(160px, 0.45fr) repeat(3, minmax(0, 1fr));
+}
+
+.watch-language-switch {
+  border: 0;
+  color: var(--color-white);
+  display: grid;
+  gap: 0.45rem;
+  margin: 0;
+  min-width: 0;
+  padding: 0;
+}
+
+.watch-language-switch legend {
+  font-family: var(--font-label);
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 0;
+}
+
+.watch-language-switch button {
+  background: rgba(32, 36, 58, 0.86);
+  border: 1px solid var(--watch-card-line);
+  border-radius: var(--radius-small);
+  color: var(--color-white);
+  font-family: var(--font-label);
+  font-weight: 700;
+  min-height: 46px;
+}
+
+.watch-language-switch button.is-active,
+.watch-language-switch button:hover,
+.watch-language-switch button:focus-visible {
+  background: var(--color-cyan);
+  color: #090a12;
 }
 
 .watch-controls label {
