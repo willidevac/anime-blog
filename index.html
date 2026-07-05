@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
@@ -166,10 +166,15 @@
         <h2>FAQ</h2>
         <div class="accordion-size">
           <div class="border-btn">
-            <button class="accordion" type="button">
+            <button
+              class="accordion"
+              type="button"
+              aria-expanded="false"
+              aria-controls="faq-panel-about"
+            >
               Worum geht es in diesem Blog?
             </button>
-            <div class="panel">
+            <div class="panel" id="faq-panel-about" aria-hidden="true">
               <p>
                 Hier tauchen wir in die faszinierende Welt der Anime ein und
                 teilen mit dir alles, was du über deine Lieblingsserien wissen
@@ -180,10 +185,15 @@
           </div>
 
           <div class="border-btn">
-            <button class="accordion" type="button">
+            <button
+              class="accordion"
+              type="button"
+              aria-expanded="false"
+              aria-controls="faq-panel-offer"
+            >
               Das bietet dir unser Blog
             </button>
-            <div class="panel">
+            <div class="panel" id="faq-panel-offer" aria-hidden="true">
               <p>
                 Unser Blog enthält Artikel über Trends, Empfehlungen und
                 spannende Diskussionen. Wir analysieren Charakterentwicklung,
@@ -194,8 +204,15 @@
           </div>
 
           <div class="border-btn">
-            <button class="accordion" type="button">Was ist Anime?</button>
-            <div class="panel">
+            <button
+              class="accordion"
+              type="button"
+              aria-expanded="false"
+              aria-controls="faq-panel-anime"
+            >
+              Was ist Anime?
+            </button>
+            <div class="panel" id="faq-panel-anime" aria-hidden="true">
               <p>
                 Als Anime wird japanische Animation bezeichnet. Der Begriff ist
                 sehr breit gefächert, weil es keine festen Vorgaben zu Themen,
@@ -231,9 +248,14 @@
                     name="name"
                     id="name"
                     placeholder="Dein Name"
+                    aria-describedby="name-error"
                     required
                   />
-                  <p class="contact-form__error" id="name-error"></p>
+                  <p
+                    class="contact-form__error"
+                    id="name-error"
+                    aria-live="polite"
+                  ></p>
                 </div>
 
                 <div class="contact-form__field">
@@ -243,9 +265,14 @@
                     name="email"
                     id="email"
                     placeholder="deinname@example.com"
+                    aria-describedby="email-error"
                     required
                   />
-                  <p class="contact-form__error" id="email-error"></p>
+                  <p
+                    class="contact-form__error"
+                    id="email-error"
+                    aria-live="polite"
+                  ></p>
                 </div>
               </div>
 
@@ -256,10 +283,15 @@
                   id="message"
                   rows="5"
                   placeholder="Schreib uns deine Nachricht"
+                  aria-describedby="message-error"
                   required
                   minlength="10"
                 ></textarea>
-                <p class="contact-form__error" id="message-error"></p>
+                <p
+                  class="contact-form__error"
+                  id="message-error"
+                  aria-live="polite"
+                ></p>
               </div>
 
               <div class="contact-form__actions">
@@ -277,8 +309,8 @@
       <section class="share-btn" aria-labelledby="home-share-title">
         <div class="share-container">
           <p id="home-share-title">
-            Follow me for more content like this, and share the article with your
-            friends!
+            Follow me for more content like this, and share the article with
+            your friends!
           </p>
           <button class="share-button" type="button">
             <svg aria-hidden="true" viewBox="0 0 24 24">

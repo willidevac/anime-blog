@@ -43,10 +43,13 @@ if (contactForm) {
 // Öffnet oder schließt einen FAQ-Accordion-Bereich.
 function toggleAccordion(accordion) {
   const panel = accordion.nextElementSibling;
+  const isOpen = accordion.getAttribute("aria-expanded") === "true";
 
-  accordion.classList.toggle("active");
+  accordion.classList.toggle("active", !isOpen);
+  accordion.setAttribute("aria-expanded", String(!isOpen));
+  panel.setAttribute("aria-hidden", String(isOpen));
 
-  if (panel.style.maxHeight) {
+  if (isOpen) {
     panel.style.maxHeight = null;
     return;
   }
@@ -179,3 +182,4 @@ async function submitContactForm(event) {
     setSubmitState(false);
   }
 }
+
