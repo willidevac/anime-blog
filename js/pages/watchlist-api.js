@@ -84,12 +84,16 @@ const TRANSLATIONS = {
     noEntries:
       "Für diesen Bereich sind mit den aktuellen Filtern keine Einträge vorhanden.",
     animePick: "Anime Pick",
+    scoreLabel: "Score",
     episodes: "Folgen",
+    studioLabel: "Studio",
     open: "offen",
     moreInfo: "Mehr Infos",
+    genresLabel: "Genres",
     episode: "Episode",
     appears: "erscheint",
     noTrailers: "Aktuell wurden keine Trailer-Daten geliefert.",
+    trailerFallback: "Trailer",
     filteredView: "Ansicht gefiltert",
     allGenresStatus: "alle Genres",
     allStatusStatus: "alle Status",
@@ -178,12 +182,16 @@ const TRANSLATIONS = {
     strongestPick: "is currently the strongest pick in this view.",
     noEntries: "There are no entries for this section with the current filters.",
     animePick: "Anime Pick",
+    scoreLabel: "Score",
     episodes: "Episodes",
+    studioLabel: "Studio",
     open: "unknown",
     moreInfo: "More info",
+    genresLabel: "Genres",
     episode: "Episode",
     appears: "airs on",
     noTrailers: "No trailer data was provided for the current selection.",
+    trailerFallback: "Trailer",
     filteredView: "Filtered view",
     allGenresStatus: "all genres",
     allStatusStatus: "all status",
@@ -207,6 +215,7 @@ const state = {
 };
 
 const elements = {
+  app: document.querySelector("[data-watchlist-app]"),
   status: document.querySelector("[data-watch-status]"),
   heroCard: document.querySelector("[data-watch-hero-card]"),
   heroDescription: document.querySelector("[data-watch-hero-description]"),
@@ -237,6 +246,7 @@ async function initWatchlist() {
   bindControls();
   applyTranslations();
   setStatus(t("loading"));
+  setBusy(true);
   renderWatchlist(WATCHLIST_FALLBACK);
 
   try {
@@ -255,6 +265,8 @@ async function initWatchlist() {
     renderWatchlist(state.data);
     console.warn("Live-Daten konnten nicht geladen werden:", error.message);
     setStatus(t("liveFailed"));
+  } finally {
+    setBusy(false);
   }
 }
 
@@ -290,9 +302,9 @@ function renderHero(data) {
     if (elements.heroCard) {
       elements.heroCard.innerHTML = `
         <div class="watch-hero__empty">
-          <p>Keine Treffer</p>
-          <h2>Filter anpassen</h2>
-          <span>Mit den aktuellen Filtern gibt es keinen Hero-Pick.</span>
+          <p>${escapeHtml(t("noHeroKicker"))}</p>
+          <h2>${escapeHtml(t("noHeroTitle"))}</h2>
+          <span>${escapeHtml(t("noHeroText"))}</span>
         </div>
       `;
     }
@@ -307,15 +319,15 @@ function renderHero(data) {
       height="960"
     />
     <div>
-      <p>${state.source === "live" ? "Live Trend" : "Fallback Pick"}</p>
+      <p>${state.source === "live" ? escapeHtml(t("liveTrend")) : escapeHtml(t("fallbackPick"))}</p>
       <h2>${escapeHtml(heroAnime.title)}</h2>
-      <span>${escapeHtml(truncateText(heroAnime.description, 180))}</span>
-      ${heroAnime.siteUrl ? `<a href="${escapeAttribute(heroAnime.siteUrl)}">Quelle öffnen</a>` : ""}
+      <span>${escapeHtml(truncateText(getAnimeDescription(heroAnime), 180))}</span>
+      ${heroAnime.siteUrl ? `<a href="${escapeAttribute(heroAnime.siteUrl)}">${escapeHtml(t("sourceOpen"))}</a>` : ""}
     </div>
   `;
 
   if (elements.heroDescription) {
-    elements.heroDescription.textContent = `${heroAnime.title} ist aktuell der stärkste Pick in dieser Ansicht. Datenquelle: ${state.source === "live" ? "Jikan API" : "lokaler Fallback"}.`;
+    elements.heroDescription.textContent = `${heroAnime.title} ${t("strongestPick")} ${t("heroSource")}: ${state.source === "live" ? "Jikan API" : t("localFallback")}.`;
   }
 }
 
@@ -328,7 +340,7 @@ function renderSection(section, entries) {
 
   if (!entries?.length) {
     container.innerHTML = `
-      <p class="watch-empty">Für diesen Bereich sind mit den aktuellen Filtern keine Einträge vorhanden.</p>
+      <p class="watch-empty">${escapeHtml(t("noEntries"))}</p>
     `;
     return;
   }
@@ -353,26 +365,26 @@ function renderAnimeCard(anime) {
         loading="lazy"
       />
       <div>
-        <p>${escapeHtml(meta.join(" | ") || "Anime Pick")}</p>
+        <p>${escapeHtml(meta.join(" | ") || t("animePick"))}</p>
         <h3>${escapeHtml(anime.title)}</h3>
-        <span>${escapeHtml(truncateText(anime.description, 160))}</span>
+        <span>${escapeHtml(truncateText(getAnimeDescription(anime), 160))}</span>
         <dl class="watch-anime-card__meta">
           <div>
-            <dt>Score</dt>
+            <dt>${escapeHtml(t("scoreLabel"))}</dt>
             <dd>${formatScore(anime.averageScore)}</dd>
           </div>
           <div>
-            <dt>Folgen</dt>
-            <dd>${anime.episodes || "offen"}</dd>
+            <dt>${escapeHtml(t("episodes"))}</dt>
+            <dd>${anime.episodes || escapeHtml(t("open"))}</dd>
           </div>
           <div>
-            <dt>Studio</dt>
+            <dt>${escapeHtml(t("studioLabel"))}</dt>
             <dd>${escapeHtml(anime.studio)}</dd>
           </div>
         </dl>
         ${renderGenres(anime.genres)}
         ${renderAiring(anime.nextAiringEpisode)}
-        ${anime.siteUrl ? `<a class="watch-card-link" href="${escapeAttribute(anime.siteUrl)}">Mehr Infos</a>` : ""}
+        ${anime.siteUrl ? `<a class="watch-card-link" href="${escapeAttribute(anime.siteUrl)}">${escapeHtml(t("moreInfo"))} <span class="watch-visually-hidden">${escapeHtml(anime.title)}</span></a>` : ""}
       </div>
     </article>
   `;
@@ -384,7 +396,7 @@ function renderGenres(genres) {
   }
 
   return `
-    <ul class="watch-tags" aria-label="Genres">
+    <ul class="watch-tags" aria-label="${escapeAttribute(t("genresLabel"))}">
       ${genres.slice(0, 4).map((genre) => `<li>${escapeHtml(genre)}</li>`).join("")}
     </ul>
   `;
@@ -399,7 +411,7 @@ function renderAiring(nextAiringEpisode) {
 
   return `
     <p class="watch-next-episode">
-      Episode ${nextAiringEpisode.episode} erscheint ${date.toLocaleDateString("de-DE", {
+      ${escapeHtml(t("episode"))} ${nextAiringEpisode.episode} ${escapeHtml(t("appears"))} ${date.toLocaleDateString(getLocaleDateCode(), {
         day: "2-digit",
         month: "2-digit",
         year: "numeric",
@@ -420,7 +432,7 @@ function renderTrailers(data) {
 
   if (!trailers.length) {
     elements.trailerGrid.innerHTML = `
-      <p class="watch-empty">Aktuell wurden keine Trailer-Daten geliefert.</p>
+      <p class="watch-empty">${escapeHtml(t("noTrailers"))}</p>
     `;
     return;
   }
@@ -433,11 +445,11 @@ function renderTrailers(data) {
             src="${escapeAttribute(anime.trailer.embedUrl)}"
             title="${escapeAttribute(`${anime.title} Trailer`)}"
             loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen
           ></iframe>
           <div>
-            <p>${escapeHtml(formatSeason(anime.season, anime.seasonYear) || "Trailer")}</p>
+            <p>${escapeHtml(formatSeason(anime.season, anime.seasonYear) || t("trailerFallback"))}</p>
             <h3>${escapeHtml(anime.title)}</h3>
           </div>
         </article>
@@ -482,10 +494,10 @@ function populateGenreOptions(data) {
   const currentValue = select.value || "all";
   const genres = [...new Set(Object.values(data).flat().flatMap((anime) => anime.genres || []))]
     .filter(Boolean)
-    .sort((a, b) => a.localeCompare(b, "de"));
+    .sort((a, b) => a.localeCompare(b, state.locale));
 
   select.innerHTML = [
-    '<option value="all">Alle Genres</option>',
+    `<option value="all">${escapeHtml(t("allGenres"))}</option>`,
     ...genres.map((genre) => `<option value="${escapeAttribute(genre)}">${escapeHtml(genre)}</option>`),
   ].join("");
   select.value = genres.includes(currentValue) ? currentValue : "all";
@@ -519,11 +531,11 @@ function sortEntries(first, second, sortKey) {
 }
 
 function updateFilterStatus() {
-  const genre = state.filters.genre === "all" ? "alle Genres" : state.filters.genre;
+  const genre = state.filters.genre === "all" ? t("allGenresStatus") : state.filters.genre;
   const status =
-    state.filters.status === "all" ? "alle Status" : formatStatus(state.filters.status);
+    state.filters.status === "all" ? t("allStatusStatus") : formatStatus(state.filters.status);
 
-  setStatus(`Ansicht gefiltert: ${genre}, ${status}, Sortierung ${state.filters.sort}.`);
+  setStatus(`${t("filteredView")}: ${genre}, ${status}, ${t("sorting")} ${state.filters.sort}.`);
 }
 
 function mergeWithFallback(liveData) {
@@ -540,13 +552,20 @@ function setStatus(message) {
   }
 }
 
+function setBusy(isBusy) {
+  if (elements.app) {
+    elements.app.classList.toggle("is-loading", isBusy);
+    elements.app.setAttribute("aria-busy", String(isBusy));
+  }
+}
+
 function formatStatus(status) {
   const labels = {
-    RELEASING: "Läuft gerade",
-    NOT_YET_RELEASED: "Bald verfügbar",
-    FINISHED: "Abgeschlossen",
-    CANCELLED: "Abgebrochen",
-    HIATUS: "Pausiert",
+    RELEASING: t("releasing"),
+    NOT_YET_RELEASED: t("notYetReleased"),
+    FINISHED: t("finished"),
+    CANCELLED: t("cancelled"),
+    HIATUS: t("hiatus"),
   };
 
   return labels[status] || status || "";
@@ -554,10 +573,10 @@ function formatStatus(status) {
 
 function formatSeason(season, year) {
   const labels = {
-    WINTER: "Winter",
-    SPRING: "Frühling",
-    SUMMER: "Sommer",
-    FALL: "Herbst",
+    WINTER: t("winter"),
+    SPRING: t("spring"),
+    SUMMER: t("summer"),
+    FALL: t("fall"),
   };
 
   if (!season && !year) {
@@ -569,7 +588,7 @@ function formatSeason(season, year) {
 
 function formatScore(score) {
   if (!score) {
-    return "offen";
+    return escapeHtml(t("open"));
   }
 
   return `${score}%`;
@@ -686,211 +705,5 @@ function escapeHtml(value) {
 
 function escapeAttribute(value) {
   return escapeHtml(value || "");
-}
-
-function renderHero(data) {
-  const heroAnime = data.trending?.[0] || data.airing?.[0] || data.upcoming?.[0];
-
-  if (!heroAnime || !elements.heroCard) {
-    if (elements.heroCard) {
-      elements.heroCard.innerHTML = `
-        <div class="watch-hero__empty">
-          <p>${escapeHtml(t("noHeroKicker"))}</p>
-          <h2>${escapeHtml(t("noHeroTitle"))}</h2>
-          <span>${escapeHtml(t("noHeroText"))}</span>
-        </div>
-      `;
-    }
-    return;
-  }
-
-  elements.heroCard.innerHTML = `
-    <img
-      src="${escapeAttribute(getCoverImage(heroAnime))}"
-      alt="${escapeAttribute(heroAnime.title)}"
-      width="720"
-      height="960"
-    />
-    <div>
-      <p>${state.source === "live" ? escapeHtml(t("liveTrend")) : escapeHtml(t("fallbackPick"))}</p>
-      <h2>${escapeHtml(heroAnime.title)}</h2>
-      <span>${escapeHtml(truncateText(getAnimeDescription(heroAnime), 180))}</span>
-      ${heroAnime.siteUrl ? `<a href="${escapeAttribute(heroAnime.siteUrl)}">${escapeHtml(t("sourceOpen"))}</a>` : ""}
-    </div>
-  `;
-
-  if (elements.heroDescription) {
-    elements.heroDescription.textContent = `${heroAnime.title} ${t("strongestPick")} ${t("heroSource")}: ${state.source === "live" ? "Jikan API" : t("localFallback")}.`;
-  }
-}
-
-function renderSection(section, entries) {
-  const container = elements.sections[section];
-
-  if (!container) {
-    return;
-  }
-
-  if (!entries?.length) {
-    container.innerHTML = `
-      <p class="watch-empty">${escapeHtml(t("noEntries"))}</p>
-    `;
-    return;
-  }
-
-  container.innerHTML = entries.map(renderAnimeCard).join("");
-}
-
-function renderAnimeCard(anime) {
-  const meta = [
-    formatStatus(anime.status),
-    formatSeason(anime.season, anime.seasonYear),
-    anime.format,
-  ].filter(Boolean);
-
-  return `
-    <article class="watch-anime-card">
-      <img
-        src="${escapeAttribute(getCoverImage(anime))}"
-        alt="${escapeAttribute(anime.title)}"
-        width="480"
-        height="640"
-        loading="lazy"
-      />
-      <div>
-        <p>${escapeHtml(meta.join(" | ") || t("animePick"))}</p>
-        <h3>${escapeHtml(anime.title)}</h3>
-        <span>${escapeHtml(truncateText(getAnimeDescription(anime), 160))}</span>
-        <dl class="watch-anime-card__meta">
-          <div>
-            <dt>Score</dt>
-            <dd>${formatScore(anime.averageScore)}</dd>
-          </div>
-          <div>
-            <dt>${escapeHtml(t("episodes"))}</dt>
-            <dd>${anime.episodes || escapeHtml(t("open"))}</dd>
-          </div>
-          <div>
-            <dt>Studio</dt>
-            <dd>${escapeHtml(anime.studio)}</dd>
-          </div>
-        </dl>
-        ${renderGenres(anime.genres)}
-        ${renderAiring(anime.nextAiringEpisode)}
-        ${anime.siteUrl ? `<a class="watch-card-link" href="${escapeAttribute(anime.siteUrl)}">${escapeHtml(t("moreInfo"))}</a>` : ""}
-      </div>
-    </article>
-  `;
-}
-
-function renderAiring(nextAiringEpisode) {
-  if (!nextAiringEpisode?.airingAt) {
-    return "";
-  }
-
-  const date = new Date(nextAiringEpisode.airingAt * 1000);
-
-  return `
-    <p class="watch-next-episode">
-      ${escapeHtml(t("episode"))} ${nextAiringEpisode.episode} ${escapeHtml(t("appears"))} ${date.toLocaleDateString(getLocaleDateCode(), {
-        day: "2-digit",
-        month: "2-digit",
-        year: "numeric",
-      })}.
-    </p>
-  `;
-}
-
-function renderTrailers(data) {
-  if (!elements.trailerGrid) {
-    return;
-  }
-
-  const trailers = Object.values(data)
-    .flat()
-    .filter((anime) => anime.trailer?.embedUrl)
-    .slice(0, 4);
-
-  if (!trailers.length) {
-    elements.trailerGrid.innerHTML = `
-      <p class="watch-empty">${escapeHtml(t("noTrailers"))}</p>
-    `;
-    return;
-  }
-
-  elements.trailerGrid.innerHTML = trailers
-    .map((anime) => {
-      return `
-        <article class="trailer-card">
-          <iframe
-            src="${escapeAttribute(anime.trailer.embedUrl)}"
-            title="${escapeAttribute(`${anime.title} Trailer`)}"
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          ></iframe>
-          <div>
-            <p>${escapeHtml(formatSeason(anime.season, anime.seasonYear) || "Trailer")}</p>
-            <h3>${escapeHtml(anime.title)}</h3>
-          </div>
-        </article>
-      `;
-    })
-    .join("");
-}
-
-function populateGenreOptions(data) {
-  const select = elements.filters.genre;
-
-  if (!select) {
-    return;
-  }
-
-  const currentValue = select.value || "all";
-  const genres = [...new Set(Object.values(data).flat().flatMap((anime) => anime.genres || []))]
-    .filter(Boolean)
-    .sort((a, b) => a.localeCompare(b, state.locale));
-
-  select.innerHTML = [
-    `<option value="all">${escapeHtml(t("allGenres"))}</option>`,
-    ...genres.map((genre) => `<option value="${escapeAttribute(genre)}">${escapeHtml(genre)}</option>`),
-  ].join("");
-  select.value = genres.includes(currentValue) ? currentValue : "all";
-  state.filters.genre = select.value;
-}
-
-function updateFilterStatus() {
-  const genre = state.filters.genre === "all" ? t("allGenresStatus") : state.filters.genre;
-  const status =
-    state.filters.status === "all" ? t("allStatusStatus") : formatStatus(state.filters.status);
-
-  setStatus(`${t("filteredView")}: ${genre}, ${status}, ${t("sorting")} ${state.filters.sort}.`);
-}
-
-function formatStatus(status) {
-  const labels = {
-    RELEASING: t("releasing"),
-    NOT_YET_RELEASED: t("notYetReleased"),
-    FINISHED: t("finished"),
-    CANCELLED: t("cancelled"),
-    HIATUS: t("hiatus"),
-  };
-
-  return labels[status] || status || "";
-}
-
-function formatSeason(season, year) {
-  const labels = {
-    WINTER: t("winter"),
-    SPRING: t("spring"),
-    SUMMER: t("summer"),
-    FALL: t("fall"),
-  };
-
-  if (!season && !year) {
-    return "";
-  }
-
-  return [labels[season] || season, year].filter(Boolean).join(" ");
 }
 })();

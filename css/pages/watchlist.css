@@ -538,6 +538,57 @@
   line-height: 1.45;
 }
 
+.watch-visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/* Sichtbarer Fokus für alle interaktiven Elemente der Watchlist. */
+.watch-page a:focus-visible,
+.watch-page button:focus-visible,
+.watch-page select:focus-visible,
+.watch-page input:focus-visible,
+.watch-page textarea:focus-visible {
+  outline: 3px solid var(--color-cyan);
+  outline-offset: 2px;
+}
+
+/* Ladezustand: dezentes Pulsieren des Status-Banners, solange Live-Daten laden. */
+.watch-page.is-loading .watch-status {
+  animation: watch-status-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes watch-status-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.55;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .watch-page.is-loading .watch-status {
+    animation: none;
+  }
+
+  .watch-hero__actions a:hover,
+  .watch-card-link:hover,
+  .watch-source-link:hover {
+    transform: none;
+  }
+}
+
 .watch-page + .site-footer {
   background:
     linear-gradient(90deg, rgba(39, 234, 245, 0.08), transparent 28%, rgba(255, 43, 189, 0.08)),

@@ -4,7 +4,7 @@ const CACHE_TTL_MS = 30 * 60 * 1000;
 
 async function loadWatchlistData(options = {}) {
   const perPage = options.perPage || 9;
-  const cacheKey = `anime-pulse-watchlist-jikan-v1-${perPage}`;
+  const cacheKey = `anime-pulse-watchlist-jikan-v2-${perPage}`;
   const cachedData = readCachedData(cacheKey);
 
   if (cachedData) {
@@ -45,7 +45,7 @@ async function requestJikan(path) {
 }
 
 function normalizeJikanList(mediaList) {
-  return mediaList.map((media) => {
+  return dedupeById(mediaList).map((media) => {
     return {
       id: media.mal_id,
       title: media.title_english || media.title || media.title_japanese || "Unbekannter Titel",
@@ -71,6 +71,20 @@ function normalizeJikanList(mediaList) {
       nextAiringEpisode: null,
       trailer: normalizeTrailer(media.trailer),
     };
+  });
+}
+
+// Jikan liefert in Season-Listen teils denselben Anime mehrfach. Wir behalten pro mal_id nur den ersten Treffer.
+function dedupeById(mediaList) {
+  const seenIds = new Set();
+
+  return mediaList.filter((media) => {
+    if (!media || seenIds.has(media.mal_id)) {
+      return false;
+    }
+
+    seenIds.add(media.mal_id);
+    return true;
   });
 }
 
@@ -108,15 +122,29 @@ function normalizeSeason(season) {
 }
 
 function normalizeTrailer(trailer) {
-  if (!trailer?.youtube_id) {
+  // Jikan liefert youtube_id in den Listen-Endpoints oft leer, packt die Video-ID aber in embed_url/url.
+  const youtubeId = trailer?.youtube_id || extractYoutubeId(trailer?.embed_url || trailer?.url);
+
+  if (!youtubeId) {
     return null;
   }
 
   return {
-    id: trailer.youtube_id,
-    embedUrl: `https://www.youtube-nocookie.com/embed/${trailer.youtube_id}`,
+    id: youtubeId,
+    // Bewusst ohne autoplay: Videos duerfen nicht von selbst starten.
+    embedUrl: `https://www.youtube-nocookie.com/embed/${youtubeId}`,
     thumbnail: trailer.images?.maximum_image_url || trailer.images?.large_image_url || "",
   };
+}
+
+function extractYoutubeId(url) {
+  if (!url) {
+    return "";
+  }
+
+  const match = String(url).match(/(?:embed\/|v=|youtu\.be\/)([\w-]{11})/);
+
+  return match ? match[1] : "";
 }
 
 function readCachedData(cacheKey) {
