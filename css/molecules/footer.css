@@ -91,6 +91,15 @@
   margin: 0;
 }
 
+.cookie-dialog__status {
+  background: rgba(39, 234, 245, 0.1);
+  border: 1px solid rgba(39, 234, 245, 0.24);
+  border-radius: var(--radius-small);
+  color: var(--color-white);
+  font-size: 0.9rem;
+  padding: 0.75rem;
+}
+
 .cookie-dialog__actions {
   display: flex;
   flex-wrap: wrap;

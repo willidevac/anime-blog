@@ -13,6 +13,7 @@ function initCookiePreferences() {
   const buttons = getCookieDialogButtons(dialog);
 
   document.body.append(dialog);
+  updateCookiePreferenceStatus(dialog);
 
   cookiePreferencesButton.addEventListener("click", () => {
     openCookiePreferencesDialog(dialog);
@@ -23,12 +24,12 @@ function initCookiePreferences() {
   });
 
   buttons.essentialButton.addEventListener("click", () => {
-    saveCookiePreference("essential");
+    saveCookiePreference("essential", dialog);
     dialog.close();
   });
 
   buttons.acceptButton.addEventListener("click", () => {
-    saveCookiePreference("all");
+    saveCookiePreference("all", dialog);
     dialog.close();
   });
 }
@@ -49,6 +50,7 @@ function createCookiePreferencesDialog() {
         Anime Pulse nutzt aktuell nur notwendige Einstellungen. Hier kannst du
         deine Auswahl vormerken, falls später optionale Cookies ergänzt werden.
       </p>
+      <p class="cookie-dialog__status" data-cookie-status aria-live="polite"></p>
       <div class="cookie-dialog__actions">
         <button class="cookie-dialog__button cookie-dialog__button--ghost" type="button" data-cookie-choice="essential">
           Nur notwendige
@@ -75,16 +77,44 @@ function getCookieDialogButtons(dialog) {
   };
 }
 
+// Liest die gespeicherte Cookie-Einstellung aus dem Browser.
+function getCookiePreference() {
+  return localStorage.getItem(cookiePreferencesKey);
+}
+
+// Gibt einen verständlichen Text für die aktuelle Cookie-Auswahl zurück.
+function getCookiePreferenceLabel(preference) {
+  const preferenceLabels = {
+    all: "Alle Cookies akzeptiert.",
+    essential: "Nur notwendige Cookies gespeichert.",
+  };
+
+  return preferenceLabels[preference] || "Noch keine Auswahl gespeichert.";
+}
+
+// Aktualisiert den sichtbaren Status im Cookie-Dialog.
+function updateCookiePreferenceStatus(dialog) {
+  const statusMessage = dialog.querySelector("[data-cookie-status]");
+
+  if (statusMessage) {
+    statusMessage.textContent = `Aktuelle Auswahl: ${getCookiePreferenceLabel(
+      getCookiePreference(),
+    )}`;
+  }
+}
+
 // Öffnet den Cookie-Dialog, wenn er noch nicht geöffnet ist.
 function openCookiePreferencesDialog(dialog) {
   if (dialog.open) {
     return;
   }
 
+  updateCookiePreferenceStatus(dialog);
   dialog.showModal();
 }
 
 // Speichert die ausgewählte Cookie-Einstellung lokal im Browser.
-function saveCookiePreference(preference) {
+function saveCookiePreference(preference, dialog) {
   localStorage.setItem(cookiePreferencesKey, preference);
+  updateCookiePreferenceStatus(dialog);
 }
