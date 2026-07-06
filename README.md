@@ -174,6 +174,8 @@ Die HTML-Dateien laden anschließend die generierte Datei:
 |-- package.json
 |-- pnpm-lock.yaml
 |-- pnpm-workspace.yaml
+|-- robots.txt
+|-- sitemap.xml
 |-- assets/
 |   |-- icons/
 |   `-- images/
@@ -316,8 +318,10 @@ Dieser Abschnitt sammelt die aktuell gefundenen Fehler, Risiken und Modernisieru
      - OpenGraph-Metadaten
      - Twitter/X-Card-Metadaten
      - `robots.txt`
-     - `sitemap.xml`
+   - `sitemap.xml`
    - Aufgabe: Pro Seite individuelle SEO-Daten ergaenzen.
+
+   ### ABGESCHLOSSEN - commit "add page specific seo metadata"
 
 2. Bilder sind nicht sauber fuer Performance vorbereitet.
    - 27 Bilder gefunden.
