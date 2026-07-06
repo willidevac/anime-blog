@@ -192,15 +192,15 @@ Die HTML-Dateien laden anschließend die generierte Datei:
 
 ## Features
 
-| Feature                 | Description                                                |
-| ----------------------- | ---------------------------------------------------------- |
-| Responsive Blog-Layout  | Seiten passen sich an Desktop, Tablet und Mobile an        |
-| Modulare CSS-Struktur   | CSS ist in Basis-, Molekül- und Seiten-Dateien aufgeteilt  |
-| Tailwind Build          | Tailwind wird lokal gebaut und nicht per CDN geladen       |
-| Mobile Navigation       | Navigation wird per JavaScript geöffnet und geschlossen    |
+| Feature                 | Description                                                 |
+| ----------------------- | ----------------------------------------------------------- |
+| Responsive Blog-Layout  | Seiten passen sich an Desktop, Tablet und Mobile an         |
+| Modulare CSS-Struktur   | CSS ist in Basis-, Molekül- und Seiten-Dateien aufgeteilt   |
+| Tailwind Build          | Tailwind wird lokal gebaut und nicht per CDN geladen        |
+| Mobile Navigation       | Navigation wird per JavaScript geöffnet und geschlossen     |
 | FAQ-Akkordeon           | FAQ-Bereiche können einzeln geöffnet und geschlossen werden |
-| Formularvalidierung     | Kontaktformular prüft Eingaben vor dem Absenden            |
-| Accessibility-Attribute | ARIA-Attribute verbessern Bedienbarkeit und Rückmeldung    |
+| Formularvalidierung     | Kontaktformular prüft Eingaben vor dem Absenden             |
+| Accessibility-Attribute | ARIA-Attribute verbessern Bedienbarkeit und Rückmeldung     |
 
 ## Learning Goals
 
@@ -246,6 +246,8 @@ Dieser Abschnitt sammelt die aktuell gefundenen Fehler, Risiken und Modernisieru
      - `artikel-one-punch-man.html`
    - Problem: `href="#"` oder `href=""` fuehrt zu keiner echten Cookie-Seite oder Funktion.
    - Aufgabe: Entweder Cookie-Seite/Funktion bauen oder Link entfernen.
+
+   ### ABGESCHLOSSEN - commit "show saved cookie preference in footer dialog"
 
 2. Ungueltiges HTML in Share-Buttons.
    - Betroffene Seiten:
