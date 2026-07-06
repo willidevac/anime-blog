@@ -5,8 +5,12 @@
 }
 
 .artikel-page::before {
-  background: url("../../assets/images/img-anime/trend-background.jpg") center
-    top / cover no-repeat;
+  background: image-set(
+      url("../../assets/images/responsive/trend-background-1600.avif") type("image/avif"),
+      url("../../assets/images/responsive/trend-background-1600.webp") type("image/webp"),
+      url("../../assets/images/img-anime/trend-background.jpg") type("image/jpeg")
+    )
+    center top / cover no-repeat;
   content: "";
   filter: blur(1.5px) saturate(0.92);
   height: clamp(680px, 72vw, 1040px);

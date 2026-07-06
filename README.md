@@ -26,7 +26,9 @@
 
 <div align="center">
 
-![Anime Pulse preview](./assets/screenshots/anime-pulse-preview.gif)
+<video src="./assets/screenshots/anime-pulse-preview.mp4" controls muted loop playsinline>
+  Anime Pulse preview
+</video>
 
 Anime Pulse ist ein responsiver Anime-Blog mit Startseite, Trend-Bereich, Artikelseiten, Watchlist und Kontaktformular.
 Das Projekt dient als Lernprojekt für saubere HTML-Struktur, modularen CSS-Aufbau, Tailwind CSS per npm/pnpm und verständliches JavaScript.
@@ -344,6 +346,12 @@ Dieser Abschnitt sammelt die aktuell gefundenen Fehler, Risiken und Modernisieru
      - `beyond-jouneys-end-season-2.jpg`: ca. 5,89 MB
      - mehrere GIF/MP4-Dateien um ca. 3,7 bis 3,9 MB
    - Aufgabe: Assets komprimieren, WebP/AVIF-Varianten erzeugen und grosse GIFs nach Moeglichkeit durch Video ersetzen.
+
+   ### ABGESCHLOSSEN - commit "compress large media assets"
+   - Die groessten JPG-Fallbacks wurden deutlich komprimiert.
+   - Bestehende MP4-Dateien wurden neu kodiert und verkleinert.
+   - Grosse GIF-Dateien wurden durch MP4-Versionen ersetzt.
+   - Die README-Preview nutzt jetzt `anime-pulse-preview.mp4` statt GIF.
 
 4. Tailwind-Build erzeugt nicht exakt dieselbe `css/tailwind.css` wie aktuell committed.
    - Nach frischem Build entstehen 69 zusaetzliche Zeilen in `css/tailwind.css`.

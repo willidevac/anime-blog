@@ -15,7 +15,11 @@
 }
 
 .page-header__logo {
-  background-image: url("../../assets/images/img-anime/Header Trends die gerade Explodieren/witch-hat-atelier.png");
+  background-image: image-set(
+    url("../../assets/images/responsive/header-witch-hat-atelier-480.avif") type("image/avif"),
+    url("../../assets/images/responsive/header-witch-hat-atelier-480.webp") type("image/webp"),
+    url("../../assets/images/img-anime/Header Trends die gerade Explodieren/witch-hat-atelier.png") type("image/png")
+  );
   background-position: center;
   background-size: cover;
   border: 0.5px solid var(--color-white);

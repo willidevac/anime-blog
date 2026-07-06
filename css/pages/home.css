@@ -15,7 +15,11 @@
 
   background-image:
     url("../../assets/images/img-anime/Header Trends die gerade Explodieren/geschwungen-vector.png"),
-    url("../../assets/images/img-anime/Header Trends die gerade Explodieren/all-anime-opener.png");
+    image-set(
+      url("../../assets/images/responsive/all-anime-opener-1600.avif") type("image/avif"),
+      url("../../assets/images/responsive/all-anime-opener-1600.webp") type("image/webp"),
+      url("../../assets/images/img-anime/Header Trends die gerade Explodieren/all-anime-opener.png") type("image/png")
+    );
   background-blend-mode: hard-light;
   background-repeat: no-repeat;
   background-position-y: center;
