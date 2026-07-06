@@ -37,6 +37,12 @@
   width: 100%;
 }
 
+.trend-carousel__card picture {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
 .trend-carousel__card::after {
   background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.75));
   content: "";

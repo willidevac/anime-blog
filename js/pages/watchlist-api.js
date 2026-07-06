@@ -3,6 +3,22 @@ const { loadWatchlistData } = window.AnimePulseDataService;
 const { WATCHLIST_FALLBACK } = window;
 const FALLBACK_COVER =
   "assets/images/img-anime/Top 3 Anime für Einsteiger/einstieg-templet.png";
+const RESPONSIVE_IMAGE_SLUGS = {
+  "assets/images/img-anime/Top 3 Anime für Einsteiger/einstieg-templet.png":
+    "einstieg-templet",
+  "assets/images/img-anime/Top 3 Anime für Einsteiger/witch-hat-atelier.png":
+    "witch-hat-atelier",
+  "assets/images/img-anime/Anime über die alle reden/jujutsu-kaisen.jpg":
+    "jujutsu-kaisen",
+  "assets/images/img-anime/Top 3 Anime dieser Woche/re.zero-season-4.png":
+    "rezero-season-4",
+  "assets/images/img-anime/Anime über die alle reden/sidehammer-onepuchman.png":
+    "sidehammer-onepuchman",
+  "assets/images/img-anime/Top 3 Anime dieser Woche/solo-leveling.png":
+    "solo-leveling",
+  "assets/images/img-anime/Top 3 Anime für Einsteiger/demon-slayer.png":
+    "demon-slayer",
+};
 const TRANSLATIONS = {
   de: {
     pageTitle: "Anime Pulse | Watchlist",
@@ -312,13 +328,12 @@ function renderHero(data) {
   }
 
   elements.heroCard.innerHTML = `
-    <img
-      src="${escapeAttribute(getCoverImage(heroAnime))}"
-      alt="${escapeAttribute(heroAnime.title)}"
-      width="720"
-      height="960"
-      decoding="async"
-    />
+    ${renderResponsiveImage(getCoverImage(heroAnime), heroAnime.title, {
+      width: 720,
+      height: 960,
+      sizes: "(max-width: 940px) 90vw, 420px",
+      attributes: 'decoding="async"',
+    })}
     <div>
       <p>${state.source === "live" ? escapeHtml(t("liveTrend")) : escapeHtml(t("fallbackPick"))}</p>
       <h2>${escapeHtml(heroAnime.title)}</h2>
@@ -358,14 +373,12 @@ function renderAnimeCard(anime) {
 
   return `
     <article class="watch-anime-card">
-      <img
-        src="${escapeAttribute(getCoverImage(anime))}"
-        alt="${escapeAttribute(anime.title)}"
-        width="480"
-        height="640"
-        loading="lazy"
-        decoding="async"
-      />
+      ${renderResponsiveImage(getCoverImage(anime), anime.title, {
+        width: 480,
+        height: 640,
+        sizes: "(max-width: 640px) 90vw, 320px",
+        attributes: 'loading="lazy" decoding="async"',
+      })}
       <div>
         <p>${escapeHtml(meta.join(" | ") || t("animePick"))}</p>
         <h3>${escapeHtml(anime.title)}</h3>
@@ -598,6 +611,47 @@ function formatScore(score) {
 
 function getCoverImage(anime) {
   return anime.coverImage || anime.bannerImage || FALLBACK_COVER;
+}
+
+function renderResponsiveImage(src, alt, options) {
+  const slug = RESPONSIVE_IMAGE_SLUGS[src];
+  const escapedSrc = escapeAttribute(src);
+  const escapedAlt = escapeAttribute(alt);
+  const attributes = options.attributes || "";
+
+  if (!slug) {
+    return `
+      <img
+        src="${escapedSrc}"
+        alt="${escapedAlt}"
+        width="${options.width}"
+        height="${options.height}"
+        ${attributes}
+      />
+    `;
+  }
+
+  return `
+    <picture>
+      <source
+        type="image/avif"
+        srcset="assets/images/responsive/${slug}-480.avif 480w, assets/images/responsive/${slug}-768.avif 768w, assets/images/responsive/${slug}-1200.avif 1200w"
+        sizes="${escapeAttribute(options.sizes)}"
+      />
+      <source
+        type="image/webp"
+        srcset="assets/images/responsive/${slug}-480.webp 480w, assets/images/responsive/${slug}-768.webp 768w, assets/images/responsive/${slug}-1200.webp 1200w"
+        sizes="${escapeAttribute(options.sizes)}"
+      />
+      <img
+        src="${escapedSrc}"
+        alt="${escapedAlt}"
+        width="${options.width}"
+        height="${options.height}"
+        ${attributes}
+      />
+    </picture>
+  `;
 }
 
 function getAnimeDescription(anime) {

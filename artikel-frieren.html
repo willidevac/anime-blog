@@ -75,14 +75,18 @@
           </div>
 
           <aside class="author-card" aria-labelledby="frieren-author-title">
-            <img
-              class="author-card__avatar"
-              src="assets/images/img-anime/author-avatar.png"
-              alt="Anime Pulse Autor Avatar"
-              width="1254"
-              height="1254"
-              decoding="async"
-            />
+            <picture class="author-card__avatar-wrap">
+              <source type="image/avif" srcset="assets/images/responsive/author-avatar-480.avif 480w, assets/images/responsive/author-avatar-768.avif 768w" sizes="96px" />
+              <source type="image/webp" srcset="assets/images/responsive/author-avatar-480.webp 480w, assets/images/responsive/author-avatar-768.webp 768w" sizes="96px" />
+              <img
+                class="author-card__avatar"
+                src="assets/images/img-anime/author-avatar.png"
+                alt="Anime Pulse Autor Avatar"
+                width="1254"
+                height="1254"
+                decoding="async"
+              />
+            </picture>
             <strong id="frieren-author-title">Anime Pulse Team</strong>
             <span>Autor</span>
             <p>Ordnet neue Anime-Releases und Community-Trends ein.</p>

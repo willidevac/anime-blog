@@ -87,14 +87,18 @@
           </div>
 
           <aside class="author-card" aria-labelledby="artikel-author-title">
-            <img
-              class="author-card__avatar"
-              src="assets/images/img-anime/author-avatar.png"
-              alt="Anime Pulse Autor Avatar"
-              width="1254"
-              height="1254"
-              decoding="async"
-            />
+            <picture class="author-card__avatar-wrap">
+              <source type="image/avif" srcset="assets/images/responsive/author-avatar-480.avif 480w, assets/images/responsive/author-avatar-768.avif 768w" sizes="96px" />
+              <source type="image/webp" srcset="assets/images/responsive/author-avatar-480.webp 480w, assets/images/responsive/author-avatar-768.webp 768w" sizes="96px" />
+              <img
+                class="author-card__avatar"
+                src="assets/images/img-anime/author-avatar.png"
+                alt="Anime Pulse Autor Avatar"
+                width="1254"
+                height="1254"
+                decoding="async"
+              />
+            </picture>
             <strong id="artikel-author-title">Anime Pulse Team</strong>
             <span>Autor</span>
             <p>
@@ -171,14 +175,18 @@
             <div class="artikel-pick-carousel__viewport">
               <div class="artikel-pick-carousel__track">
                 <article class="artikel-pick-carousel__card">
-                  <img
-                    src="assets/images/img-anime/Top 3 Anime für Einsteiger/demon-slayer.png"
-                    alt="Demon Slayer Visual"
-                    width="1536"
-                    height="1024"
-                    loading="lazy"
-                    decoding="async"
-                  />
+                  <picture>
+                    <source type="image/avif" srcset="assets/images/responsive/demon-slayer-480.avif 480w, assets/images/responsive/demon-slayer-768.avif 768w, assets/images/responsive/demon-slayer-1200.avif 1200w" sizes="(max-width: 720px) 90vw, 320px" />
+                    <source type="image/webp" srcset="assets/images/responsive/demon-slayer-480.webp 480w, assets/images/responsive/demon-slayer-768.webp 768w, assets/images/responsive/demon-slayer-1200.webp 1200w" sizes="(max-width: 720px) 90vw, 320px" />
+                    <img
+                      src="assets/images/img-anime/Top 3 Anime für Einsteiger/demon-slayer.png"
+                      alt="Demon Slayer Visual"
+                      width="1536"
+                      height="1024"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </picture>
                   <div>
                     <p>Action Einstieg</p>
                     <h3>Demon Slayer</h3>
@@ -190,14 +198,18 @@
                 </article>
 
                 <article class="artikel-pick-carousel__card">
-                  <img
-                    src="assets/images/img-anime/Top 3 Anime für Einsteiger/witch-hat-atelier.png"
-                    alt="Witch Hat Atelier Visual"
-                    width="1536"
-                    height="1024"
-                    loading="lazy"
-                    decoding="async"
-                  />
+                  <picture>
+                    <source type="image/avif" srcset="assets/images/responsive/witch-hat-atelier-480.avif 480w, assets/images/responsive/witch-hat-atelier-768.avif 768w, assets/images/responsive/witch-hat-atelier-1200.avif 1200w" sizes="(max-width: 720px) 90vw, 320px" />
+                    <source type="image/webp" srcset="assets/images/responsive/witch-hat-atelier-480.webp 480w, assets/images/responsive/witch-hat-atelier-768.webp 768w, assets/images/responsive/witch-hat-atelier-1200.webp 1200w" sizes="(max-width: 720px) 90vw, 320px" />
+                    <img
+                      src="assets/images/img-anime/Top 3 Anime für Einsteiger/witch-hat-atelier.png"
+                      alt="Witch Hat Atelier Visual"
+                      width="1536"
+                      height="1024"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </picture>
                   <div>
                     <p>Ruhige Story</p>
                     <h3>Witch Hat Atelier</h3>
@@ -209,14 +221,18 @@
                 </article>
 
                 <article class="artikel-pick-carousel__card">
-                  <img
-                    src="assets/images/img-anime/Top 3 Anime für Einsteiger/one-punch-man.jpg"
-                    alt="One Punch Man Visual"
-                    width="2752"
-                    height="1536"
-                    loading="lazy"
-                    decoding="async"
-                  />
+                  <picture>
+                    <source type="image/avif" srcset="assets/images/responsive/one-punch-man-480.avif 480w, assets/images/responsive/one-punch-man-768.avif 768w, assets/images/responsive/one-punch-man-1200.avif 1200w" sizes="(max-width: 720px) 90vw, 320px" />
+                    <source type="image/webp" srcset="assets/images/responsive/one-punch-man-480.webp 480w, assets/images/responsive/one-punch-man-768.webp 768w, assets/images/responsive/one-punch-man-1200.webp 1200w" sizes="(max-width: 720px) 90vw, 320px" />
+                    <img
+                      src="assets/images/img-anime/Top 3 Anime für Einsteiger/one-punch-man.jpg"
+                      alt="One Punch Man Visual"
+                      width="2752"
+                      height="1536"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </picture>
                   <div>
                     <p>Comedy & Power</p>
                     <h3>One Punch Man</h3>

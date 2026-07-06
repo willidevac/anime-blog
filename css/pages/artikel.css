@@ -164,6 +164,12 @@
   width: 100%;
 }
 
+.artikel-pick-carousel__card picture {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
 .artikel-pick-carousel__card div {
   display: grid;
   gap: 0.85rem;

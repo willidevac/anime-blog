@@ -17,6 +17,17 @@
   width: 74px;
 }
 
+.author-card__avatar-wrap {
+  display: block;
+  height: 74px;
+  margin: 0 auto 1rem;
+  width: 74px;
+}
+
+.author-card__avatar-wrap .author-card__avatar {
+  margin: 0;
+}
+
 .author-card strong {
   display: block;
 }
@@ -42,6 +53,12 @@
   }
 
   .author-card__avatar {
+    height: 58px;
+    margin: 0;
+    width: 58px;
+  }
+
+  .author-card__avatar-wrap {
     height: 58px;
     margin: 0;
     width: 58px;

@@ -167,6 +167,11 @@
   width: 100%;
 }
 
+.watch-hero__feature picture {
+  display: block;
+  width: 100%;
+}
+
 .watch-hero__feature a {
   color: var(--color-white);
   font-weight: 700;
@@ -329,6 +334,11 @@
   aspect-ratio: 3 / 4;
   background: #111321;
   object-fit: cover;
+  width: 100%;
+}
+
+.watch-anime-card picture {
+  display: block;
   width: 100%;
 }
 

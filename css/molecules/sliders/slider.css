@@ -96,6 +96,12 @@
   height: 340px;
 }
 
+.home-carousel__media picture {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
 .home-carousel__media img {
   height: 100%;
   object-fit: cover;
