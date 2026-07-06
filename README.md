@@ -272,6 +272,8 @@ Dieser Abschnitt sammelt die aktuell gefundenen Fehler, Risiken und Modernisieru
    - Problem: `aria-label` wird an Elementen genutzt, bei denen es laut Validator nicht passt.
    - Aufgabe: Pruefen, ob `aria-labelledby`, sichtbarer Text oder ein anderes semantisches Element besser passt.
 
+   ### ABGESCHLOSSEN - commit "improve aria labels with labelled semantic regions"
+
 4. Aktive Navigation ist inkonsistent.
    - `trends.html`, `artikel.html` und `watchlist.html` nutzen `class="is-active"`.
    - Startseite, Impressum und Artikeldetailseiten haben keine klare aktive Navigation.
