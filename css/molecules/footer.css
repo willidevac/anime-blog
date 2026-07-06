@@ -34,9 +34,17 @@
 }
 
 .site-footer a:hover,
+.site-footer a.is-active,
 .cookie-preferences-button:hover,
 .cookie-preferences-button:focus-visible {
   color: var(--color-cyan);
+}
+
+.site-footer a.is-active {
+  text-decoration: underline;
+  text-decoration-color: var(--color-pink);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.35rem;
 }
 
 .site-footer a:first-of-type {

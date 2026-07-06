@@ -29,6 +29,11 @@
   width: 72px;
 }
 
+.page-header__logo.is-active {
+  border-color: var(--color-cyan);
+  box-shadow: 0 0 0 3px rgba(39, 234, 245, 0.22);
+}
+
 .page-header__nav {
   padding-left: 300px;
   align-items: center;
