@@ -103,11 +103,18 @@
   transform: translateY(-2px);
 }
 
+.share-button__icon,
 .share-button svg,
 .share-container .button .shere {
   flex: 0 0 auto;
   height: 30px;
   width: 30px;
+}
+
+.share-button__icon {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
 }
 
 .share-container .button .icon {
@@ -135,7 +142,7 @@
   display: none;
 }
 
-.share-container .button > p {
+.share-container .button > .share-button__text {
   color: inherit;
   font-size: inherit;
   padding-left: 0;
@@ -163,6 +170,7 @@
     padding: 14px 28px;
   }
 
+  .share-button__icon,
   .share-button svg,
   .share-container .button .shere {
     height: 28px;
