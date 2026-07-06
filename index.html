@@ -85,7 +85,8 @@
             Potenzial besitzen, echte Highlights zu werden.
           </p>
         </div>
-        <section class="home-carousel" aria-label="Klickbares Artikel-Carousel">
+        <section class="home-carousel" aria-labelledby="home-carousel-title">
+          <h2 class="visually-hidden" id="home-carousel-title">Klickbares Artikel-Carousel</h2>
           <input
             class="home-carousel__input"
             type="radio"
@@ -156,7 +157,12 @@
             </a>
           </div>
 
-          <div class="home-carousel__controls" aria-label="Carousel Steuerung">
+          <div
+            class="home-carousel__controls"
+            role="group"
+            aria-labelledby="home-carousel-controls-title"
+          >
+            <span class="visually-hidden" id="home-carousel-controls-title">Carousel Steuerung</span>
             <label for="home-carousel-frieren">Frieren</label>
             <label for="home-carousel-witch">Witch Hat</label>
             <label for="home-carousel-onepunch">One Punch Man</label>

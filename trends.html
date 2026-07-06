@@ -44,7 +44,8 @@
               bestimmen gerade, worüber Anime-Fans sprechen.
             </p>
 
-            <div class="trend-meta" aria-label="Artikelinformationen">
+            <div class="trend-meta" role="group" aria-labelledby="trend-meta-title">
+              <span class="visually-hidden" id="trend-meta-title">Artikelinformationen</span>
               <span>12. Juni 2026</span>
               <span>6 Minuten Lesezeit</span>
               <span>424 Aufrufe</span>
@@ -52,13 +53,13 @@
             </div>
           </div>
 
-          <aside class="author-card" aria-label="Autor">
+          <aside class="author-card" aria-labelledby="trend-author-title">
             <img
               class="author-card__avatar"
               src="assets/images/img-anime/author-avatar.png"
               alt="Anime Pulse Autor Avatar"
             />
-            <strong>Anime Pulse Team</strong>
+            <strong id="trend-author-title">Anime Pulse Team</strong>
             <span>Autor</span>
             <p>
               Beobachtet Hypes, Releases und Diskussionen aus der
@@ -100,7 +101,8 @@
             </aside>
           </div>
 
-          <div class="trend-takeaways" aria-label="Wichtigste Beobachtungen">
+          <section class="trend-takeaways" aria-labelledby="trend-takeaways-title">
+            <h2 class="visually-hidden" id="trend-takeaways-title">Wichtigste Beobachtungen</h2>
             <article>
               <span>01</span>
               <h2>Clips entscheiden schnell</h2>
@@ -127,7 +129,7 @@
                 Anime-Hit vorbereiten.
               </p>
             </article>
-          </div>
+          </section>
         </section>
 
         <section
@@ -141,7 +143,12 @@
             und Empfehlungen gerade am meisten Gesprächsstoff liefern.
           </p>
 
-          <div class="trend-carousel" aria-label="Trend-Kategorien">
+          <div
+            class="trend-carousel"
+            role="group"
+            aria-labelledby="trend-carousel-group-title"
+          >
+            <span class="visually-hidden" id="trend-carousel-group-title">Trend-Kategorien</span>
             <input
               class="trend-carousel__input"
               type="radio"
@@ -216,8 +223,10 @@
 
             <div
               class="trend-carousel__controls"
-              aria-label="Karussell Steuerung"
+              role="group"
+              aria-labelledby="trend-carousel-controls-title"
             >
+              <span class="visually-hidden" id="trend-carousel-controls-title">Karussell Steuerung</span>
               <label for="trend-season">Season</label>
               <label for="trend-manga">Manga</label>
               <label for="trend-cosplay">Cosplay</label>
@@ -388,7 +397,8 @@
               </div>
             </section>
 
-            <section class="trend-carousel__tips" aria-label="Pro Tips">
+            <section class="trend-carousel__tips" aria-labelledby="trend-tips-title">
+              <h2 class="visually-hidden" id="trend-tips-title">Pro Tips</h2>
               <div
                 class="trend-carousel__tip-set trend-carousel__tip-set--season"
               >

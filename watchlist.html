@@ -108,9 +108,10 @@
 
           <div
             class="watch-hero__actions"
-            aria-label="Watchlist Sprungmarken"
-            data-i18n-attr="aria-label:heroActionsLabel"
+            role="group"
+            aria-labelledby="watch-hero-actions-title"
           >
+            <span class="visually-hidden" id="watch-hero-actions-title" data-i18n="heroActionsLabel">Watchlist Sprungmarken</span>
             <a href="#airing-now" data-i18n="airingShort">Läuft gerade</a>
             <a href="#upcoming-anime" data-i18n="upcomingShort"
               >Bald verfügbar</a
@@ -120,9 +121,10 @@
 
           <div
             class="watch-hero__stats"
-            aria-label="Watchlist Überblick"
-            data-i18n-attr="aria-label:statsLabel"
+            role="group"
+            aria-labelledby="watch-hero-stats-title"
           >
+            <span class="visually-hidden" id="watch-hero-stats-title" data-i18n="statsLabel">Watchlist Überblick</span>
             <span
               ><strong data-watch-count-airing>0</strong>
               <span data-i18n="airingStat">Läuft</span></span
@@ -183,9 +185,9 @@
 
         <form
           class="watch-controls"
-          aria-label="Watchlist Filter"
-          data-i18n-attr="aria-label:filterLabel"
+          aria-labelledby="watch-filter-title"
         >
+          <span class="visually-hidden" id="watch-filter-title" data-i18n="filterLabel">Watchlist Filter</span>
           <fieldset class="watch-language-switch" data-watch-language>
             <legend data-i18n="languageLabel">Sprache</legend>
             <button type="button" data-watch-lang="de">DE</button>
@@ -369,11 +371,11 @@
 
           <button type="submit" data-i18n="suggestSubmit">Vormerken</button>
           <p class="watch-form__status" aria-live="polite"></p>
+          <span class="visually-hidden" id="watch-suggestion-list-title" data-i18n="suggestionListLabel">Vorgemerkte Empfehlungen</span>
           <ul
             class="watch-form__suggestions"
             id="watchSuggestionList"
-            aria-label="Vorgemerkte Empfehlungen"
-            data-i18n-attr="aria-label:suggestionListLabel"
+            aria-labelledby="watch-suggestion-list-title"
           ></ul>
         </form>
       </section>

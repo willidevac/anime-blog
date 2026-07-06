@@ -47,7 +47,8 @@
               Beliebtheit hat unübersehbar zugenommen.
             </p>
 
-            <div class="artikel-meta" aria-label="Artikelinformationen">
+            <div class="artikel-meta" role="group" aria-labelledby="artikel-meta-title">
+              <span class="visually-hidden" id="artikel-meta-title">Artikelinformationen</span>
               <span>12. Juni 2026</span>
               <span>6 Minuten Lesezeit</span>
               <span>424 Aufrufe</span>
@@ -55,13 +56,13 @@
             </div>
           </div>
 
-          <aside class="author-card" aria-label="Autor">
+          <aside class="author-card" aria-labelledby="artikel-author-title">
             <img
               class="author-card__avatar"
               src="assets/images/img-anime/author-avatar.png"
               alt="Anime Pulse Autor Avatar"
             />
-            <strong>Anime Pulse Team</strong>
+            <strong id="artikel-author-title">Anime Pulse Team</strong>
             <span>Autor</span>
             <p>
               Hinter den manchmal schlichten Oberflächen verbergen sich
@@ -108,7 +109,12 @@
             </figcaption>
           </figure>
 
-          <div class="artikel-pick-carousel" aria-label="Einsteiger-Empfehlungen">
+          <div
+            class="artikel-pick-carousel"
+            role="group"
+            aria-labelledby="artikel-pick-title"
+          >
+            <span class="visually-hidden" id="artikel-pick-title">Einsteiger-Empfehlungen</span>
             <input
               class="artikel-pick-carousel__input"
               type="radio"
@@ -180,8 +186,10 @@
 
             <div
               class="artikel-pick-carousel__controls"
-              aria-label="Einsteiger-Empfehlungen auswählen"
+              role="group"
+              aria-labelledby="artikel-pick-controls-title"
             >
+              <span class="visually-hidden" id="artikel-pick-controls-title">Einsteiger-Empfehlungen auswählen</span>
               <label for="artikel-pick-action">Action</label>
               <label for="artikel-pick-story">Story</label>
               <label for="artikel-pick-comedy">Comedy</label>
