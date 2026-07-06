@@ -42,6 +42,7 @@ Das Projekt dient als Lernprojekt für saubere HTML-Struktur, modularen CSS-Aufb
 - [Development](#development)
 - [Project Structure](#project-structure)
 - [Features](#features)
+- [Komponenten-Hinweis](#komponenten-hinweis)
 - [Learning Goals](#learning-goals)
 
 ## Requirements
@@ -177,7 +178,8 @@ Die HTML-Dateien laden anschließend die generierte Datei:
 |   |-- icons/
 |   `-- images/
 |-- components/
-|   `-- header.html
+|   |-- header.html
+|   `-- footer.html
 |-- css/
 |   |-- tailwind-input.css
 |   |-- tailwind.css
@@ -201,6 +203,21 @@ Die HTML-Dateien laden anschließend die generierte Datei:
 | FAQ-Akkordeon           | FAQ-Bereiche können einzeln geöffnet und geschlossen werden |
 | Formularvalidierung     | Kontaktformular prüft Eingaben vor dem Absenden             |
 | Accessibility-Attribute | ARIA-Attribute verbessern Bedienbarkeit und Rückmeldung     |
+
+## Komponenten-Hinweis
+
+Das Projekt nutzt aktuell statische HTML-Dateien ohne HTML-Include- oder Template-Build.
+Header und Footer bleiben deshalb bewusst in den einzelnen Seiten dupliziert.
+
+Damit die Struktur trotzdem nachvollziehbar bleibt, liegen im Ordner `components/` zwei gepflegte Kopiervorlagen:
+
+```text
+components/header.html
+components/footer.html
+```
+
+Wenn Header oder Footer geändert werden, sollen zuerst diese Vorlagen angepasst und danach die echten HTML-Seiten synchronisiert werden.
+Eine echte Include-Lösung, zum Beispiel mit Astro, Eleventy oder Vite HTML-Partials, wäre ein späterer Modernisierungsschritt.
 
 ## Learning Goals
 
@@ -287,6 +304,8 @@ Dieser Abschnitt sammelt die aktuell gefundenen Fehler, Risiken und Modernisieru
    - `components/header.html` ist ausserdem nicht auf demselben Stand wie die echten Header in den Seiten.
    - Es gibt keine `components/footer.html`, obwohl der Footer auf allen Seiten vorkommt.
    - Aufgabe: Header/Footer entweder bewusst dupliziert halten und synchronisieren oder eine echte Include-/Build-Loesung einfuehren.
+
+   ### ABGESCHLOSSEN - commit "document static header and footer templates"
 
 ### Fehler mit mittlerer Prioritaet
 
