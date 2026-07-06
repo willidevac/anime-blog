@@ -258,6 +258,8 @@ Dieser Abschnitt sammelt die aktuell gefundenen Fehler, Risiken und Modernisieru
    - Problem: In Buttons liegen blockartige Elemente wie `div` oder `p`. Der Validator meldet dadurch ungueltige Button-Inhalte.
    - Aufgabe: Button-Markup semantisch sauber umbauen, z. B. mit `span` fuer Icon und Text.
 
+   ### ABGESCHLOSSEN - commit "use valid inline markup in share buttons"
+
 3. Teilweise falsch verwendete ARIA-Labels.
    - Betroffene Seiten laut Validator:
      - `artikel-frieren.html`
