@@ -317,6 +317,7 @@ function renderHero(data) {
       alt="${escapeAttribute(heroAnime.title)}"
       width="720"
       height="960"
+      decoding="async"
     />
     <div>
       <p>${state.source === "live" ? escapeHtml(t("liveTrend")) : escapeHtml(t("fallbackPick"))}</p>
@@ -363,6 +364,7 @@ function renderAnimeCard(anime) {
         width="480"
         height="640"
         loading="lazy"
+        decoding="async"
       />
       <div>
         <p>${escapeHtml(meta.join(" | ") || t("animePick"))}</p>

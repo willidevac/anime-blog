@@ -330,6 +330,12 @@ Dieser Abschnitt sammelt die aktuell gefundenen Fehler, Risiken und Modernisieru
    - Nur einige Iframes, aber keine Bilder nutzen `loading="lazy"`.
    - Aufgabe: Bilddimensionen ergaenzen, Lazy Loading einsetzen und responsive Bildvarianten pruefen.
 
+   ### TEILWEISE ABGESCHLOSSEN - commit "add image dimensions and lazy loading"
+   - Statische HTML-Bilder haben feste `width`- und `height`-Attribute.
+   - Nicht kritische Bilder nutzen `loading="lazy"` und `decoding="async"`.
+   - Dynamisch gerenderte Watchlist-Bilder setzen ebenfalls feste Bildattribute.
+   - Responsive WebP/AVIF-Varianten wurden geprueft, aber noch nicht erzeugt. Das bleibt ein eigener Asset-Optimierungsschritt.
+
 3. Sehr grosse Bild- und Medienassets.
    - Beispiele:
      - `jujutsu-kaisen.jpg`: ca. 6,9 MB
