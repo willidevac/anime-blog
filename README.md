@@ -280,6 +280,8 @@ Dieser Abschnitt sammelt die aktuell gefundenen Fehler, Risiken und Modernisieru
    - Keine Seite nutzt `aria-current="page"`.
    - Aufgabe: Aktiven Navigationszustand einheitlich definieren und `aria-current="page"` ergaenzen.
 
+   ### ABGESCHLOSSEN - commit "unify active navigation state"
+
 5. Header/Footer sind stark dupliziert.
    - `components/header.html` existiert, ist aber nicht wirklich als zentrale Komponente eingebunden.
    - `components/header.html` ist ausserdem nicht auf demselben Stand wie die echten Header in den Seiten.
